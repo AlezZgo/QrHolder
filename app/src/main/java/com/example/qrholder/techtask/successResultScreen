@@ -1,0 +1,7 @@
+SuccessResultScreen consist of:
+    title text field with hint "title"
+    subtitle immutable text field with link text
+    animated image with generated QrCode
+    button save -> save image and go to homeScreen
+
+    need an link string as necessary argument

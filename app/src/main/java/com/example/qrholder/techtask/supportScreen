@@ -1,0 +1,5 @@
+SupportScreen consist of:
+    1 toolbar with a title "support"
+    2 list of menu items divided by gray line:
+        telegram item -> system intent to write the message to developer
+        mail item -> system intent to write to an email
