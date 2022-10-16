@@ -2,6 +2,12 @@
     <string name="app_name">Qr Holder</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="qrcodepreview">QrCodePreview</string>
     <string name="title_notifications">Notifications</string>
     <string name="menu">Menu</string>
+    <string name="qrList">QrList</string>
+    <string name="copy_right_mark">©AlezZgo, 2022</string>
+    <string name="app_version">app version:</string>
+    <string name="support">Support</string>
+    <string name="rate_app">Rate application</string>
 </resources>
