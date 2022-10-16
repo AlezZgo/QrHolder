@@ -3,5 +3,5 @@ MenuScreen consist of:
     2 list of menu items divided by gray line:
         rateApp item -> system intent to rate the app in google play
         support item -> open SupportScreen
-    3 icon with text "©AlezZgo, 2022 \n version: $appVersion"
+    3 Text "©AlezZgo, 2022 \n version: $appVersion"
 
