@@ -11,6 +11,12 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/dark_gray</item>
+
+    </style>
+
+    <style name="FloatingActionButton">
+
 
     </style>
 
