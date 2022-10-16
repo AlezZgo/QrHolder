@@ -1,4 +1,4 @@
-package com.example.qrholder.ui.home
+package com.example.qrholder.ui.menu
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.qrholder.databinding.FragmentHomeBinding
+import com.example.qrholder.databinding.FragmentMenuBinding
 
-class HomeFragment : Fragment() {
+class MenuFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentMenuBinding
 
-    private val homeViewModel by viewModels<HomeViewModel>()
+    private val menuViewModel by viewModels<MenuViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,7 +20,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -5,9 +5,9 @@
 
     <application
         android:name=".core.QrHolderApp"
-        android:icon="@drawable/holder"
+        android:icon="@drawable/ic_app"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/holder"
+        android:roundIcon="@drawable/ic_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.QrHolder"
         tools:targetApi="31">
