@@ -17,7 +17,7 @@
         app:menu="@menu/bottom_nav_menu">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/fabAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -54,24 +54,28 @@
         android:focusable="true"
         android:visibility="invisible"
         app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fabGallery"
+        app:layout_constraintEnd_toStartOf="@+id/fabGallery"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_build_24" />
+        app:layout_constraintTop_toTopOf="@+id/fabGallery"
+        app:srcCompat="@drawable/ic_baseline_build_24"
+        tools:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabGallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="@string/choose_image_from_gallery"
         android:focusable="true"
         android:visibility="invisible"
         app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_image_24" />
+        app:srcCompat="@drawable/ic_baseline_image_24"
+        tools:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabScan"
@@ -82,9 +86,11 @@
         android:focusable="true"
         android:visibility="invisible"
         app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fabGallery"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24" />
+        app:layout_constraintStart_toEndOf="@+id/fabGallery"
+        app:layout_constraintTop_toTopOf="@+id/fabGallery"
+        app:srcCompat="@drawable/ic_baseline_qr_code_scanner_24"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
