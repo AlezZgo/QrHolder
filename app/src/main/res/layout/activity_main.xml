@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toStartOf="@+id/fabGallery"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fabGallery"
-        app:srcCompat="@drawable/ic_baseline_build_24"
+        app:srcCompat="@drawable/ic_baseline_qr_code_24"
         tools:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
