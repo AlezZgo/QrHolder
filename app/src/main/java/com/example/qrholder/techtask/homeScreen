@@ -21,6 +21,8 @@ HomeScreen states:
                 if nothing was found -> nothing to do
                 if got some data -> go to 2.2 state
 
+    2.4 loading: shimmers
+
 HomeScreen QrCode Item consist of:
     1 square image at the left
     2 title text at the top right
