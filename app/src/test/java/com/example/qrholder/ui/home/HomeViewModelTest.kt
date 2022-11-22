@@ -1,96 +1,217 @@
 package com.example.qrholder.ui.home
 
-import androidx.lifecycle.viewmodel.CreationExtras
+import com.example.qrholder.ui.home.HomeViewModelTest.TestHomeCommunications.Companion.EMPTY_FIELD
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class HomeViewModelTest {
 
     @Test
-    fun `first run application with Empty qrCode list`() {
+    fun `the very first run application`() {
 
+        //dependencies
         val communications = TestHomeCommunications()
         val interactor = TestHomeInteractor()
 
-        val viewModel = HomeViewModel(communications, interactor)
+        //initialize
+        val viewModel = HomeViewModel(communications = communications, interactor = interactor)
+        interactor.changeExpectedResult(QrCodes.Success(emptyList()))
 
-        assertEquals(1, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
-
-        assertEquals(0, interactor.resultList.size)
-
+        //action
         viewModel.init(isFirstRun = true)
 
-        assertEquals(1, interactor.resultList.size)
-        assertEquals(QrCodes.Empty, interactor.resultList[0])
-
+        //check
         assertEquals(2, communications.uiStateCalledList.size)
+        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
         assertEquals(HomeUiState.Empty, communications.uiStateCalledList[1])
 
+        assertEquals(1, interactor.fetchAllCalledList.size)
+        assertEquals(QrCodes.Success(emptyList()), interactor.fetchAllCalledList[0])
     }
 
     @Test
-    fun `get qrCode list then re-init`() {
+    fun `fetch all qrCodes then re-init`() {
 
         val communications = TestHomeCommunications()
         val interactor = TestHomeInteractor()
-        interactor.resultList[0] = QrCodes.Success(/* 3 models QrCode */)
-        val viewModel = HomeViewModel(communications, interactor)
 
-        assertEquals(1, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
+        //initialize
+        val viewModel = HomeViewModel(communications = communications, interactor = interactor)
 
-        assertEquals(0, interactor.resultList.size)
+        interactor.changeExpectedResult(
+            QrCodes.Success(
+                qrCodes = listOf<QrCode>(
+                    QrCode(
+                        title = "Test title 1",
+                        content = "www.something.test"
+                    ),
+                    QrCode(
+                        title = "Test title 2",
+                        content = "www.something.test"
+                    ),
+                    QrCode(
+                        title = "Test title 3",
+                        content = "www.something.test"
+                    )
+                )
+            )
+        )
 
-        viewModel.fetchAll()
+        //action
+        viewModel.init(isFirstRun = true)
 
-        assertEquals(1, interactor.resultList.size)
-        assertEquals(QrCodes.Success(/* 3 models QrCode */), interactor.resultList[0])
+        //check
+        assertEquals(1, interactor.fetchAllCalledList.size)
+        assertEquals(QrCodes.Success(
+            qrCodes = listOf<QrCode>(
+                QrCode(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 2",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 3",
+                    content = "www.something.test"
+                )
+            )
+        ), interactor.fetchAllCalledList[0])
 
+        //check
         assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Success(/* 3 models QrCode */), communications.uiStateCalledList[1])
+        assertEquals(QrCodes.Loading, communications.uiStateCalledList[0])
 
+        assertEquals(QrCodes.Success(
+            qrCodes = listOf<QrCodeUi>(
+                QrCodeUi(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCodeUi(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCodeUi(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+            )
+        ),communications.uiStateCalledList[1])
+
+        //action
         viewModel.init(isFirstRun = false)
 
+        //check
         assertEquals(1, interactor.resultList.size)
-        assertEquals(QrCodes.Success(/* 3 models QrCode */), interactor.resultList[0])
+        assertEquals(2, communications.uiStateCalledList.size)
 
-        assertEquals(3, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Success(/* 3 models QrCode */), communications.uiStateCalledList[2])
 
     }
 
     @Test
     fun `Enter some text in the filter input field and get list filtered then re-init`() {
+
         val communications = TestHomeCommunications()
         val interactor = TestHomeInteractor()
-        interactor.resultList[0] = QrCodes.Success(/* 3 models QrCode */)
-        communications.uiStateCalledList[0] = HomeUiState.Success(/* 3 models QrCode */)
+
+        //initialize
         val viewModel = HomeViewModel(communications, interactor)
+        interactor.changeExpectedResult(QrCodes.Success(
+            qrCodes = listOf<QrCode>(
+                QrCode(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 2",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 3",
+                    content = "www.something.test"
+                )
+            )
+        ))
 
-        assertEquals(1,communications.filterCalledList.size)
-        assertEquals(TestHomeCommunications.EMPTY_FIELD,communications.filterCalledList[0])
+        //action
+        viewModel.init(isFirstRun = true)
 
-        val testFilter = "Hotel"
+        assertEquals(1, interactor.fetchAllCalledList.size)
+        assertEquals(QrCodes.Success(
+            qrCodes = listOf<QrCode>(
+                QrCode(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 2",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 3",
+                    content = "www.something.test"
+                )
+            )
+        ), interactor.fetchAllCalledList[0])
+
+        //check
+        assertEquals(2, communications.uiStateCalledList.size)
+        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
+        assertEquals(HomeUiState.Success(
+            qrCodes = listOf<QrCodeUi>(
+                QrCodeUi(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCodeUi(
+                    title = "Test title 2",
+                    content = "www.something.test"
+                ),
+                QrCodeUi(
+                    title = "Test title 3",
+                    content = "www.something.test"
+                )
+            )
+        ), communications.uiStateCalledList[1])
+
+        //action
+        val testFilter = "title 1"
         viewModel.filter(testFilter)
 
-        assertEquals(2, interactor.resultList.size)
-        assertEquals(QrCodes.Success(/* 1 QrCode model  */), interactor.resultList[1])
-
-        assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Success(/* 1 QrCode model  */), communications.uiStateCalledList[1])
-
-        assertEquals(2,communications.filterCalledList.size)
-        assertEquals(testFilter,communications.filterCalledList[1])
-
-        viewModel.init(isFirstRun = false)
-
-        assertEquals(2, interactor.resultList.size)
-        assertEquals(QrCodes.Success(/* 1 QrCode model  */), interactor.resultList[1])
+        //check
+        assertEquals(1, interactor.fetchAllCalledList.size)
 
         assertEquals(3, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Success(/* 1 QrCode model  */), communications.uiStateCalledList[2])
-        assertEquals(testFilter,communications.filterCalledList[1])
+        assertEquals(HomeUiState.Success(
+            qrCodes = listOf<QrCodeUi>(
+                QrCodeUi(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                )
+            )
+        ), communications.uiStateCalledList[2])
+
+        //check
+        assertEquals(1, communications.filterCalledList.size)
+        assertEquals(EMPTY_FIELD, communications.filterCalledList[0])
+
+        //action
+        viewModel.init(isFirstRun = false)
+
+        //check
+        assertEquals(1, interactor.fetchAllCalledList.size)
+
+        assertEquals(3, communications.uiStateCalledList.size)
+        assertEquals(HomeUiState.Success(
+            qrCodes = listOf<QrCodeUi>(
+                QrCodeUi(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                )
+            )
+        ), communications.uiStateCalledList[2])
 
     }
 
@@ -98,55 +219,127 @@ internal class HomeViewModelTest {
     fun `Enter some text in the filter input field but nothing was found`() {
         val communications = TestHomeCommunications()
         val interactor = TestHomeInteractor()
-        interactor.resultList[0] = QrCodes.Success(/* 3 models QrCode */)
-        communications.uiStateCalledList[0] = HomeUiState.Success(/* 3 models QrCode */)
-        val viewModel = HomeViewModel(communications, interactor)
 
-        val testFilter = "I entered something that I definitely don't have in my qr code list"
+        //initialize
+        val viewModel = HomeViewModel(communications, interactor)
+        interactor.changeExpectedResult(QrCodes.Success(
+            qrCodes = listOf<QrCode>(
+                QrCode(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 2",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 3",
+                    content = "www.something.test"
+                )
+            )
+        ))
+
+        //action
+        viewModel.init(isFirstRun = true)
+
+        //check
+        assertEquals(1, interactor.fetchAllCalledList.size)
+        assertEquals(QrCodes.Success(
+            qrCodes = listOf<QrCode>(
+                QrCode(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 2",
+                    content = "www.something.test"
+                ),
+                QrCode(
+                    title = "Test title 3",
+                    content = "www.something.test"
+                )
+            )
+        ), interactor.fetchAllCalledList[0])
+
+        //check
+        assertEquals(2, communications.uiStateCalledList.size)
+        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
+        assertEquals(HomeUiState.Success(
+            qrCodes = listOf<QrCodeUi>(
+                QrCodeUi(
+                    title = "Test title 1",
+                    content = "www.something.test"
+                ),
+                QrCodeUi(
+                    title = "Test title 2",
+                    content = "www.something.test"
+                ),
+                QrCodeUi(
+                    title = "Test title 3",
+                    content = "www.something.test"
+                )
+            )
+        ), communications.uiStateCalledList[1])
+
+        //action
+        val testFilter = "efjlsiejfso"
         viewModel.filter(testFilter)
 
-        assertEquals(2, interactor.resultList.size)
-        assertEquals(QrCodes.Success(/* 1 QrCode model  */), interactor.resultList[1])
+        //check
+        assertEquals(1, interactor.fetchAllCalledList.size)
 
-        assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Success(/* 1 QrCode model  */), communications.uiStateCalledList[1])
-        assertEquals(testFilter,communications.filterCalledList[1])
-
-        viewModel.init(isFirstRun = false)
+        assertEquals(2, communications.filterCalledList.size)
+        assertEquals(testFilter, communications.filterCalledList[1])
 
         assertEquals(3, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Success(/* 1 QrCode model  */), communications.uiStateCalledList[2])
+        assertEquals(HomeUiState.NothingWasFound, communications.uiStateCalledList[2])
 
-        assertEquals(2, interactor.resultList.size)
-        assertEquals(QrCodes.Success(/* 1 QrCode model  */), interactor.resultList[1])
+        //action
+        viewModel.init(isFirstRun = false)
+
+        //check
+        assertEquals(1, interactor.fetchAllCalledList.size)
+
+        assertEquals(2, communications.filterCalledList.size)
+        assertEquals(testFilter, communications.filterCalledList[1])
+
+        assertEquals(3, communications.uiStateCalledList.size)
+        assertEquals(HomeUiState.NothingWasFound, communications.uiStateCalledList[2])
     }
 
 
-    private class TestHomeInteractor {
+    private class TestHomeInteractor : HomeInteractor {
 
-        val resultList = mutableListOf<QrCodes> (QrCodes.Empty)
+        private var result: QrCodes = QrCodes.Success(emptyList())
 
-        override suspend fun fetchAll(filter : String): QrCodes {
-            resultList.add(QrCodes)
+        val fetchAllCalledList = mutableListOf<QrCodes>()
+
+        fun changeExpectedResult(qrCodes: QrCodes) {
+            result = qrCodes
+        }
+
+        override suspend fun fetchAll(filter: String) {
+            fetchAllCalledList.add(result)
         }
     }
+
+    private class TestHomeCommunications : HomeCommunications {
+
+        val uiStateCalledList = mutableListOf<HomeUiState>()
+        val filterCalledList = mutableListOf(EMPTY_FIELD)
+
+        override fun showState(state: HomeUiState) {
+            uiStateCalledList.add(state)
+        }
+
+        override fun filter(text: String) {
+            filterCalledList.add(text)
+        }
+
+        companion object {
+            const val EMPTY_FIELD = ""
+        }
+
+    }
 }
 
-private class TestHomeCommunications : HomeCommunications {
-
-    val uiStateCalledList = mutableListOf<HomeUiState>(HomeUiState.Loading)
-    val filterCalledList = mutableListOf(EMPTY_FIELD)
-
-    override fun showState(state: HomeUiState) {
-        uiStateCalledList.add(state)
-    }
-
-    override fun filter(text : String){
-        filterCalledList.add(text)
-    }
-
-    companion object{
-        const val EMPTY_FIELD = ""
-    }
-
-}
