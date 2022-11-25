@@ -12,7 +12,7 @@
         android:theme="@style/Theme.QrHolder"
         tools:targetApi="33">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".core.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

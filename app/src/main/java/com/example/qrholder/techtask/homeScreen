@@ -23,6 +23,8 @@ HomeScreen states:
 
     2.4 loading: shimmers
 
+    2.5 error: at the place  where should be list of qr codes shows an animated image with the text: "Something went wrong. Error message. Press refresh button to try again"
+
 HomeScreen QrCode Item consist of:
     1 square image at the left
     2 title text at the top right

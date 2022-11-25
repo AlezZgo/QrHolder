@@ -1,4 +1,4 @@
-package com.example.qrholder.ui
+package com.example.qrholder.core
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
