@@ -1,10 +1,11 @@
 package com.example.qrholder.home.ui
 
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.qrholder.core.Communication
 
-interface HomeCommunications : ObserveNumbers {
+interface HomeCommunications : ObserveQrCodes {
 
     fun showState(state: HomeUiState)
 
@@ -15,11 +16,11 @@ interface HomeCommunications : ObserveNumbers {
     class Base(
         private val uiState: HomeUiStateCommunication,
         private val filter: FilterCommunication,
-        private val qrCodes: QrCodesCommunication
+        private val qrCodesCompleteList: QrCodesCommunication
     ) : HomeCommunications{
         override fun showState(state: HomeUiState) = uiState.map(state)
 
-        override fun showList(list: List<QrCodeUi>) = qrCodes.map(list)
+        override fun showList(list: List<QrCodeUi>) = qrCodesCompleteList.map(list)
 
         override fun filter(text: String) = filter.map(text)
 
@@ -32,14 +33,14 @@ interface HomeCommunications : ObserveNumbers {
         }
 
         override fun observeQrCodes(owner: LifecycleOwner, observer: Observer<List<QrCodeUi>>) {
-            qrCodes.observe(owner,observer)
+            qrCodesCompleteList.observe(owner,observer)
         }
 
     }
 
 }
 
-interface ObserveNumbers{
+interface ObserveQrCodes{
 
     fun observeUiState(owner: LifecycleOwner,observer : Observer<HomeUiState>)
     fun observeFilter(owner: LifecycleOwner,observer : Observer<String>)
@@ -51,9 +52,9 @@ interface HomeUiStateCommunication : Communication.Mutable<HomeUiState>{
 }
 
 interface FilterCommunication : Communication.Mutable<String>{
-    class Base() : Communication.Post<String>(), FilterCommunication
+    class Base() : Communication.Post<String>(MutableLiveData("")), FilterCommunication
 }
 
 interface QrCodesCommunication : Communication.Mutable<List<QrCodeUi>>{
-    class Base() : Communication.Post<List<QrCodeUi>>(), QrCodesCommunication
+    class Base() : Communication.Post<List<QrCodeUi>>(MutableLiveData(emptyList())), QrCodesCommunication
 }

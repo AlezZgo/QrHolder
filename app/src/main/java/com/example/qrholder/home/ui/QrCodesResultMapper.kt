@@ -8,7 +8,6 @@ class QrCodesResultMapper(
     private val qrCodeToUiMapper: QrCode.Mapper<QrCodeUi>
 ) : QrCodes.Mapper<Unit> {
     override fun map(list: List<QrCode>, errorMessage: String) {
-        TODO()
         if (errorMessage.isEmpty()) {
             if (list.isEmpty())
                 communications.showState(HomeUiState.Empty)

@@ -5,7 +5,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.qrholder.home.domain.HomeInteractor
-import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
 import kotlinx.coroutines.launch
 
@@ -14,7 +13,7 @@ class HomeViewModel(
     private val interactor: HomeInteractor,
     private val communications: HomeCommunications,
     private val qrCodesResultMapper: QrCodes.Mapper<Unit>
-) : ViewModel(), ObserveNumbers, Filter<String>, Init, FetchAll {
+) : ViewModel(), ObserveQrCodes, Filter<String>, Init, FetchAll {
 
 
     override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) =

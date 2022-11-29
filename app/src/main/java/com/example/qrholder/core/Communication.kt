@@ -1,8 +1,6 @@
 package com.example.qrholder.core
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.*
 
 interface Communication {
 
@@ -32,8 +30,8 @@ interface Communication {
     }
 
     abstract class Post<T : Any>(
-        liveData: MutableLiveData<T> = MutableLiveData()
-    ) : Abstract<T>(liveData) {
+        protected val postLiveData: MutableLiveData<T> = MutableLiveData()
+    ) : Abstract<T>(postLiveData) {
         override fun map(source: T) {
             liveData.postValue(source)
         }

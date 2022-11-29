@@ -43,14 +43,20 @@ abstract class BaseTest(
 
         val uiStateCalledList = mutableListOf<HomeUiState>()
         val filterCalledList = mutableListOf(EMPTY_FIELD)
-        val fetchListCalledList = mutableListOf<List<QrCodeUi>>()
+        val qrCodesCompleteCalledList = mutableListOf<List<QrCodeUi>>()
+
+        private var qrCodesCompleteList = emptyList<QrCodeUi>()
+
+        fun changeQrCodesCompleteListExpectedResult(qrCodes: List<QrCodeUi>) {
+            qrCodesCompleteList = qrCodes
+        }
 
         override fun showState(state: HomeUiState) {
             uiStateCalledList.add(state)
         }
 
         override fun showList(list: List<QrCodeUi>) {
-            fetchListCalledList.add(list)
+            qrCodesCompleteCalledList.add(list)
         }
 
         override fun filter(text: String) {
