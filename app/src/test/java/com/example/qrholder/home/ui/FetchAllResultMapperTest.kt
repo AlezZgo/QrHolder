@@ -5,14 +5,14 @@ import com.example.qrholder.home.domain.QrCode
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class QrCodesResultMapperTest : BaseTest() {
+internal class FetchAllResultMapperTest : BaseTest() {
 
-    private val qrCodesResultMapper = QrCodesResultMapper(communications, QrCodeToUiMapper())
+    private val fetchAllResultMapper = FetchAllResultMapper(communications, QrCodeToUiMapper())
 
     @Test
     fun `handle empty list and empty filter`() {
 
-        qrCodesResultMapper.map(emptyList(), "")
+        fetchAllResultMapper.map(emptyList(), "")
         assertEquals(1, communications.uiStateCalledList.size)
         assertEquals(HomeUiState.Empty, communications.uiStateCalledList[0])
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
@@ -29,7 +29,7 @@ internal class QrCodesResultMapperTest : BaseTest() {
             QrCode("Whale", "www.whale.com"),
         )
 
-        qrCodesResultMapper.map(testList, "")
+        fetchAllResultMapper.map(testList, "")
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
@@ -68,7 +68,7 @@ internal class QrCodesResultMapperTest : BaseTest() {
 
         communications.filter(filter)
 
-        qrCodesResultMapper.map(testList, "")
+        fetchAllResultMapper.map(testList, "")
 
         assertEquals(2, communications.filterCalledList.size)
         assertEquals(filter, communications.filterCalledList[1])
@@ -99,7 +99,7 @@ internal class QrCodesResultMapperTest : BaseTest() {
 
         val errorMessage = "Something went wrong"
 
-        qrCodesResultMapper.map(emptyList(), errorMessage)
+        fetchAllResultMapper.map(emptyList(), errorMessage)
 
         assertEquals(1, communications.uiStateCalledList.size)
         assertEquals(HomeUiState.Error(errorMessage), communications.uiStateCalledList[0])

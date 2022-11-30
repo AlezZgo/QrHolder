@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val interactor: HomeInteractor,
     private val communications: HomeCommunications,
-    private val qrCodesResultMapper: QrCodes.Mapper<Unit>
+    private val fetchAllResultMapper: QrCodes.Mapper<Unit>
 ) : ViewModel(), ObserveQrCodes, Filter<String>, Init, FetchAll {
 
 
@@ -39,7 +39,7 @@ class HomeViewModel(
             communications.showState(HomeUiState.Loading)
             viewModelScope.launch {
                 val result = interactor.fetchAll()
-                result.map(qrCodesResultMapper)
+                result.map(fetchAllResultMapper)
             }
         }
     }

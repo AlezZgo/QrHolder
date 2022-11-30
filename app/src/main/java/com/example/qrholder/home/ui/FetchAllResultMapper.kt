@@ -3,7 +3,7 @@ package com.example.qrholder.home.ui
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
 
-class QrCodesResultMapper(
+class FetchAllResultMapper(
     private val communications: HomeCommunications,
     private val qrCodeToUiMapper: QrCode.Mapper<QrCodeUi>
 ) : QrCodes.Mapper<Unit> {
@@ -12,7 +12,7 @@ class QrCodesResultMapper(
             if (list.isEmpty())
                 communications.showState(HomeUiState.Empty)
             else
-                communications.showList(list.map { it.map(qrCodeToUiMapper) })
+                communications.changeCompleteList(list.map { it.map(qrCodeToUiMapper) })
         } else
             communications.showState(HomeUiState.Error(errorMessage))
     }

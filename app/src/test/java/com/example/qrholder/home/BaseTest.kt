@@ -18,7 +18,7 @@ abstract class BaseTest(
     val viewModel = HomeViewModel(
         communications = communications,
         interactor = interactor,
-        qrCodesResultMapper = QrCodesResultMapper(communications, QrCodeToUiMapper())
+        fetchAllResultMapper = FetchAllResultMapper(communications, QrCodeToUiMapper())
     )
 
 
@@ -55,7 +55,7 @@ abstract class BaseTest(
             uiStateCalledList.add(state)
         }
 
-        override fun showList(list: List<QrCodeUi>) {
+        override fun changeCompleteList(list: List<QrCodeUi>) {
             qrCodesCompleteCalledList.add(list)
         }
 

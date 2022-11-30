@@ -1,6 +1,7 @@
 package com.example.qrholder.core
 
 import androidx.lifecycle.*
+import com.example.qrholder.home.ui.HomeUiState
 
 interface Communication {
 
@@ -36,5 +37,7 @@ interface Communication {
             liveData.postValue(source)
         }
     }
+
+
 
 }
