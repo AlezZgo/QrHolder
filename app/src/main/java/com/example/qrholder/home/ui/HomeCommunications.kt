@@ -67,12 +67,13 @@ interface FilterCommunication : Communication.Mutable<String> {
 interface CompleteListCommunication : Communication.Mutable<List<QrCodeUi>>,
     FilterToState<String, HomeUiState> {
 
-    class Base() : Communication.Post<List<QrCodeUi>>(MutableLiveData(emptyList())),
+    class Base : Communication.Post<List<QrCodeUi>>(MutableLiveData(emptyList())),
         CompleteListCommunication {
+
         override fun filter(filter: String, uiState: Communication.Mutable<HomeUiState>) {
             val filtered: List<QrCodeUi> =
                 liveData.value?.filter { it.contains(filter) } ?: emptyList()
-            if (filter.isEmpty())
+            if (filtered.isEmpty())
                 uiState.map(HomeUiState.NothingWasFound)
             else
                 uiState.map(HomeUiState.Success(filtered))
