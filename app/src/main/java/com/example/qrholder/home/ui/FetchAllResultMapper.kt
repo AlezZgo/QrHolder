@@ -9,10 +9,7 @@ class FetchAllResultMapper(
 ) : QrCodes.Mapper<Unit> {
     override fun map(list: List<QrCode>, errorMessage: String) {
         if (errorMessage.isEmpty()) {
-            if (list.isEmpty())
-                communications.showState(HomeUiState.Empty)
-            else
-                communications.changeCompleteList(list.map { it.map(qrCodeToUiMapper) })
+            communications.changeCompleteList(list.map { it.map(qrCodeToUiMapper) })
         } else
             communications.showState(HomeUiState.Error(errorMessage))
     }

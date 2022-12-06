@@ -10,9 +10,11 @@ import kotlinx.coroutines.launch
 
 //todo use hilt to get deps
 class HomeViewModel(
+    private val dispatchers: DispatchersList,
     private val interactor: HomeInteractor,
     private val communications: HomeCommunications,
-    private val fetchAllResultMapper: QrCodes.Mapper<Unit>
+    private val fetchAllResultMapper: QrCodes.Mapper<Unit>,
+    private val defaultFilter: String = "",
 ) : ViewModel(), ObserveQrCodes, Filter<String>, Init, FetchAll {
 
 
@@ -30,17 +32,16 @@ class HomeViewModel(
 
     override fun init(isFirstRun: Boolean) {
         if (isFirstRun) {
-            fetchAll()
+            fetchCompleteList()
+            filter(defaultFilter)
         }
     }
 
-    override fun fetchAll() {
-        viewModelScope.launch {
+    override fun fetchCompleteList() {
+        viewModelScope.launch(dispatchers.io()) {
             communications.showState(HomeUiState.Loading)
-            viewModelScope.launch {
-                val result = interactor.fetchAll()
-                result.map(fetchAllResultMapper)
-            }
+            val result = interactor.fetchAll()
+            result.map(fetchAllResultMapper)
         }
     }
 }
@@ -54,5 +55,5 @@ interface Filter<T> {
 }
 
 interface FetchAll {
-    fun fetchAll()
+    fun fetchCompleteList()
 }

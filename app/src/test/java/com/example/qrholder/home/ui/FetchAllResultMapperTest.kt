@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 
 internal class FetchAllResultMapperTest : BaseTest() {
 
+    private val communications = TestHomeCommunications()
     private val fetchAllResultMapper = FetchAllResultMapper(communications, QrCodeToUiMapper())
 
     @Test
@@ -31,26 +32,15 @@ internal class FetchAllResultMapperTest : BaseTest() {
 
         fetchAllResultMapper.map(testList, "")
 
-        assertEquals(1, communications.qrCodesCompleteCalledList.size)
+        assertEquals(2, communications.qrCodesCompleteCalledList.size)
+        assertEquals(emptyList<QrCodeUi>(), communications.qrCodesCompleteCalledList[0])
         assertEquals(
             listOf(
                 QrCodeUi("Cat", "www.cat.com"),
                 QrCodeUi("Dog", "www.dog.com"),
                 QrCodeUi("Duck", "www.duck.com"),
                 QrCodeUi("Whale", "www.whale.com"),
-            ), communications.filterCalledList[0]
-        )
-
-        assertEquals(1, communications.uiStateCalledList.size)
-        assertEquals(
-            HomeUiState.Success(
-                listOf(
-                    QrCodeUi("Cat", "www.cat.com"),
-                    QrCodeUi("Dog", "www.dog.com"),
-                    QrCodeUi("Duck", "www.duck.com"),
-                    QrCodeUi("Whale", "www.whale.com"),
-                )
-            ), communications.uiStateCalledList[0]
+            ), communications.qrCodesCompleteCalledList[1]
         )
     }
 
@@ -73,24 +63,15 @@ internal class FetchAllResultMapperTest : BaseTest() {
         assertEquals(2, communications.filterCalledList.size)
         assertEquals(filter, communications.filterCalledList[1])
 
-        assertEquals(1, communications.qrCodesCompleteCalledList.size)
+        assertEquals(2, communications.qrCodesCompleteCalledList.size)
+        assertEquals(emptyList<QrCodeUi>(), communications.qrCodesCompleteCalledList[0])
         assertEquals(
             listOf(
                 QrCodeUi("Cat", "www.cat.com"),
                 QrCodeUi("Dog", "www.dog.com"),
                 QrCodeUi("Duck", "www.duck.com"),
                 QrCodeUi("Whale", "www.whale.com"),
-            ), communications.filterCalledList[0]
-        )
-
-        assertEquals(1, communications.uiStateCalledList.size)
-        assertEquals(
-            HomeUiState.Success(
-                listOf(
-                    QrCodeUi("Dog", "www.dog.com"),
-                    QrCodeUi("Duck", "www.duck.com")
-                )
-            ), communications.uiStateCalledList[0]
+            ), communications.qrCodesCompleteCalledList[1]
         )
     }
 
@@ -103,7 +84,8 @@ internal class FetchAllResultMapperTest : BaseTest() {
 
         assertEquals(1, communications.uiStateCalledList.size)
         assertEquals(HomeUiState.Error(errorMessage), communications.uiStateCalledList[0])
-        assert(communications.qrCodesCompleteCalledList.isEmpty())
+        assertEquals(1,communications.qrCodesCompleteCalledList.size)
+        assertEquals(emptyList<QrCodeUi>(),communications.qrCodesCompleteCalledList[0])
 
     }
 

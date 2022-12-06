@@ -1,7 +1,6 @@
 package com.example.qrholder.home.ui
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.qrholder.core.Communication
 
@@ -24,7 +23,7 @@ interface HomeCommunications : ObserveQrCodes {
 
         override fun filter(text: String) {
             filter.map(text)
-            qrCodesCompleteList.filter(text,uiState)
+            qrCodesCompleteList.filter(text, uiState)
         }
 
         override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) {
@@ -57,26 +56,34 @@ interface ObserveQrCodes {
 }
 
 interface HomeUiStateCommunication : Communication.Mutable<HomeUiState> {
-    class Base() : Communication.Post<HomeUiState>(), HomeUiStateCommunication
+    class Base : Communication.Post<HomeUiState>(), HomeUiStateCommunication
 }
 
 interface FilterCommunication : Communication.Mutable<String> {
-    class Base() : Communication.Post<String>(MutableLiveData("")), FilterCommunication
+    class Base : Communication.Post<String>(), FilterCommunication
 }
 
 interface CompleteListCommunication : Communication.Mutable<List<QrCodeUi>>,
     FilterToState<String, HomeUiState> {
 
-    class Base : Communication.Post<List<QrCodeUi>>(MutableLiveData(emptyList())),
+    class Base(
+    ) : Communication.Post<List<QrCodeUi>>(),
         CompleteListCommunication {
 
+        //todo Is the naming correct here or not?
         override fun filter(filter: String, uiState: Communication.Mutable<HomeUiState>) {
-            val filtered: List<QrCodeUi> =
-                liveData.value?.filter { it.contains(filter) } ?: emptyList()
-            if (filtered.isEmpty())
-                uiState.map(HomeUiState.NothingWasFound)
-            else
-                uiState.map(HomeUiState.Success(filtered))
+
+            if (liveData.value?.isEmpty() == true)
+                uiState.map(HomeUiState.Empty)
+            else {
+                val filtered: List<QrCodeUi> =
+                    liveData.value?.filter { it.contains(filter) } ?: emptyList()
+
+                if (filtered.isEmpty())
+                    uiState.map(HomeUiState.NothingWasFound)
+                else
+                    uiState.map(HomeUiState.Success(filtered))
+            }
         }
     }
 }

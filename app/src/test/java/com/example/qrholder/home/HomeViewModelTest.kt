@@ -1,16 +1,58 @@
 package com.example.qrholder.home
 
+import com.example.qrholder.home.domain.HomeInteractor
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
-import com.example.qrholder.home.ui.HomeUiState
-import com.example.qrholder.home.ui.QrCodeUi
+import com.example.qrholder.home.ui.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.setMain
+import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class HomeViewModelTest : BaseTest() {
 
+    //dependencies
+    private lateinit var communications : TestHomeCommunications
+    private lateinit var interactor : TestHomeInteractor
+    private lateinit var viewModel : HomeViewModel
+    private lateinit var dispatchersList: TestDispatchersList
+
+    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @BeforeAll
+    fun setUp() {
+        Dispatchers.setMain(mainThreadSurrogate)
+
+        communications = TestHomeCommunications()
+        interactor = TestHomeInteractor()
+        dispatchersList = TestDispatchersList()
+
+        viewModel = HomeViewModel(
+            dispatchers = dispatchersList,
+            communications = communications,
+            interactor = interactor,
+            fetchAllResultMapper = FetchAllResultMapper(communications, QrCodeToUiMapper()),
+        )
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @AfterAll
+    fun tearDown() {
+        Dispatchers.resetMain()
+        mainThreadSurrogate.close()
+    }
+
     @Test
-    fun `the very first run application`() {
+    fun `the very first run application`() = runBlocking {
 
         interactor.changeExpectedResult(QrCodes.Success(emptyList()))
 
@@ -31,7 +73,7 @@ internal class HomeViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `Run application with error`() {
+    fun `Run application with error`() = runBlocking {
         val errorMessage = "Something went wrong"
         interactor.changeExpectedResult(QrCodes.Failure(message = errorMessage))
 
@@ -43,8 +85,7 @@ internal class HomeViewModelTest : BaseTest() {
         assertEquals(1, communications.filterCalledList.size)
         assertEquals("", communications.filterCalledList[0])
 
-        assertEquals(1, communications.qrCodesCompleteCalledList.size)
-        assertEquals(emptyList<QrCodeUi>(), communications.qrCodesCompleteCalledList[0])
+        assertEquals(0, communications.qrCodesCompleteCalledList.size)
 
         assertEquals(2, communications.uiStateCalledList.size)
         assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
@@ -52,7 +93,7 @@ internal class HomeViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `fetch all qrCodes without filter then re-init`() {
+    fun `fetch all qrCodes without filter then re-init`() = runBlocking {
 
         interactor.changeExpectedResult(
             QrCodes.Success(
@@ -106,11 +147,11 @@ internal class HomeViewModelTest : BaseTest() {
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 2",
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 3",
                     content = "www.something.test"
                 ),
             ), communications.qrCodesCompleteCalledList[0]
@@ -126,11 +167,11 @@ internal class HomeViewModelTest : BaseTest() {
                         content = "www.something.test"
                     ),
                     QrCodeUi(
-                        title = "Test title 1",
+                        title = "Test title 2",
                         content = "www.something.test"
                     ),
                     QrCodeUi(
-                        title = "Test title 1",
+                        title = "Test title 3",
                         content = "www.something.test"
                     ),
                 )
@@ -171,11 +212,11 @@ internal class HomeViewModelTest : BaseTest() {
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 2",
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 3",
                     content = "www.something.test"
                 ),
             ), communications.qrCodesCompleteCalledList[0]
@@ -191,11 +232,11 @@ internal class HomeViewModelTest : BaseTest() {
                         content = "www.something.test"
                     ),
                     QrCodeUi(
-                        title = "Test title 1",
+                        title = "Test title 2",
                         content = "www.something.test"
                     ),
                     QrCodeUi(
-                        title = "Test title 1",
+                        title = "Test title 3",
                         content = "www.something.test"
                     ),
                 )
@@ -262,11 +303,11 @@ internal class HomeViewModelTest : BaseTest() {
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 2",
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 3",
                     content = "www.something.test"
                 ),
             ), communications.qrCodesCompleteCalledList[0]
@@ -319,11 +360,11 @@ internal class HomeViewModelTest : BaseTest() {
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 2",
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 3",
                     content = "www.something.test"
                 ),
             ), communications.qrCodesCompleteCalledList[0]
@@ -401,11 +442,11 @@ internal class HomeViewModelTest : BaseTest() {
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 2",
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 3",
                     content = "www.something.test"
                 ),
             ), communications.qrCodesCompleteCalledList[0]
@@ -450,11 +491,11 @@ internal class HomeViewModelTest : BaseTest() {
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 2",
                     content = "www.something.test"
                 ),
                 QrCodeUi(
-                    title = "Test title 1",
+                    title = "Test title 3",
                     content = "www.something.test"
                 ),
             ), communications.qrCodesCompleteCalledList[0]
