@@ -13,8 +13,8 @@ class HomeViewModel(
     private val dispatchers: DispatchersList,
     private val interactor: HomeInteractor,
     private val communications: HomeCommunications,
-    private val fetchAllResultMapper: QrCodes.Mapper<Unit>,
     private val defaultFilter: String = "",
+    private val fetchAllResultMapper: QrCodes.Mapper<Unit>,
 ) : ViewModel(), ObserveQrCodes, Filter<String>, Init, FetchAll {
 
 
@@ -24,24 +24,22 @@ class HomeViewModel(
     override fun observeFilter(owner: LifecycleOwner, observer: Observer<String>) =
         communications.observeFilter(owner, observer)
 
-    override fun observeQrCodes(owner: LifecycleOwner, observer: Observer<List<QrCodeUi>>) =
-        communications.observeQrCodes(owner, observer)
-
-
     override fun filter(filter: String) = communications.filter(filter)
 
     override fun init(isFirstRun: Boolean) {
         if (isFirstRun) {
-            fetchCompleteList()
-            filter(defaultFilter)
+            fetchCompleteList{
+                filter(defaultFilter)
+            }
         }
     }
 
-    override fun fetchCompleteList() {
+    override fun fetchCompleteList(callback : ()-> Unit) {
         viewModelScope.launch(dispatchers.io()) {
             communications.showState(HomeUiState.Loading)
             val result = interactor.fetchAll()
             result.map(fetchAllResultMapper)
+            callback.invoke()
         }
     }
 }
@@ -55,5 +53,5 @@ interface Filter<T> {
 }
 
 interface FetchAll {
-    fun fetchCompleteList()
+    fun fetchCompleteList(callback : ()-> Unit)
 }

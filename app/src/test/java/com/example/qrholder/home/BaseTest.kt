@@ -4,10 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.example.qrholder.home.domain.HomeInteractor
 import com.example.qrholder.home.domain.QrCodes
-import com.example.qrholder.home.ui.DispatchersList
-import com.example.qrholder.home.ui.HomeCommunications
-import com.example.qrholder.home.ui.HomeUiState
-import com.example.qrholder.home.ui.QrCodeUi
+import com.example.qrholder.home.ui.*
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 
@@ -38,41 +35,44 @@ abstract class BaseTest {
 
     class TestHomeCommunications : HomeCommunications {
 
-        val uiStateCalledList = mutableListOf<HomeUiState>()
-        val filterCalledList = mutableListOf<String>()
-        val qrCodesCompleteCalledList = mutableListOf<List<QrCodeUi>>()
+        val testHomeCommunication = TestHomeUiStateCommunication()
+        private val mapper = CompleteListMapper()
 
-        private var qrCodesCompleteList = emptyList<QrCodeUi>()
+        val uiStateCalledList = testHomeCommunication.homeUiStateCalledList
+        val filterCalledList = mutableListOf<String>()
+        val qrCodesCompleteCalledList = mutableListOf<QrCodeUiCompleteList>()
+
+        private var qrCodesCompleteList : QrCodeUiCompleteList = QrCodeUiCompleteList.Success(emptyList())
 
         override fun showState(state: HomeUiState) {
-            uiStateCalledList.add(state)
+            testHomeCommunication.map(state)
         }
 
-        override fun changeCompleteList(list: List<QrCodeUi>) {
-            qrCodesCompleteCalledList.add(list)
+        override fun changeCompleteList(qrCodes: QrCodeUiCompleteList) {
+            qrCodesCompleteCalledList.add(qrCodes)
+            qrCodesCompleteList = qrCodes
         }
 
-        //todo move the code to a separate class (the same code in the HomeCommunications class)
         override fun filter(text: String) {
             filterCalledList.add(text)
-
-            if(qrCodesCompleteList.isEmpty())
-                uiStateCalledList.add(HomeUiState.Empty)
-            else{
-                val filtered =
-                    qrCodesCompleteList.filter { it.contains(text) }
-                if (filtered.isEmpty())
-                    uiStateCalledList.add(HomeUiState.Empty)
-                else
-                    uiStateCalledList.add(HomeUiState.Success(filtered))
-            }
+            qrCodesCompleteList.map(mapper = mapper, filter = text, uiState = testHomeCommunication)
         }
 
         override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) = Unit
 
         override fun observeFilter(owner: LifecycleOwner, observer: Observer<String>) = Unit
 
-        override fun observeQrCodes(owner: LifecycleOwner, observer: Observer<List<QrCodeUi>>) =
-            Unit
+    }
+
+    class TestHomeUiStateCommunication : HomeUiStateCommunication{
+
+        var homeUiStateCalledList = mutableListOf<HomeUiState>()
+
+        override fun observe(owner: LifecycleOwner, observer: Observer<HomeUiState>) = Unit
+
+        override fun map(source: HomeUiState) {
+            homeUiStateCalledList.add(source)
+        }
+
     }
 }

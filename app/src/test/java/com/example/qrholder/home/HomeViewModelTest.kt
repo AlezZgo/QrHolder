@@ -1,13 +1,9 @@
 package com.example.qrholder.home
 
-import com.example.qrholder.home.domain.HomeInteractor
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
 import com.example.qrholder.home.ui.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterAll
@@ -20,11 +16,12 @@ import org.junit.jupiter.api.TestInstance
 internal class HomeViewModelTest : BaseTest() {
 
     //dependencies
-    private lateinit var communications : TestHomeCommunications
-    private lateinit var interactor : TestHomeInteractor
-    private lateinit var viewModel : HomeViewModel
+    private lateinit var communications: TestHomeCommunications
+    private lateinit var interactor: TestHomeInteractor
+    private lateinit var viewModel: HomeViewModel
     private lateinit var dispatchersList: TestDispatchersList
 
+    @OptIn(DelicateCoroutinesApi::class)
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -40,7 +37,7 @@ internal class HomeViewModelTest : BaseTest() {
             dispatchers = dispatchersList,
             communications = communications,
             interactor = interactor,
-            fetchAllResultMapper = FetchAllResultMapper(communications, QrCodeToUiMapper()),
+            fetchAllResultMapper = QrCodesMapper(communications, QrCodeToUiMapper()),
         )
     }
 
@@ -65,7 +62,10 @@ internal class HomeViewModelTest : BaseTest() {
         assertEquals("", communications.filterCalledList[0])
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
-        assertEquals(emptyList<QrCodeUi>(), communications.qrCodesCompleteCalledList[0])
+        assertEquals(
+            QrCodeUiCompleteList.Success(emptyList()),
+            communications.qrCodesCompleteCalledList[0]
+        )
 
         assertEquals(2, communications.uiStateCalledList.size)
         assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
@@ -85,7 +85,11 @@ internal class HomeViewModelTest : BaseTest() {
         assertEquals(1, communications.filterCalledList.size)
         assertEquals("", communications.filterCalledList[0])
 
-        assertEquals(0, communications.qrCodesCompleteCalledList.size)
+        assertEquals(1, communications.qrCodesCompleteCalledList.size)
+        assertEquals(
+            QrCodeUiCompleteList.Error(errorMessage),
+            communications.qrCodesCompleteCalledList[0]
+        )
 
         assertEquals(2, communications.uiStateCalledList.size)
         assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
@@ -141,19 +145,21 @@ internal class HomeViewModelTest : BaseTest() {
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            listOf(
-                QrCodeUi(
-                    title = "Test title 1",
-                    content = "www.something.test"
-                ),
-                QrCodeUi(
-                    title = "Test title 2",
-                    content = "www.something.test"
-                ),
-                QrCodeUi(
-                    title = "Test title 3",
-                    content = "www.something.test"
-                ),
+            QrCodeUiCompleteList.Success(
+                listOf(
+                    QrCodeUi(
+                        title = "Test title 1",
+                        content = "www.something.test"
+                    ),
+                    QrCodeUi(
+                        title = "Test title 2",
+                        content = "www.something.test"
+                    ),
+                    QrCodeUi(
+                        title = "Test title 3",
+                        content = "www.something.test"
+                    ),
+                )
             ), communications.qrCodesCompleteCalledList[0]
         )
 
@@ -206,19 +212,21 @@ internal class HomeViewModelTest : BaseTest() {
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            listOf(
-                QrCodeUi(
-                    title = "Test title 1",
-                    content = "www.something.test"
-                ),
-                QrCodeUi(
-                    title = "Test title 2",
-                    content = "www.something.test"
-                ),
-                QrCodeUi(
-                    title = "Test title 3",
-                    content = "www.something.test"
-                ),
+            QrCodeUiCompleteList.Success(
+                listOf(
+                    QrCodeUi(
+                        title = "Test title 1",
+                        content = "www.something.test"
+                    ),
+                    QrCodeUi(
+                        title = "Test title 2",
+                        content = "www.something.test"
+                    ),
+                    QrCodeUi(
+                        title = "Test title 3",
+                        content = "www.something.test"
+                    ),
+                )
             ), communications.qrCodesCompleteCalledList[0]
         )
 
@@ -436,19 +444,21 @@ internal class HomeViewModelTest : BaseTest() {
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            listOf(
-                QrCodeUi(
-                    title = "Test title 1",
-                    content = "www.something.test"
-                ),
-                QrCodeUi(
-                    title = "Test title 2",
-                    content = "www.something.test"
-                ),
-                QrCodeUi(
-                    title = "Test title 3",
-                    content = "www.something.test"
-                ),
+            QrCodeUiCompleteList.Success(
+                listOf(
+                    QrCodeUi(
+                        title = "Test title 1",
+                        content = "www.something.test"
+                    ),
+                    QrCodeUi(
+                        title = "Test title 2",
+                        content = "www.something.test"
+                    ),
+                    QrCodeUi(
+                        title = "Test title 3",
+                        content = "www.something.test"
+                    ),
+                )
             ), communications.qrCodesCompleteCalledList[0]
         )
 
@@ -485,19 +495,21 @@ internal class HomeViewModelTest : BaseTest() {
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            listOf(
-                QrCodeUi(
-                    title = "Test title 1",
-                    content = "www.something.test"
-                ),
-                QrCodeUi(
-                    title = "Test title 2",
-                    content = "www.something.test"
-                ),
-                QrCodeUi(
-                    title = "Test title 3",
-                    content = "www.something.test"
-                ),
+            QrCodeUiCompleteList.Success(
+                listOf(
+                    QrCodeUi(
+                        title = "Test title 1",
+                        content = "www.something.test"
+                    ),
+                    QrCodeUi(
+                        title = "Test title 2",
+                        content = "www.something.test"
+                    ),
+                    QrCodeUi(
+                        title = "Test title 3",
+                        content = "www.something.test"
+                    ),
+                )
             ), communications.qrCodesCompleteCalledList[0]
         )
 

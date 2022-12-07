@@ -8,7 +8,7 @@ interface HomeCommunications : ObserveQrCodes {
 
     fun showState(state: HomeUiState)
 
-    fun changeCompleteList(list: List<QrCodeUi>)
+    fun changeCompleteList(qrCodes: QrCodeUiCompleteList)
 
     fun filter(text: String)
 
@@ -19,7 +19,7 @@ interface HomeCommunications : ObserveQrCodes {
     ) : HomeCommunications {
         override fun showState(state: HomeUiState) = uiState.map(state)
 
-        override fun changeCompleteList(list: List<QrCodeUi>) = qrCodesCompleteList.map(list)
+        override fun changeCompleteList(qrCodes: QrCodeUiCompleteList) = qrCodesCompleteList.map(qrCodes)
 
         override fun filter(text: String) {
             filter.map(text)
@@ -30,16 +30,10 @@ interface HomeCommunications : ObserveQrCodes {
             uiState.observe(owner, observer)
         }
 
-        //todo reason?
+        //todo valuable reason?
         override fun observeFilter(owner: LifecycleOwner, observer: Observer<String>) {
             filter.observe(owner, observer)
         }
-
-        //todo reason?
-        override fun observeQrCodes(owner: LifecycleOwner, observer: Observer<List<QrCodeUi>>) {
-            qrCodesCompleteList.observe(owner, observer)
-        }
-
     }
 
 }
@@ -48,11 +42,8 @@ interface ObserveQrCodes {
 
     fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>)
 
-    //todo reason?
+    //todo valuable reason?
     fun observeFilter(owner: LifecycleOwner, observer: Observer<String>)
-
-    //todo reason?
-    fun observeQrCodes(owner: LifecycleOwner, observer: Observer<List<QrCodeUi>>)
 }
 
 interface HomeUiStateCommunication : Communication.Mutable<HomeUiState> {
@@ -63,28 +54,19 @@ interface FilterCommunication : Communication.Mutable<String> {
     class Base : Communication.Post<String>(), FilterCommunication
 }
 
-interface CompleteListCommunication : Communication.Mutable<List<QrCodeUi>>,
+interface CompleteListCommunication : Communication.Mutable<QrCodeUiCompleteList>,
     FilterToState<String, HomeUiState> {
 
     class Base(
-    ) : Communication.Post<List<QrCodeUi>>(),
+        private val completeListMapper: QrCodeUiCompleteList.Mapper<Unit>
+    ) : Communication.Post<QrCodeUiCompleteList>(),
         CompleteListCommunication {
 
         //todo Is the naming correct here or not?
-        override fun filter(filter: String, uiState: Communication.Mutable<HomeUiState>) {
-
-            if (liveData.value?.isEmpty() == true)
-                uiState.map(HomeUiState.Empty)
-            else {
-                val filtered: List<QrCodeUi> =
-                    liveData.value?.filter { it.contains(filter) } ?: emptyList()
-
-                if (filtered.isEmpty())
-                    uiState.map(HomeUiState.NothingWasFound)
-                else
-                    uiState.map(HomeUiState.Success(filtered))
-            }
+        override fun filter(filter: String, uiState: Communication.Mutable<HomeUiState>){
+            liveData.value?.map(completeListMapper,filter,uiState)
         }
+
     }
 }
 
@@ -92,3 +74,4 @@ interface FilterToState<F : Any, S : Any> {
 
     fun filter(filter: F, uiState: Communication.Mutable<HomeUiState>)
 }
+
