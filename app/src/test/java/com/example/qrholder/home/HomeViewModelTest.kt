@@ -305,6 +305,7 @@ internal class HomeViewModelTest : BaseTest() {
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
+            QrCodeUiCompleteList.Success(
             listOf(
                 QrCodeUi(
                     title = "Test title 1",
@@ -318,7 +319,7 @@ internal class HomeViewModelTest : BaseTest() {
                     title = "Test title 3",
                     content = "www.something.test"
                 ),
-            ), communications.qrCodesCompleteCalledList[0]
+            )), communications.qrCodesCompleteCalledList[0]
         )
 
         assertEquals(3, communications.uiStateCalledList.size)

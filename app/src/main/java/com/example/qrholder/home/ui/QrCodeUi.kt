@@ -11,7 +11,7 @@ data class QrCodeUi(
         tvContent.text = content
     }
 
-    override fun contains(text: String) = title.contains(content) or content.contains(text)
+    override fun contains(text: String) = title.contains(content) || content.contains(text)
 }
 
 interface Contains<T> {
