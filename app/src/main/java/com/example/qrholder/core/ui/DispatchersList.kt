@@ -1,4 +1,4 @@
-package com.example.qrholder.home.ui
+package com.example.qrholder.core.ui
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -9,7 +9,7 @@ interface DispatchersList {
 
     fun ui() : CoroutineDispatcher
 
-    class Base() : DispatchersList{
+    class Base() : DispatchersList {
         override fun io() = Dispatchers.IO
         override fun ui() = Dispatchers.Main
     }

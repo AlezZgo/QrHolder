@@ -1,7 +1,7 @@
 package com.example.qrholder.home.ui
 
 import com.example.qrholder.home.BaseTest
-import com.example.qrholder.home.domain.QrCode
+import com.example.qrholder.home.ui.mapper.CompleteListMapper
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 

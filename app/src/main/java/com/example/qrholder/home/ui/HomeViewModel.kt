@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.qrholder.core.ui.DispatchersList
 import com.example.qrholder.home.domain.HomeInteractor
 import com.example.qrholder.home.domain.QrCodes
 import kotlinx.coroutines.launch
@@ -28,13 +29,11 @@ class HomeViewModel(
 
     override fun init(isFirstRun: Boolean) {
         if (isFirstRun) {
-            fetchCompleteList{
-                filter(defaultFilter)
-            }
+            fetchCompleteList { filter(defaultFilter) }
         }
     }
 
-    override fun fetchCompleteList(callback : ()-> Unit) {
+    override fun fetchCompleteList(callback: () -> Unit) {
         viewModelScope.launch(dispatchers.io()) {
             communications.showState(HomeUiState.Loading)
             val result = interactor.fetchAll()
@@ -53,5 +52,5 @@ interface Filter<T> {
 }
 
 interface FetchAll {
-    fun fetchCompleteList(callback : ()-> Unit)
+    fun fetchCompleteList(callback: () -> Unit)
 }

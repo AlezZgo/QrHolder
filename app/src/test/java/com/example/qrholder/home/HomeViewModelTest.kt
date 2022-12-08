@@ -3,6 +3,8 @@ package com.example.qrholder.home
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
 import com.example.qrholder.home.ui.*
+import com.example.qrholder.home.ui.mapper.QrCodeToUiMapper
+import com.example.qrholder.home.ui.mapper.QrCodesMapper
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
