@@ -6,11 +6,8 @@ import com.example.qrholder.home.ui.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class HomeViewModelTest : BaseTest() {
@@ -25,7 +22,7 @@ internal class HomeViewModelTest : BaseTest() {
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    @BeforeAll
+    @BeforeEach
     fun setUp() {
         Dispatchers.setMain(mainThreadSurrogate)
 
@@ -42,7 +39,7 @@ internal class HomeViewModelTest : BaseTest() {
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    @AfterAll
+    @AfterEach
     fun tearDown() {
         Dispatchers.resetMain()
         mainThreadSurrogate.close()
