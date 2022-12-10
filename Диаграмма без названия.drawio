@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-12-10T16:24:42.135Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.2.807 Yowser/2.5 Safari/537.36" version="20.6.2" etag="VTNMBwYdu-hT8pwpoxrL" type="github">
+<mxfile host="app.diagrams.net" modified="2022-12-10T17:33:50.777Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.2.807 Yowser/2.5 Safari/537.36" version="20.6.2" etag="cuWrQDtRirmuCHBeXiZ5" type="github">
   <diagram id="obmhXHlIUq2Ejv8DbsNu" name="Страница 1">
-    <mxGraphModel dx="3405" dy="1342" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1654" dy="652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="BpuW5c-_tjZghYyu5I71-27" value="zones" parent="0" />
@@ -35,7 +35,7 @@
         <mxCell id="BpuW5c-_tjZghYyu5I71-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-5" target="BpuW5c-_tjZghYyu5I71-8">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BpuW5c-_tjZghYyu5I71-5" value="HomeRepository" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+        <mxCell id="BpuW5c-_tjZghYyu5I71-5" value="QrCodesRepository" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
           <mxGeometry x="352.5" y="550" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BpuW5c-_tjZghYyu5I71-7" value="&lt;h1&gt;Home Screen diagram&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
@@ -44,7 +44,7 @@
         <mxCell id="BpuW5c-_tjZghYyu5I71-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-8" target="BpuW5c-_tjZghYyu5I71-12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BpuW5c-_tjZghYyu5I71-8" value="HomeCache&lt;br&gt;DataSource" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+        <mxCell id="BpuW5c-_tjZghYyu5I71-8" value="QrCodesCache&lt;br&gt;DataSource" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
           <mxGeometry x="352.5" y="670" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BpuW5c-_tjZghYyu5I71-12" value="QrCodes&lt;br&gt;Database" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
