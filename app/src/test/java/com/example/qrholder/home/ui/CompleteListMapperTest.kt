@@ -1,13 +1,12 @@
 package com.example.qrholder.home.ui
 
-import com.example.qrholder.home.BaseTest
 import com.example.qrholder.home.ui.mapper.CompleteListMapper
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 internal class CompleteListMapperTest{
 
-    private val homeUiCommunication = BaseTest.TestHomeUiStateCommunication()
+    private val homeUiCommunication = BaseViewModelTest.TestHomeUiStateCommunication()
 
     private val errorMessage = "Something went wrong"
     private val mapper = CompleteListMapper()

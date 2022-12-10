@@ -1,6 +1,6 @@
 HomeScreen consist of:
     1 toolbar with a search icon at the left side of it
-    2 list of Qr Codes (3 states)
+    2 list of Qr Codes
 
 HomeScreen states:
 

@@ -2,7 +2,7 @@ package com.example.qrholder.home.ui
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.example.qrholder.core.Communication
+import com.example.qrholder.core.ui.Communication
 
 interface HomeCommunications : ObserveQrCodes {
 

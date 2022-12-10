@@ -1,6 +1,6 @@
 package com.example.qrholder.home.ui
 
-import com.example.qrholder.core.Communication
+import com.example.qrholder.core.ui.Communication
 
 sealed class QrCodeUiCompleteList {
 

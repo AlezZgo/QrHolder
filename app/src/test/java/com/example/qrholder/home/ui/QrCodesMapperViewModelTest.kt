@@ -1,13 +1,12 @@
 package com.example.qrholder.home.ui
 
-import com.example.qrholder.home.BaseTest
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.ui.mapper.QrCodeToUiMapper
 import com.example.qrholder.home.ui.mapper.QrCodesMapper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class QrCodesMapperTest : BaseTest() {
+internal class QrCodesMapperViewModelTest : BaseViewModelTest() {
 
     private val communications = TestHomeCommunications()
     private val qrCodesMapper = QrCodesMapper(communications, QrCodeToUiMapper())

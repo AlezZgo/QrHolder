@@ -1,4 +1,4 @@
-package com.example.qrholder.home
+package com.example.qrholder.home.ui
 
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class HomeViewModelTest : BaseTest() {
+internal class HomeViewModelViewModelTest : BaseViewModelTest() {
 
     //dependencies
     private lateinit var communications: TestHomeCommunications

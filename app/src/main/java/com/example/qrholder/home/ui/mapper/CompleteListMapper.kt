@@ -1,6 +1,6 @@
 package com.example.qrholder.home.ui.mapper
 
-import com.example.qrholder.core.Communication
+import com.example.qrholder.core.ui.Communication
 import com.example.qrholder.home.ui.HomeUiState
 import com.example.qrholder.home.ui.QrCodeUi
 import com.example.qrholder.home.ui.QrCodeUiCompleteList

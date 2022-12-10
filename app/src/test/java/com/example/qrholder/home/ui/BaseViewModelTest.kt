@@ -1,16 +1,15 @@
-package com.example.qrholder.home
+package com.example.qrholder.home.ui
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.example.qrholder.core.ui.DispatchersList
 import com.example.qrholder.home.domain.HomeInteractor
 import com.example.qrholder.home.domain.QrCodes
-import com.example.qrholder.home.ui.*
 import com.example.qrholder.home.ui.mapper.CompleteListMapper
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 
-abstract class BaseTest {
+abstract class BaseViewModelTest {
 
     class TestDispatchersList : DispatchersList {
         override fun io(): CoroutineDispatcher = TestCoroutineDispatcher()

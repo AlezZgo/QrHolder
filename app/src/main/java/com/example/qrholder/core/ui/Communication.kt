@@ -1,7 +1,7 @@
-package com.example.qrholder.core
+package com.example.qrholder.core.ui
 
 import androidx.lifecycle.*
-import com.example.qrholder.home.ui.HomeUiState
+import com.example.qrholder.core.Mapper
 
 interface Communication {
 
