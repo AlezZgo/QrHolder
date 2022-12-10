@@ -1,1 +1,134 @@
-<mxfile host="app.diagrams.net" modified="2022-12-07T19:26:26.076Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.2.807 Yowser/2.5 Safari/537.36" version="20.6.0" etag="6YMaDfCh45UbPVcmYI5M" type="github"><diagram id="4reitGvRUKyDA3xyVS43">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-12-10T16:24:42.135Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.2.807 Yowser/2.5 Safari/537.36" version="20.6.2" etag="VTNMBwYdu-hT8pwpoxrL" type="github">
+  <diagram id="obmhXHlIUq2Ejv8DbsNu" name="Страница 1">
+    <mxGraphModel dx="3405" dy="1342" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="BpuW5c-_tjZghYyu5I71-27" value="zones" parent="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="BpuW5c-_tjZghYyu5I71-46" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="55" y="50" width="715" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-32" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="670" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-33" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="670" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-31" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="550" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-30" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="550" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-2" target="BpuW5c-_tjZghYyu5I71-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-2" value="HomeInteractor" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="352.5" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-3" target="BpuW5c-_tjZghYyu5I71-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-3" value="HomeViewModel" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="352.5" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-5" target="BpuW5c-_tjZghYyu5I71-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-5" value="HomeRepository" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="352.5" y="550" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-7" value="&lt;h1&gt;Home Screen diagram&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="10" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-8" target="BpuW5c-_tjZghYyu5I71-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-8" value="HomeCache&lt;br&gt;DataSource" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="352.5" y="670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-12" value="QrCodes&lt;br&gt;Database" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="382.5" y="790" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-14" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;QrCodesUi&lt;br&gt;CompleteList&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="330" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-15" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;ScreenState&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="260" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-16" target="BpuW5c-_tjZghYyu5I71-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-16" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;QrCodes&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="430" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-46" target="BpuW5c-_tjZghYyu5I71-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="250" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-21" target="BpuW5c-_tjZghYyu5I71-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-21" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;QrCodeData&lt;br&gt;List&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="670" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-22" target="BpuW5c-_tjZghYyu5I71-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-22" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;QrCodeData&lt;br&gt;List&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="550" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-26" value="" style="endArrow=classic;html=1;rounded=0;fontSize=8;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-14" target="BpuW5c-_tjZghYyu5I71-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="340" as="sourcePoint" />
+            <mxPoint x="290" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-29" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="70" width="90" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-35" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="800" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-36" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="800" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=8;" edge="1" parent="1" source="BpuW5c-_tjZghYyu5I71-37" target="BpuW5c-_tjZghYyu5I71-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-37" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;QrCodeDb&lt;br&gt;List&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="800" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-39" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="380" y="70" width="90" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-40" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="480" y="70" width="90" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-41" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="180" y="70" width="90" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-42" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="70" width="90" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-51" value="UI Screens" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="580" y="60" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-52" value="&lt;ul&gt;&lt;li&gt;&lt;font face=&quot;Tahoma&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;empty list&lt;/span&gt;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font face=&quot;Tahoma&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;not empty(Success)&lt;/span&gt;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font face=&quot;Tahoma&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;nothing was found&lt;/span&gt;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font face=&quot;Tahoma&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;loading&lt;/span&gt;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font face=&quot;Tahoma&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;error&lt;/span&gt;&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="580" y="80" width="190" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="BpuW5c-_tjZghYyu5I71-56" value="&lt;h1&gt;Tech task&lt;/h1&gt;&lt;pre style=&quot;background-color:#2b2b2b;color:#a9b7c6;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9,8pt;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;HomeScreen consist of:&lt;br&gt;    1 toolbar with a search icon at the left side of it&lt;br&gt;    2 list of Qr Codes&lt;br&gt;&lt;br&gt;HomeScreen states:&lt;br&gt;&lt;br&gt;    2.1 empty list: at the place  where should be list of qr codes shows an animated image with the text: &quot;The Qr storage is empty. Press + to add new Qr code.&quot;&lt;br&gt;&lt;br&gt;    2.2 not empty: shows a list of qr codes with search field in tool bar to filter them by name&lt;br&gt;        2.2.1 user clicks on the search field and fill some text there -&amp;gt; start getting filtered data&lt;br&gt;            if empty -&amp;gt; go to 2.3 state&lt;br&gt;            if not empty -&amp;gt; show filtered list&lt;br&gt;&lt;br&gt;    2.3 nothing was found using search field&lt;br&gt;        2.3.1 user clicks on the search field and fill some text there&lt;br&gt;            start getting filtered data:&lt;br&gt;                if nothing was found -&amp;gt; nothing to do&lt;br&gt;                if got some data -&amp;gt; go to 2.2 state&lt;br&gt;        2.3.2 user clicks on the search field and clear the text&lt;br&gt;            start getting:&lt;br&gt;                if nothing was found -&amp;gt; nothing to do&lt;br&gt;                if got some data -&amp;gt; go to 2.2 state&lt;br&gt;&lt;br&gt;    2.4 loading: shimmers&lt;br&gt;&lt;br&gt;    2.5 error: at the place  where should be list of qr codes shows an animated image with the text: &quot;Something went wrong. Error message. Press refresh button to try again&quot;&lt;br&gt;&lt;br&gt;HomeScreen QrCode Item consist of:&lt;br&gt;    1 square image at the left&lt;br&gt;    2 title text at the top right&lt;br&gt;    3 subtitle text at the bottom right&lt;br&gt;&lt;br&gt;    user clicks on Qr Code(root) -&amp;gt; description screen opens&lt;br&gt;    user clicks on image -&amp;gt; imageDialog opens with increasing screen brightness to max level&lt;br&gt;    user long click on Qr Code(root) -&amp;gt; popup menu shows&lt;br&gt;        if click on share item -&amp;gt; system intent to share&lt;br&gt;        if click on browse item -&amp;gt; system intent to browse&lt;br&gt;        if click on delete item -&amp;gt; item is removed from the list&lt;br&gt;        if click on edit item -&amp;gt; open EditScreen&lt;br&gt;        if click on the other place -&amp;gt; close popupmenu&lt;/font&gt;&lt;/pre&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Tahoma;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="827" y="50" width="960" height="500" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
