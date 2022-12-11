@@ -13,10 +13,10 @@ internal class CompleteListMapperTest{
     private val complicatedFilter = "ddlkrjigosdpfoiskepofjspoeifsepo"
     private val filter = "d"
     private val testList = listOf(
-        QrCodeUi("Cat", "www.cat.com"),
-        QrCodeUi("Dog", "www.dog.com"),
-        QrCodeUi("Duck", "www.duck.com"),
-        QrCodeUi("Whale", "www.whale_digger.com"),
+        QrCodeUi("Cat", "www.cat.com",path = "content.cat.id1"),
+        QrCodeUi("Dog", "www.dog.com",path = "content.cat.id2"),
+        QrCodeUi("Duck", "www.duck.com",path = "content.cat.id3"),
+        QrCodeUi("Whale", "www.whale_digger.com",path = "content.cat.id4"),
     )
 
     @Test
@@ -74,9 +74,9 @@ internal class CompleteListMapperTest{
         assertEquals(1,homeUiCommunication.homeUiStateCalledList.size)
         assertEquals(HomeUiState.Success(
             listOf(
-                QrCodeUi("Dog", "www.dog.com"),
-                QrCodeUi("Duck", "www.duck.com"),
-                QrCodeUi("Whale", "www.whale_digger.com")
+                QrCodeUi("Dog", "www.dog.com",path = "content.cat.id1"),
+                QrCodeUi("Duck", "www.duck.com",path = "content.cat.id2"),
+                QrCodeUi("Whale", "www.whale_digger.com",path = "content.cat.id3")
             )
         ),homeUiCommunication.homeUiStateCalledList[0])
     }

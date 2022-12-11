@@ -12,11 +12,11 @@ internal class QrCodeDataToDomainMapperTest{
 
         val mapper = QrCodeDataToDomainMapper()
 
-        val dataModel = QrCodeData("Title", "Content")
+        val dataModel = QrCodeData("Title", "Content",path = "content.cat.id1")
 
         val actual = dataModel.map(mapper)
 
-        assertEquals(QrCode("Title", "Content"),actual)
+        assertEquals(QrCode("Title", "Content",path = "content.cat.id1"),actual)
 
 
     }

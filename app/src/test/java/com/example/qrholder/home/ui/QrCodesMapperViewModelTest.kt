@@ -25,10 +25,10 @@ internal class QrCodesMapperViewModelTest : BaseViewModelTest() {
     fun `handle simple list`() {
 
         val testList = listOf(
-            QrCode("Cat", "www.cat.com"),
-            QrCode("Dog", "www.dog.com"),
-            QrCode("Duck", "www.duck.com"),
-            QrCode("Whale", "www.whale.com"),
+            QrCode("Cat", "www.cat.com","content.cat.id1"),
+            QrCode("Dog", "www.dog.com","content.cat.id2"),
+            QrCode("Duck", "www.duck.com","content.cat.id3"),
+            QrCode("Whale", "www.whale.com","content.cat.id4"),
         )
 
         qrCodesMapper.map(testList, "")
@@ -37,10 +37,10 @@ internal class QrCodesMapperViewModelTest : BaseViewModelTest() {
         assertEquals(
             QrCodeUiCompleteList.Success(
                 listOf(
-                    QrCodeUi("Cat", "www.cat.com"),
-                    QrCodeUi("Dog", "www.dog.com"),
-                    QrCodeUi("Duck", "www.duck.com"),
-                    QrCodeUi("Whale", "www.whale.com"),
+                    QrCodeUi("Cat", "www.cat.com","content.cat.id1"),
+                    QrCodeUi("Dog", "www.dog.com","content.cat.id2"),
+                    QrCodeUi("Duck", "www.duck.com","content.cat.id3"),
+                    QrCodeUi("Whale", "www.whale.com","content.cat.id4"),
                 )
             ), communications.qrCodesCompleteCalledList[0]
         )

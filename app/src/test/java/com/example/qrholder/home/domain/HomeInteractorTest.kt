@@ -32,15 +32,18 @@ class HomeInteractorTest {
             qrCodes = listOf(
                 QrCode(
                     title = "Test title 1",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id1"
                 ),
                 QrCode(
                     title = "Test title 2",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id2"
                 ),
                 QrCode(
                     title = "Test title 3",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id3"
                 )
             )
         )

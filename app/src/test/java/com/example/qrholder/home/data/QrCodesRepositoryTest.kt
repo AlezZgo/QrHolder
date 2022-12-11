@@ -1,6 +1,7 @@
 package com.example.qrholder.home.data
 
 import com.example.qrholder.core.ManageResources
+import com.example.qrholder.home.data.cache.QrCodesCacheDataSource
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
 import kotlinx.coroutines.runBlocking
@@ -35,15 +36,18 @@ class QrCodesRepositoryTest {
             listOf(
                 QrCodeData(
                     title = "Test title 1",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "android.test.id1"
                 ),
                 QrCodeData(
                     title = "Test title 2",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "android.test.id2"
                 ),
                 QrCodeData(
                     title = "Test title 3",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "android.test.id3"
                 )
             )
         )
@@ -52,15 +56,18 @@ class QrCodesRepositoryTest {
             listOf(
                 QrCode(
                     title = "Test title 1",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "android.test.id1"
                 ),
                 QrCode(
                     title = "Test title 2",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "android.test.id2"
                 ),
                 QrCode(
                     title = "Test title 3",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "android.test.id3"
                 )
             )
         )

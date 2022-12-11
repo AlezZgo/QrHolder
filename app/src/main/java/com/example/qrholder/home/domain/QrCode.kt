@@ -1,15 +1,18 @@
 package com.example.qrholder.home.domain
 
+import android.net.Uri
+
 data class QrCode(
     private val title: String,
     private val content: String,
+    private val path: String
 ) {
 
     interface Mapper<T> {
-        fun map(title: String, content: String): T
+        fun map(title: String, content: String, path: String): T
     }
 
-    fun <T> map(mapper: Mapper<T>): T = mapper.map(title = title, content = content)
+    fun <T> map(mapper: Mapper<T>): T = mapper.map(title = title, content = content, path = path)
 
 }
 

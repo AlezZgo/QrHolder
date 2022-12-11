@@ -5,6 +5,7 @@ import android.widget.TextView
 data class QrCodeUi(
     private val title: String,
     private val content: String,
+    private val path : String
 ) : Contains<String>{
     fun map(tvTitle: TextView, tvContent: TextView) {
         tvTitle.text = title

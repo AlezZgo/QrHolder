@@ -4,7 +4,7 @@ import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.ui.QrCodeUi
 
 class QrCodeToUiMapper : QrCode.Mapper<QrCodeUi> {
-    override fun map(title: String, content: String): QrCodeUi =
-        QrCodeUi(title = title, content = content)
+    override fun map(title: String, content: String, path : String): QrCodeUi =
+        QrCodeUi(title = title, content = content, path = path)
 
 }

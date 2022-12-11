@@ -103,15 +103,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             )
@@ -125,15 +128,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             ), interactor.fetchAllCalledList[0]
@@ -148,15 +154,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCodeUi(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCodeUi(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     ),
                 )
             ), communications.qrCodesCompleteCalledList[0]
@@ -169,15 +178,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCodeUi(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCodeUi(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCodeUi(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     ),
                 )
             ), communications.uiStateCalledList[1]
@@ -192,15 +204,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             ), interactor.fetchAllCalledList[0]
@@ -215,15 +230,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCodeUi(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCodeUi(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     ),
                 )
             ), communications.qrCodesCompleteCalledList[0]
@@ -236,15 +254,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCodeUi(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCodeUi(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCodeUi(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     ),
                 )
             ), communications.uiStateCalledList[1]
@@ -259,15 +280,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             )
@@ -284,15 +308,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             ), interactor.fetchAllCalledList[0]
@@ -308,15 +335,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
             listOf(
                 QrCodeUi(
                     title = "Test title 1",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id1"
                 ),
                 QrCodeUi(
                     title = "Test title 2",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id2"
                 ),
                 QrCodeUi(
                     title = "Test title 3",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id3"
                 ),
             )), communications.qrCodesCompleteCalledList[0]
         )
@@ -327,7 +357,8 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCodeUi(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     )
                 )
             ), communications.uiStateCalledList[2]
@@ -342,15 +373,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             ), interactor.fetchAllCalledList[0]
@@ -366,15 +400,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
             listOf(
                 QrCodeUi(
                     title = "Test title 1",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id1"
                 ),
                 QrCodeUi(
                     title = "Test title 2",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id2"
                 ),
                 QrCodeUi(
                     title = "Test title 3",
-                    content = "www.something.test"
+                    content = "www.something.test",
+                    path = "content.cat.id3"
                 ),
             )), communications.qrCodesCompleteCalledList[0]
         )
@@ -385,7 +422,8 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCodeUi(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     )
                 )
             ), communications.uiStateCalledList[2]
@@ -400,15 +438,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             )
@@ -425,15 +466,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             ), interactor.fetchAllCalledList[0]
@@ -449,15 +493,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCodeUi(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCodeUi(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     ),
                 )
             ), communications.qrCodesCompleteCalledList[0]
@@ -476,15 +523,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 qrCodes = listOf(
                     QrCode(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCode(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCode(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     )
                 )
             ), interactor.fetchAllCalledList[0]
@@ -500,15 +550,18 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id1"
                     ),
                     QrCodeUi(
                         title = "Test title 2",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id2"
                     ),
                     QrCodeUi(
                         title = "Test title 3",
-                        content = "www.something.test"
+                        content = "www.something.test",
+                        path = "content.cat.id3"
                     ),
                 )
             ), communications.qrCodesCompleteCalledList[0]
