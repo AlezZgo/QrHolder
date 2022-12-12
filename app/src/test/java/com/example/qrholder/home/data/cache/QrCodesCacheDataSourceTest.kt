@@ -1,6 +1,8 @@
 package com.example.qrholder.home.data.cache
 
 import com.example.qrholder.home.data.QrCodeData
+import com.example.qrholder.home.data.cache.db.QrCodeCache
+import com.example.qrholder.home.data.cache.db.QrCodesDao
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -20,7 +22,7 @@ class QrCodesCacheDataSourceTest {
     @Test
     fun `fetch all qr codes`() = runBlocking {
         dao.changeExpectedResult(
-            listOf<QrCodeCache>(
+            listOf(
                 QrCodeCache(
                     title = "test title 1",
                     content = "test1@gmail.com",
@@ -40,7 +42,7 @@ class QrCodesCacheDataSourceTest {
         )
 
         val actual = cacheDataSource.allQrCodes()
-        val expected = listOf<QrCodeData>(
+        val expected = listOf(
             QrCodeData(
                 title = "test title 1",
                 content = "test1@gmail.com",
@@ -60,15 +62,46 @@ class QrCodesCacheDataSourceTest {
         assertEquals(expected, actual)
 
     }
-    private class TestQrCodesDao : QrCodesDao{
 
-        private var qrCodes = emptyList<QrCodeCache>()
+    @Test
+    fun `insert qr code`() = runBlocking {
 
-        fun changeExpectedResult(qrCodes : List<QrCodeCache>){
-            this.qrCodes = qrCodes
+        dao.insert(
+            QrCodeCache(
+                title = "test title 1",
+                content = "test1@gmail.com",
+                path = "android.images.12022022190056.png"
+            )
+        )
+
+        val actual = cacheDataSource.allQrCodes()
+        val expected = listOf(
+            QrCodeData(
+                title = "test title 1",
+                content = "test1@gmail.com",
+                path = "android.images.12022022190056.png"
+            )
+        )
+
+        assertEquals(expected, actual)
+
+    }
+
+    private class TestQrCodesDao : QrCodesDao {
+
+        private var qrCodes = mutableListOf<QrCodeCache>()
+
+        fun changeExpectedResult(qrCodes: List<QrCodeCache>) {
+            this.qrCodes.clear()
+            this.qrCodes = qrCodes.toMutableList()
         }
 
         override fun allQrCodes(): List<QrCodeCache> = qrCodes
 
+        override fun insert(qrCode: QrCodeCache) {
+            qrCodes.add(qrCode)
+        }
+
     }
 }
+

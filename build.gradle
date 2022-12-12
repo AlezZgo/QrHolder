@@ -3,8 +3,10 @@ buildscript {
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
         classpath("de.mannodermaus.gradle.plugins:android-junit5:1.8.2.1")
     }
+    repositories {
+        google()
+    }
 }
-
 
 plugins {
     id 'com.android.application' version '7.2.2' apply false
@@ -15,4 +17,9 @@ plugins {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext{
+    room = '2.4.3'
+    junit = '5.9.1'
 }

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 
 internal class QrCodeUiTest {
 
-
     @Test
     fun contains() {
         assertEquals(false, QrCodeUi("Cat", "www.cat.com","content.cat.id1").contains("d"))
