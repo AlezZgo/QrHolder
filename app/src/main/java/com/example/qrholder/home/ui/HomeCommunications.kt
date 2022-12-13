@@ -3,6 +3,7 @@ package com.example.qrholder.home.ui
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.example.qrholder.core.ui.Communication
+import javax.inject.Inject
 
 interface HomeCommunications : ObserveQrCodes {
 
@@ -12,7 +13,7 @@ interface HomeCommunications : ObserveQrCodes {
 
     fun filter(text: String)
 
-    class Base(
+    class Base @Inject constructor(
         private val uiState: HomeUiStateCommunication,
         private val filter: FilterCommunication,
         private val qrCodesCompleteList: CompleteListCommunication
@@ -46,18 +47,18 @@ interface ObserveQrCodes {
     fun observeFilter(owner: LifecycleOwner, observer: Observer<String>)
 }
 
-interface HomeUiStateCommunication : Communication.Mutable<HomeUiState> {
-    class Base : Communication.Post<HomeUiState>(), HomeUiStateCommunication
+interface HomeUiStateCommunication  : Communication.Mutable<HomeUiState> {
+    class Base @Inject constructor() : Communication.Post<HomeUiState>(), HomeUiStateCommunication
 }
 
 interface FilterCommunication : Communication.Mutable<String> {
-    class Base : Communication.Post<String>(), FilterCommunication
+    class Base @Inject constructor() : Communication.Post<String>(), FilterCommunication
 }
 
 interface CompleteListCommunication : Communication.Mutable<QrCodeUiCompleteList>,
     FilterToState<String, HomeUiState> {
 
-    class Base(
+    class Base @Inject constructor(
         private val completeListMapper: QrCodeUiCompleteList.Mapper<Unit>
     ) : Communication.Post<QrCodeUiCompleteList>(),
         CompleteListCommunication {

@@ -4,8 +4,9 @@ import com.example.qrholder.core.ui.Communication
 import com.example.qrholder.home.ui.HomeUiState
 import com.example.qrholder.home.ui.QrCodeUi
 import com.example.qrholder.home.ui.QrCodeUiCompleteList
+import javax.inject.Inject
 
-class CompleteListMapper : QrCodeUiCompleteList.Mapper<Unit> {
+class CompleteListMapper@Inject constructor() : QrCodeUiCompleteList.Mapper<Unit> {
     override fun map(
         completeList: List<QrCodeUi>,
         errorMessage: String,

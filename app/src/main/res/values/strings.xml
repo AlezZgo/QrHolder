@@ -15,4 +15,5 @@
     <string name="open_camera_to_find_qr_code">Open your camera to find Qr code</string>
     <string name="click_to_add_qr_code">Click here to add new Qr code by different ways</string>
     <string name="defaultErrorMessage">Something went wrong</string>
+    <string name="empty" />
 </resources>
