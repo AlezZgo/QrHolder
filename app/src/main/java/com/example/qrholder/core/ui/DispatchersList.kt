@@ -2,6 +2,7 @@ package com.example.qrholder.core.ui
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
 interface DispatchersList {
 
@@ -9,7 +10,7 @@ interface DispatchersList {
 
     fun ui() : CoroutineDispatcher
 
-    class Base() : DispatchersList {
+    class Base : DispatchersList {
         override fun io() = Dispatchers.IO
         override fun ui() = Dispatchers.Main
     }

@@ -4,12 +4,13 @@ import com.example.qrholder.home.data.QrCodeData
 import com.example.qrholder.home.data.cache.db.QrCodesDao
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import javax.inject.Inject
 
 interface QrCodesCacheDataSource {
 
     suspend fun allQrCodes(): List<QrCodeData>
 
-    class Base(
+    class Base @Inject constructor(
         private val dao: QrCodesDao,
     ) : QrCodesCacheDataSource {
 

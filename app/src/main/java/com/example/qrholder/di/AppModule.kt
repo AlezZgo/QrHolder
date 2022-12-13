@@ -1,8 +1,13 @@
 package com.example.qrholder.di
 
+import android.content.Context
+import com.example.qrholder.core.ManageResources
+import com.example.qrholder.core.ui.DispatchersList
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 
 @InstallIn(SingletonComponent::class)
@@ -10,19 +15,11 @@ import dagger.hilt.components.SingletonComponent
 object AppModule{
 
     @Provides
-    fun provideMockClass(
-        mockClass1: MockSubClass1,
-        mockClass2: MockSubClass2,
-        mockClass3: MockSubClass3
-    ) : MockClass{
-        return MockClass(mockClass1,mockClass2,mockClass3)
-    }
+    fun provideManageResources(
+        @ApplicationContext context: Context
+    ) : ManageResources = ManageResources.Base(context)
 
     @Provides
-    fun provideSubMock1() = MockSubClass1()
-    @Provides
-    fun provideSubMock2() = MockSubClass2()
-    @Provides
-    fun provideSubMock3() = MockSubClass3()
+    fun provideDispatcherList() : DispatchersList = DispatchersList.Base()
 
 }

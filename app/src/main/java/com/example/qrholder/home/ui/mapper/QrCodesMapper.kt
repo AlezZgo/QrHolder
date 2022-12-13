@@ -5,8 +5,9 @@ import com.example.qrholder.home.domain.QrCodes
 import com.example.qrholder.home.ui.HomeCommunications
 import com.example.qrholder.home.ui.QrCodeUi
 import com.example.qrholder.home.ui.QrCodeUiCompleteList
+import javax.inject.Inject
 
-class QrCodesMapper(
+class QrCodesMapper @Inject constructor(
     private val communications: HomeCommunications,
     private val qrCodeToUiMapper: QrCode.Mapper<QrCodeUi>
 ) : QrCodes.Mapper<Unit> {

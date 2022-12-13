@@ -1,11 +1,12 @@
 package com.example.qrholder.home.domain
 
 import com.example.qrholder.home.data.QrCodesRepository
+import javax.inject.Inject
 
 interface HomeInteractor {
     suspend fun fetchAll() : QrCodes
 
-    class Base(
+    class Base @Inject constructor(
         private val repository : QrCodesRepository
     ) : HomeInteractor {
 
