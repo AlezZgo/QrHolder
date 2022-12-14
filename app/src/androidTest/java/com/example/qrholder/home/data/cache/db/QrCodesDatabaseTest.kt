@@ -4,7 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.qrholder.home.domain.QrCode
+import com.example.qrholder.data.cache.db.QrCodeCache
+import com.example.qrholder.data.cache.db.QrCodesDao
+import com.example.qrholder.data.cache.db.QrCodesDatabase
+import com.example.qrholder.domain.QrCode
 import junit.framework.Assert.assertEquals
 import org.junit.After
 import org.junit.Before
@@ -21,7 +24,7 @@ internal class QrCodesDatabaseTest {
     @Before
     fun createDatabase() {
         val context: Context = ApplicationProvider.getApplicationContext()
-        db = Room.inMemoryDatabaseBuilder(context,QrCodesDatabase::class.java)
+        db = Room.inMemoryDatabaseBuilder(context, QrCodesDatabase::class.java)
             .allowMainThreadQueries()
             .build()
         dao = db.qrCodesDao()

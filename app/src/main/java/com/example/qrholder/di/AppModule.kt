@@ -3,7 +3,6 @@ package com.example.qrholder.di
 import android.content.Context
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.core.ui.DispatchersList
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,14 +11,14 @@ import dagger.hilt.components.SingletonComponent
 
 @InstallIn(SingletonComponent::class)
 @Module
-object AppModule{
+object AppModule {
 
     @Provides
     fun provideManageResources(
         @ApplicationContext context: Context
-    ) : ManageResources = ManageResources.Base(context)
+    ): ManageResources = ManageResources.Base(context)
 
     @Provides
-    fun provideDispatcherList() : DispatchersList = DispatchersList.Base()
+    fun provideDispatcherList(): DispatchersList = DispatchersList.Base()
 
 }

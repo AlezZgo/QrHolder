@@ -1,6 +1,6 @@
 package com.example.qrholder.di
 
-import com.example.qrholder.home.domain.HomeInteractor
+import com.example.qrholder.domain.HomeInteractor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,6 +1,4 @@
-package com.example.qrholder.home.domain
-
-import android.net.Uri
+package com.example.qrholder.domain
 
 data class QrCode(
     private val title: String,

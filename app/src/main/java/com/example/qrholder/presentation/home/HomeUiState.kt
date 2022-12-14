@@ -1,4 +1,4 @@
-package com.example.qrholder.home.ui
+package com.example.qrholder.presentation.home
 
 sealed class HomeUiState {
 

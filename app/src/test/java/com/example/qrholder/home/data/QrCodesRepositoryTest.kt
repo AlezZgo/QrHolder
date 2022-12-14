@@ -1,9 +1,12 @@
 package com.example.qrholder.home.data
 
 import com.example.qrholder.core.TestManageResources
-import com.example.qrholder.home.data.cache.QrCodesCacheDataSource
-import com.example.qrholder.home.domain.QrCode
-import com.example.qrholder.home.domain.QrCodes
+import com.example.qrholder.data.QrCodeData
+import com.example.qrholder.data.QrCodeDataToDomainMapper
+import com.example.qrholder.data.QrCodesRepository
+import com.example.qrholder.data.cache.QrCodesCacheDataSource
+import com.example.qrholder.domain.QrCode
+import com.example.qrholder.domain.QrCodes
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach

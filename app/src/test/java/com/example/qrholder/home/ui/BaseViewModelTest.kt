@@ -3,9 +3,13 @@ package com.example.qrholder.home.ui
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.example.qrholder.core.ui.DispatchersList
-import com.example.qrholder.home.domain.HomeInteractor
-import com.example.qrholder.home.domain.QrCodes
-import com.example.qrholder.home.ui.mapper.CompleteListMapper
+import com.example.qrholder.domain.HomeInteractor
+import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.presentation.home.mapper.CompleteListMapper
+import com.example.qrholder.presentation.home.HomeCommunications
+import com.example.qrholder.presentation.home.HomeUiState
+import com.example.qrholder.presentation.home.HomeUiStateCommunication
+import com.example.qrholder.presentation.home.QrCodeUiCompleteList
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 
@@ -65,7 +69,7 @@ abstract class BaseViewModelTest {
 
     }
 
-    class TestHomeUiStateCommunication : HomeUiStateCommunication{
+    class TestHomeUiStateCommunication : HomeUiStateCommunication {
 
         var homeUiStateCalledList = mutableListOf<HomeUiState>()
 

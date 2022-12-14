@@ -1,4 +1,4 @@
-package com.example.qrholder.home.ui
+package com.example.qrholder.presentation.home
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -20,7 +20,8 @@ interface HomeCommunications : ObserveQrCodes {
     ) : HomeCommunications {
         override fun showState(state: HomeUiState) = uiState.map(state)
 
-        override fun changeCompleteList(qrCodes: QrCodeUiCompleteList) = qrCodesCompleteList.map(qrCodes)
+        override fun changeCompleteList(qrCodes: QrCodeUiCompleteList) =
+            qrCodesCompleteList.map(qrCodes)
 
         override fun filter(text: String) {
             filter.map(text)
@@ -47,7 +48,7 @@ interface ObserveQrCodes {
     fun observeFilter(owner: LifecycleOwner, observer: Observer<String>)
 }
 
-interface HomeUiStateCommunication  : Communication.Mutable<HomeUiState> {
+interface HomeUiStateCommunication : Communication.Mutable<HomeUiState> {
     class Base @Inject constructor() : Communication.Post<HomeUiState>(), HomeUiStateCommunication
 }
 
@@ -64,8 +65,8 @@ interface CompleteListCommunication : Communication.Mutable<QrCodeUiCompleteList
         CompleteListCommunication {
 
         //todo Is the naming correct here or not?
-        override fun filter(filter: String, uiState: Communication.Mutable<HomeUiState>){
-            liveData.value?.map(completeListMapper,filter,uiState)
+        override fun filter(filter: String, uiState: Communication.Mutable<HomeUiState>) {
+            liveData.value?.map(completeListMapper, filter, uiState)
         }
 
     }

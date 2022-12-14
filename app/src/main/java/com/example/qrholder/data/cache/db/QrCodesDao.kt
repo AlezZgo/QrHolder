@@ -1,4 +1,4 @@
-package com.example.qrholder.home.data.cache.db
+package com.example.qrholder.data.cache.db
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -12,7 +12,7 @@ interface QrCodesDao {
     fun allQrCodes(): List<QrCodeCache>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(qrCode : QrCodeCache)
+    fun insert(qrCode: QrCodeCache)
 
 
 }

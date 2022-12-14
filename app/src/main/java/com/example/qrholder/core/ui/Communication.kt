@@ -1,11 +1,13 @@
 package com.example.qrholder.core.ui
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.example.qrholder.core.Mapper
 
 interface Communication {
 
-    interface Observe<T > {
+    interface Observe<T> {
         fun observe(owner: LifecycleOwner, observer: Observer<T>)
     }
 
@@ -37,7 +39,6 @@ interface Communication {
             liveData.postValue(source)
         }
     }
-
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.qrholder.home.ui
 
+import com.example.qrholder.presentation.home.QrCodeUi
 import org.junit.jupiter.api.Assertions.*
 
 import org.junit.jupiter.api.Test

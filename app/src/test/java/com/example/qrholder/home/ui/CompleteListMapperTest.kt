@@ -1,6 +1,8 @@
 package com.example.qrholder.home.ui
 
-import com.example.qrholder.home.ui.mapper.CompleteListMapper
+import com.example.qrholder.presentation.home.mapper.CompleteListMapper
+import com.example.qrholder.presentation.home.HomeUiState
+import com.example.qrholder.presentation.home.QrCodeUi
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
@@ -72,7 +74,8 @@ internal class CompleteListMapperTest{
         )
 
         assertEquals(1,homeUiCommunication.homeUiStateCalledList.size)
-        assertEquals(HomeUiState.Success(
+        assertEquals(
+            HomeUiState.Success(
             listOf(
                 QrCodeUi("Dog", "www.dog.com",path = "content.cat.id2"),
                 QrCodeUi("Duck", "www.duck.com",path = "content.cat.id3"),

@@ -1,4 +1,4 @@
-package com.example.qrholder.menu
+package com.example.qrholder.presentation.menu
 
 import androidx.lifecycle.ViewModel
 

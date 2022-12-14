@@ -3,8 +3,7 @@ package com.example.qrholder.di
 import android.content.Context
 import androidx.room.Room
 import com.example.qrholder.core.Provide
-import com.example.qrholder.home.data.cache.db.QrCodesDatabase
-import dagger.Binds
+import com.example.qrholder.data.cache.db.QrCodesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,13 +13,13 @@ import javax.inject.Inject
 
 @InstallIn(SingletonComponent::class)
 @Module
-object CacheModule  {
+object CacheModule {
 
     @Provides
     fun provideDatabase(database: Base): QrCodesDatabase = database.provide()
 
     @Provides
-    fun provideDao(qrCodesDb : QrCodesDatabase) = qrCodesDb.qrCodesDao()
+    fun provideDao(qrCodesDb: QrCodesDatabase) = qrCodesDb.qrCodesDao()
 
     class Base @Inject constructor(
         @ApplicationContext context: Context

@@ -1,4 +1,4 @@
-package com.example.qrholder.home.data.cache.db
+package com.example.qrholder.data.cache.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

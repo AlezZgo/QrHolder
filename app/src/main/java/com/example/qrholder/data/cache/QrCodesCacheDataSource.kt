@@ -1,7 +1,7 @@
-package com.example.qrholder.home.data.cache
+package com.example.qrholder.data.cache
 
-import com.example.qrholder.home.data.QrCodeData
-import com.example.qrholder.home.data.cache.db.QrCodesDao
+import com.example.qrholder.data.QrCodeData
+import com.example.qrholder.data.cache.db.QrCodesDao
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject

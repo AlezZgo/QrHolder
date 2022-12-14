@@ -1,10 +1,10 @@
 package com.example.qrholder.di
 
-import com.example.qrholder.home.data.QrCodeData
-import com.example.qrholder.home.data.QrCodeDataToDomainMapper
-import com.example.qrholder.home.data.QrCodesRepository
-import com.example.qrholder.home.data.cache.QrCodesCacheDataSource
-import com.example.qrholder.home.domain.QrCode
+import com.example.qrholder.data.QrCodeData
+import com.example.qrholder.data.QrCodeDataToDomainMapper
+import com.example.qrholder.data.QrCodesRepository
+import com.example.qrholder.data.cache.QrCodesCacheDataSource
+import com.example.qrholder.domain.QrCode
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,11 +15,11 @@ import dagger.hilt.components.SingletonComponent
 interface DataModule {
 
     @Binds
-    fun bindQrCodesRepository( qrCodesRepository: QrCodesRepository.Base) : QrCodesRepository
+    fun bindQrCodesRepository(qrCodesRepository: QrCodesRepository.Base): QrCodesRepository
 
     @Binds
-    fun bindQrCodesCacheDataSource( qrCodesCacheDataSource: QrCodesCacheDataSource.Base) : QrCodesCacheDataSource
+    fun bindQrCodesCacheDataSource(qrCodesCacheDataSource: QrCodesCacheDataSource.Base): QrCodesCacheDataSource
 
     @Binds
-    fun bindQrCodeDataToDomainMapper(mapper : QrCodeDataToDomainMapper) : QrCodeData.Mapper<QrCode>
+    fun bindQrCodeDataToDomainMapper(mapper: QrCodeDataToDomainMapper): QrCodeData.Mapper<QrCode>
 }

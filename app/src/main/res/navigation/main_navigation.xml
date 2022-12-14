@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.qrholder.home.ui.HomeFragment"
+        android:name="com.example.qrholder.presentation.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_menu"
-        android:name="com.example.qrholder.menu.MenuFragment"
+        android:name="com.example.qrholder.presentation.menu.MenuFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_menu" />
 </navigation>

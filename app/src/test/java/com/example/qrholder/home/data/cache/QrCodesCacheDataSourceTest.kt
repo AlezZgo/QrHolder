@@ -1,8 +1,9 @@
 package com.example.qrholder.home.data.cache
 
-import com.example.qrholder.home.data.QrCodeData
-import com.example.qrholder.home.data.cache.db.QrCodeCache
-import com.example.qrholder.home.data.cache.db.QrCodesDao
+import com.example.qrholder.data.QrCodeData
+import com.example.qrholder.data.cache.QrCodesCacheDataSource
+import com.example.qrholder.data.cache.db.QrCodeCache
+import com.example.qrholder.data.cache.db.QrCodesDao
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach

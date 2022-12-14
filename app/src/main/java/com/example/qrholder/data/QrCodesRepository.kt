@@ -1,10 +1,10 @@
-package com.example.qrholder.home.data
+package com.example.qrholder.data
 
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
-import com.example.qrholder.home.data.cache.QrCodesCacheDataSource
-import com.example.qrholder.home.domain.QrCode
-import com.example.qrholder.home.domain.QrCodes
+import com.example.qrholder.data.cache.QrCodesCacheDataSource
+import com.example.qrholder.domain.QrCode
+import com.example.qrholder.domain.QrCodes
 import javax.inject.Inject
 
 interface QrCodesRepository {
@@ -14,7 +14,7 @@ interface QrCodesRepository {
     class Base @Inject constructor(
         private val cacheDataSource: QrCodesCacheDataSource,
         private val mapper: QrCodeData.Mapper<QrCode>,
-        private val manageResources : ManageResources
+        private val manageResources: ManageResources
     ) : QrCodesRepository {
 
         override suspend fun allQrCodes(): QrCodes = try {

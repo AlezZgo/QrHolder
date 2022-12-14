@@ -2,5 +2,5 @@ package com.example.qrholder.core
 
 interface Provide<T> {
 
-    fun provide() : T
+    fun provide(): T
 }
