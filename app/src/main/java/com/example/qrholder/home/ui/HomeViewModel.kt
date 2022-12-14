@@ -22,7 +22,6 @@ class HomeViewModel @Inject constructor(
     private val communications: HomeCommunications,
     private val manageResources: ManageResources,
     private val fetchAllResultMapper: QrCodes.Mapper<Unit>,
-    private val dao: QrCodesDao
 ) : AbstractViewModel(), ObserveQrCodes, Filter<String>{
 
     override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) =

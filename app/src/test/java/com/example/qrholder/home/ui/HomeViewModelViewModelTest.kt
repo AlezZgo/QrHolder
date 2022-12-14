@@ -1,5 +1,8 @@
 package com.example.qrholder.home.ui
 
+import com.example.qrholder.core.ManageResources
+import com.example.qrholder.core.TestManageResources
+import com.example.qrholder.home.data.QrCodesRepositoryTest
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
 import com.example.qrholder.home.ui.*
@@ -14,11 +17,11 @@ import org.junit.jupiter.api.Assertions.assertEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class HomeViewModelViewModelTest : BaseViewModelTest() {
 
-    //dependencies
     private lateinit var communications: TestHomeCommunications
     private lateinit var interactor: TestHomeInteractor
     private lateinit var viewModel: HomeViewModel
     private lateinit var dispatchersList: TestDispatchersList
+    private lateinit var manageResources: TestManageResources
 
     @OptIn(DelicateCoroutinesApi::class)
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
@@ -31,12 +34,14 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
         communications = TestHomeCommunications()
         interactor = TestHomeInteractor()
         dispatchersList = TestDispatchersList()
+        manageResources = TestManageResources()
 
         viewModel = HomeViewModel(
             dispatchers = dispatchersList,
             communications = communications,
             interactor = interactor,
             fetchAllResultMapper = QrCodesMapper(communications, QrCodeToUiMapper()),
+            manageResources = manageResources
         )
     }
 
@@ -50,6 +55,7 @@ internal class HomeViewModelViewModelTest : BaseViewModelTest() {
     @Test
     fun `the very first run application`() = runBlocking {
 
+        manageResources.changeExpected("")
         interactor.changeExpectedResult(QrCodes.Success(emptyList()))
 
         viewModel.init(isFirstRun = true)

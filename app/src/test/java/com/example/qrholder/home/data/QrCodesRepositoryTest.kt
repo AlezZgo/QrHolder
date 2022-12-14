@@ -1,6 +1,6 @@
 package com.example.qrholder.home.data
 
-import com.example.qrholder.core.ManageResources
+import com.example.qrholder.core.TestManageResources
 import com.example.qrholder.home.data.cache.QrCodesCacheDataSource
 import com.example.qrholder.home.domain.QrCode
 import com.example.qrholder.home.domain.QrCodes
@@ -21,7 +21,7 @@ class QrCodesRepositoryTest {
         cacheDataSource = TestQrCodesCacheDataSource()
         manageResources = TestManageResources()
         mapper = QrCodeDataToDomainMapper()
-        repository = QrCodesRepository.Base(cacheDataSource, mapper,manageResources)
+        repository = QrCodesRepository.Base(cacheDataSource, mapper, manageResources)
     }
 
     @Test
@@ -99,15 +99,5 @@ class QrCodesRepositoryTest {
         }
 
         override suspend fun allQrCodes() = if (expectedError) throw exception else list
-    }
-
-    class TestManageResources : ManageResources {
-        private var value = ""
-
-        fun changeExpected(string: String) {
-            value = string
-        }
-
-        override fun string(id: Int): String = value
     }
 }

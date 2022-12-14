@@ -74,9 +74,9 @@ internal class CompleteListMapperTest{
         assertEquals(1,homeUiCommunication.homeUiStateCalledList.size)
         assertEquals(HomeUiState.Success(
             listOf(
-                QrCodeUi("Dog", "www.dog.com",path = "content.cat.id1"),
-                QrCodeUi("Duck", "www.duck.com",path = "content.cat.id2"),
-                QrCodeUi("Whale", "www.whale_digger.com",path = "content.cat.id3")
+                QrCodeUi("Dog", "www.dog.com",path = "content.cat.id2"),
+                QrCodeUi("Duck", "www.duck.com",path = "content.cat.id3"),
+                QrCodeUi("Whale", "www.whale_digger.com",path = "content.cat.id4")
             )
         ),homeUiCommunication.homeUiStateCalledList[0])
     }
