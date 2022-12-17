@@ -17,7 +17,6 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupViews() {
         super.setupViews()
-        binding.rvQrList.adapter = adapter
     }
 
     override fun observe() {
