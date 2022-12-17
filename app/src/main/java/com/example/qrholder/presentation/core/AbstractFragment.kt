@@ -17,7 +17,7 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
     private val clazz : Class<V>
 ) : Fragment() {
 
-    protected var useSharedViewModel: Boolean = false
+    protected var isSharedViewModel: Boolean = false
     lateinit var viewModel : V
 
     private var _viewBinding: B? = null
@@ -25,7 +25,7 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = if (useSharedViewModel) {
+        viewModel = if (isSharedViewModel) {
             ViewModelProvider(requireActivity())[clazz]
         } else {
             ViewModelProvider(this)[clazz]
@@ -47,7 +47,6 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
         observe()
         setupViews()
         setupListeners()
-        Log.d("tagger","Hello from onViewCreated Abstract")
     }
 
     override fun onDestroyView() {
