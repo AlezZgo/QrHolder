@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="gone"
-        android:id="@+id/success_layout"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/list_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -15,36 +14,99 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
             app:menu="@menu/toolbar_menu"
-            app:title="@string/qrList" />
+            app:title="@string/qrList"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvQrList"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            tools:listitem="@layout/rv_item_home_qrcode" />
+            tools:listitem="@layout/rv_item_home_qrcode"
+            tools:visibility="visible">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/ivNothingWasFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:srcCompat="@drawable/search_folder" />
+
+        <TextView
+            android:id="@+id/tvNothingWasFoundLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:fontFamily="@font/roboto_mono_medium"
+            tools:text="Nothing was found with this filter. \n Clear the search field and try again!" />
+
+        <ImageView
+            android:id="@+id/ivEmptyFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:foregroundGravity="center"
+            android:visibility="gone"
+            app:srcCompat="@drawable/empty_folder" />
+
+        <TextView
+            android:id="@+id/tvEmptyListLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:fontFamily="@font/roboto_mono_medium"
+            tools:text="The storage is empty. \n Create your first QR code!" />
+
+        <ImageView
+            android:id="@+id/ivError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:srcCompat="@drawable/dangerous"
+            app:tint="@color/orange_light" />
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:fontFamily="@font/roboto_mono_medium"
+            tools:text="The error message. \n Something went wrong!" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmers"
+        android:id="@+id/shimmersLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:visibility="gone">
 
-        <include layout="@layout/fragment_home_shimmer"/>
+        <include layout="@layout/fragment_home_shimmer" />
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 

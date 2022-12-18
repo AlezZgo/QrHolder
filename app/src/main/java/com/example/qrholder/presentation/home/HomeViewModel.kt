@@ -10,6 +10,7 @@ import com.example.qrholder.core.ui.DispatchersList
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

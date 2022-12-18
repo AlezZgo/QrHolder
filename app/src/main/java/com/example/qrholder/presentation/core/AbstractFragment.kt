@@ -44,9 +44,9 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.init(savedInstanceState == null)
-        observe()
         setupViews()
         setupListeners()
+        observe()
     }
 
     override fun onDestroyView() {
@@ -54,10 +54,10 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
         _viewBinding = null
     }
 
-    open fun observe() = Unit
-
     open fun setupViews() = Unit
 
     open fun setupListeners() = Unit
+
+    open fun observe() = Unit
 
 }

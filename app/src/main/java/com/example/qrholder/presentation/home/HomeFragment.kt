@@ -11,17 +11,31 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 ) {
 
     private val adapter by lazy {
-        //todo inject QrCodeDiffUtilCallback
-        QrCodesAdapter(QrCodeDiffUtilCallback())
+        QrCodesAdapter()
     }
 
     override fun setupViews() {
         super.setupViews()
+        binding.rvQrList.adapter = adapter
     }
 
     override fun observe() {
-        viewModel.observeUiState(viewLifecycleOwner) {
-            //Todo it.map(mapper)
+        viewModel.observeUiState(viewLifecycleOwner) { uiState ->
+            with(binding) {
+                uiState.show(
+                    toolbar = toolbar,
+                    recyclerView = rvQrList,
+                    adapter = adapter,
+                    nothingWasFoundTextView = tvNothingWasFoundLayout,
+                    nothingWasFoundImageView = ivNothingWasFound,
+                    emptyListTextView = tvEmptyListLayout,
+                    emptyListImageView = ivEmptyFolder,
+                    tvError = tvError,
+                    ivError = ivError,
+                    shimmers = shimmersLayout
+                )
+            }
+
         }
     }
 }

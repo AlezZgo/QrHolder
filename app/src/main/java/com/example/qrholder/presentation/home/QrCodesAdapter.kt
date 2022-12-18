@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.qrholder.databinding.RvItemHomeQrcodeBinding
 import com.example.qrholder.presentation.core.AbstractDiffCallback
 
-class QrCodesAdapter(
-    diffUtil: AbstractDiffCallback<QrCodeUi>,
-) : ListAdapter<QrCodeUi, QrCodesAdapter.QrCodeCardViewHolder>(diffUtil) {
+class QrCodesAdapter : ListAdapter<QrCodeUi, QrCodesAdapter.QrCodeCardViewHolder>(QrCodeDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = QrCodeCardViewHolder(
         RvItemHomeQrcodeBinding.inflate(
