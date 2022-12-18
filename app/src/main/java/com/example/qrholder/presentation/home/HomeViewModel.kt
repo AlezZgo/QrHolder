@@ -7,10 +7,13 @@ import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.core.ui.AbstractViewModel
 import com.example.qrholder.core.ui.DispatchersList
+import com.example.qrholder.data.cache.db.QrCodesDao
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.presentation.home.model.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,7 +22,7 @@ class HomeViewModel @Inject constructor(
     private val interactor: HomeInteractor,
     private val communications: HomeCommunications,
     private val manageResources: ManageResources,
-    private val fetchAllResultMapper: QrCodes.Mapper<Unit>,
+    private val fetchAllResultMapper: QrCodes.Mapper<Unit>
 ) : AbstractViewModel(), ObserveQrCodes, Filter<String> {
 
     override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) =
@@ -35,10 +38,11 @@ class HomeViewModel @Inject constructor(
             communications.showState(HomeUiState.Loading)
             val result = interactor.fetchAll()
             result.map(fetchAllResultMapper)
-            filter(manageResources.string(R.string.empty))
+            withContext(dispatchers.ui()) {
+                filter(manageResources.string(R.string.empty))
+            }
         }
     }
-
 }
 
 interface Filter<T> {

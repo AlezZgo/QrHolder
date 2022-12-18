@@ -1,9 +1,9 @@
 package com.example.qrholder.presentation.home.mapper
 
 import com.example.qrholder.core.ui.Communication
-import com.example.qrholder.presentation.home.HomeUiState
-import com.example.qrholder.presentation.home.QrCodeUi
-import com.example.qrholder.presentation.home.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.model.HomeUiState
+import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import javax.inject.Inject
 
 class CompleteListMapper @Inject constructor() : QrCodeUiCompleteList.Mapper<Unit> {

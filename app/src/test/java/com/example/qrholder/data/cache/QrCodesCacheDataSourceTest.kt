@@ -1,4 +1,4 @@
-package com.example.qrholder.home.data.cache
+package com.example.qrholder.data.cache
 
 import com.example.qrholder.data.QrCodeData
 import com.example.qrholder.data.cache.QrCodesCacheDataSource

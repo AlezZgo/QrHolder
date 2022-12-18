@@ -12,7 +12,7 @@
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
-            android:id="@+id/qrCodeImageView"
+            android:id="@+id/ivQrCode"
             android:layout_width="@dimen/qrCodeStandardSize"
             android:layout_height="@dimen/qrCodeStandardSize"
             android:contentDescription="@string/qrcodepreview"
@@ -27,7 +27,7 @@
             tools:ignore="UseCompoundDrawables">
 
             <TextView
-                android:id="@+id/titleTextView"
+                android:id="@+id/tvTitle"
                 android:layout_width="200dp"
                 android:layout_height="32dp"
                 android:layout_weight="1"
@@ -37,7 +37,7 @@
                 android:padding="8dp" />
 
             <TextView
-                android:id="@+id/contentTextView"
+                android:id="@+id/tvContent"
                 android:layout_width="240dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="16dp"

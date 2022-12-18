@@ -1,7 +1,6 @@
 package com.example.qrholder.presentation.core
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +13,11 @@ typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
 abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
     private val inflate: Inflate<B>,
-    private val clazz : Class<V>
+    private val clazz: Class<V>
 ) : Fragment() {
 
     protected var isSharedViewModel: Boolean = false
-    lateinit var viewModel : V
+    lateinit var viewModel: V
 
     private var _viewBinding: B? = null
     protected val binding get() = checkNotNull(_viewBinding)
@@ -43,10 +42,10 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.init(savedInstanceState == null)
-        observe()
         setupViews()
         setupListeners()
+        observe()
+        viewModel.init(savedInstanceState == null)
     }
 
     override fun onDestroyView() {
@@ -54,10 +53,10 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
         _viewBinding = null
     }
 
-    open fun observe() = Unit
-
     open fun setupViews() = Unit
 
     open fun setupListeners() = Unit
+
+    open fun observe() = Unit
 
 }
