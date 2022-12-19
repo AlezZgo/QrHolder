@@ -10,20 +10,27 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-@InstallIn(ViewModelComponent::class)
+
+@InstallIn(SingletonComponent::class)
 @Module
 interface HomePresentationModule {
 
+    @Singleton
     @Binds
     fun bindHomeCommunications(communications: HomeCommunications.Base): HomeCommunications
 
+    @Singleton
     @Binds
     fun bindFilterCommunication(communications: FilterCommunication.Base): FilterCommunication
 
+    @Singleton
     @Binds
     fun bindUiStateCommunication(communications: HomeUiStateCommunication.Base): HomeUiStateCommunication
 
+    @Singleton
     @Binds
     fun bindCompleteListCommunication(communications: CompleteListCommunication.Base): CompleteListCommunication
 
@@ -37,3 +44,33 @@ interface HomePresentationModule {
     fun bindQrCodeToUiMapper(mapper: QrCodeToUiMapper): QrCode.Mapper<QrCodeUi>
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

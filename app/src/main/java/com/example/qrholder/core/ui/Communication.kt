@@ -27,17 +27,14 @@ interface Communication {
         liveData: MutableLiveData<T> = MutableLiveData()
     ) : Abstract<T>(liveData) {
 
-        override fun map(source: T) {
-            liveData.value = source
-        }
+        override fun map(source: T) { liveData.value = source }
     }
 
     abstract class Post<T : Any>(
-        protected val postLiveData: MutableLiveData<T> = MutableLiveData()
+        postLiveData: MutableLiveData<T> = MutableLiveData()
     ) : Abstract<T>(postLiveData) {
-        override fun map(source: T) {
-            postLiveData.postValue(source)
-        }
+        override fun map(source: T) = liveData.postValue(source)
+
     }
 
 

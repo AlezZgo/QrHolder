@@ -10,8 +10,8 @@ import com.example.qrholder.core.ui.DispatchersList
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,10 +36,11 @@ class HomeViewModel @Inject constructor(
             communications.showState(HomeUiState.Loading)
             val result = interactor.fetchAll()
             result.map(fetchAllResultMapper)
-            filter(manageResources.string(R.string.empty))
+            withContext(dispatchers.ui()) {
+                filter(manageResources.string(R.string.empty))
+            }
         }
     }
-
 }
 
 interface Filter<T> {
