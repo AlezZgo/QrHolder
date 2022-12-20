@@ -10,7 +10,6 @@ import androidx.viewbinding.ViewBinding
 import com.example.qrholder.core.ui.AbstractViewModel
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
-typealias CreateViewHolder<B,VH> = (binding : B) -> VH
 
 abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
     private val inflate: Inflate<B>,
