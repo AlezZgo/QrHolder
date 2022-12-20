@@ -1,5 +1,6 @@
 package com.example.qrholder.presentation.home
 
+import com.example.qrholder.R
 import com.example.qrholder.databinding.FragmentHomeBinding
 import com.example.qrholder.presentation.core.AbstractFragment
 import dagger.hilt.android.AndroidEntryPoint
