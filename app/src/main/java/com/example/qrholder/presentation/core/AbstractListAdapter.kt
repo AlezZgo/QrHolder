@@ -10,9 +10,9 @@ abstract class AbstractListAdapter<
         M : Match<M>,
         B : ViewBinding,
         VH : AbstractViewHolder<M, B>>(
-    diffUtil: AbstractDiffCallback<M>,
     private val inflate: Inflate<B>,
-    private val viewHolder: CreateViewHolder<B,VH>
+    private val viewHolder: CreateViewHolder<B, VH>,
+    diffUtil: AbstractDiffCallback<M>,
 ) : ListAdapter<M, VH>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

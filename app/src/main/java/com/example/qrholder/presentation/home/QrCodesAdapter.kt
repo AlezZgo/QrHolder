@@ -1,34 +1,11 @@
 package com.example.qrholder.presentation.home
 
 import com.example.qrholder.databinding.RvItemHomeQrcodeBinding
-import com.example.qrholder.presentation.core.AbstractDiffCallback
 import com.example.qrholder.presentation.core.AbstractListAdapter
-import com.example.qrholder.presentation.core.AbstractViewHolder
+import com.example.qrholder.presentation.home.mapper.QrCodeCardViewHolder
 
-class QrCodesAdapter : AbstractListAdapter<QrCodeUi, RvItemHomeQrcodeBinding,QrCodeCardViewHolder>(
-    QrCodeDiffUtilCallback(),
+class QrCodesAdapter : AbstractListAdapter<QrCodeUi, RvItemHomeQrcodeBinding, QrCodeCardViewHolder>(
     RvItemHomeQrcodeBinding::inflate,
-    QrCodeCardViewHolder::new
+    QrCodeCardViewHolder::new,
+    QrCodeDiffUtilCallback(),
 )
-
-class QrCodeCardViewHolder(
-    private val binding: RvItemHomeQrcodeBinding
-) : AbstractViewHolder<QrCodeUi, RvItemHomeQrcodeBinding>(binding) {
-
-    override fun bind(model: QrCodeUi) =
-        model.map(binding.titleTextView, binding.contentTextView)
-
-    companion object{
-        fun new(binding: RvItemHomeQrcodeBinding) = QrCodeCardViewHolder(binding)
-    }
-
-}
-
-
-interface Bind<T> {
-
-    fun bind(model: T)
-}
-
-class QrCodeDiffUtilCallback : AbstractDiffCallback<QrCodeUi>()
-
