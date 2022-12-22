@@ -5,44 +5,52 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 sealed class MainFabUiState {
 
+    abstract fun opposite() : MainFabUiState
+
     abstract fun show(
         parentFab: FloatingActionButton,
-        createQrCodeFab: FloatingActionButton,
+        buildQrCodeFab: FloatingActionButton,
         chooseFromGalleryQrCodeFab: FloatingActionButton,
         ScanFromCameraQrCodeFab: FloatingActionButton,
-        onParentFabClick: (mainFabUiState: MainFabUiState) -> Unit
+        onParentFabClick: () -> Unit
     )
 
     object Closed : MainFabUiState() {
+
+        override fun opposite() = Opened
+
         override fun show(
             parentFab: FloatingActionButton,
-            createQrCodeFab: FloatingActionButton,
+            buildQrCodeFab: FloatingActionButton,
             chooseFromGalleryQrCodeFab: FloatingActionButton,
             ScanFromCameraQrCodeFab: FloatingActionButton,
-            onParentFabClick: (mainFabUiState: MainFabUiState) -> Unit
+            onParentFabClick: () -> Unit
         ) {
             parentFab.isVisible = true
-            createQrCodeFab.isVisible = false
+            buildQrCodeFab.isVisible = false
             chooseFromGalleryQrCodeFab.isVisible = false
             ScanFromCameraQrCodeFab.isVisible = false
-            parentFab.setOnClickListener { onParentFabClick.invoke(this) }
+            parentFab.setOnClickListener { onParentFabClick.invoke() }
         }
 
     }
 
     object Opened : MainFabUiState() {
+
+        override fun opposite() = Closed
+
         override fun show(
             parentFab: FloatingActionButton,
-            createQrCodeFab: FloatingActionButton,
+            buildQrCodeFab: FloatingActionButton,
             chooseFromGalleryQrCodeFab: FloatingActionButton,
             ScanFromCameraQrCodeFab: FloatingActionButton,
-            onParentFabClick: (mainFabUiState: MainFabUiState) -> Unit
+            onParentFabClick: () -> Unit
         ) {
             parentFab.isVisible = true
-            createQrCodeFab.isVisible = true
+            buildQrCodeFab.isVisible = true
             chooseFromGalleryQrCodeFab.isVisible = true
             ScanFromCameraQrCodeFab.isVisible = true
-            parentFab.setOnClickListener { onParentFabClick.invoke(this) }
+            parentFab.setOnClickListener { onParentFabClick.invoke() }
         }
 
     }
