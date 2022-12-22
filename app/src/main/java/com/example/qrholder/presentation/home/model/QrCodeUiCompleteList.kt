@@ -1,4 +1,4 @@
-package com.example.qrholder.presentation.home
+package com.example.qrholder.presentation.home.model
 
 import com.example.qrholder.core.ui.Communication
 

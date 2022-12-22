@@ -3,8 +3,8 @@ package com.example.qrholder.presentation.home.mapper
 import com.example.qrholder.domain.QrCode
 import com.example.qrholder.domain.QrCodes
 import com.example.qrholder.presentation.home.HomeCommunications
-import com.example.qrholder.presentation.home.QrCodeUi
-import com.example.qrholder.presentation.home.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import javax.inject.Inject
 
 class QrCodesMapper @Inject constructor(

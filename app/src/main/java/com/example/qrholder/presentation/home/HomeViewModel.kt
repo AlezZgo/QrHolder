@@ -9,6 +9,7 @@ import com.example.qrholder.core.ui.AbstractViewModel
 import com.example.qrholder.core.ui.DispatchersList
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.presentation.home.model.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

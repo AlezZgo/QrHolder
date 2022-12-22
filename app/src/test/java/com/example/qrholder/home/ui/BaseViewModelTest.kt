@@ -7,9 +7,9 @@ import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
 import com.example.qrholder.presentation.home.HomeCommunications
-import com.example.qrholder.presentation.home.HomeUiState
+import com.example.qrholder.presentation.home.model.HomeUiState
 import com.example.qrholder.presentation.home.HomeUiStateCommunication
-import com.example.qrholder.presentation.home.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 

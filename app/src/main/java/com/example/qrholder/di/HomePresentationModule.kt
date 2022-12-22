@@ -6,10 +6,11 @@ import com.example.qrholder.presentation.home.*
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
 import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
+import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 

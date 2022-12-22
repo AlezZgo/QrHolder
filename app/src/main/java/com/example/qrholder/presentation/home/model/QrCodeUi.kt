@@ -1,4 +1,4 @@
-package com.example.qrholder.presentation.home
+package com.example.qrholder.presentation.home.model
 
 import android.widget.TextView
 import com.example.qrholder.core.Match

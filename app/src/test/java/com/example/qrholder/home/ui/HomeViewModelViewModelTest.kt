@@ -5,10 +5,10 @@ import com.example.qrholder.domain.QrCode
 import com.example.qrholder.domain.QrCodes
 import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
-import com.example.qrholder.presentation.home.HomeUiState
+import com.example.qrholder.presentation.home.model.HomeUiState
 import com.example.qrholder.presentation.home.HomeViewModel
-import com.example.qrholder.presentation.home.QrCodeUi
-import com.example.qrholder.presentation.home.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
