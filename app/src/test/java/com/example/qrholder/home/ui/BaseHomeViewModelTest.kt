@@ -13,7 +13,7 @@ import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 
-abstract class BaseViewModelTest {
+abstract class BaseHomeViewModelTest {
 
     class TestDispatchersList : DispatchersList {
         override fun io(): CoroutineDispatcher = TestCoroutineDispatcher()

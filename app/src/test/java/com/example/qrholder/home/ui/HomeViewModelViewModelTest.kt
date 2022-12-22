@@ -16,7 +16,7 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class HomeViewModelViewModelTest : BaseViewModelTest() {
+internal class HomeViewModelViewModelTest : BaseHomeViewModelTest() {
 
     private lateinit var communications: TestHomeCommunications
     private lateinit var interactor: TestHomeInteractor

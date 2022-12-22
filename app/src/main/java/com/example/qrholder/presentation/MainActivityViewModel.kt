@@ -6,4 +6,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor() : ViewModel()
+class MainActivityViewModel @Inject constructor() : AbstractViewModel() {
+    override fun init() {
+        TODO("Not yet implemented")
+    }
+}
