@@ -2,14 +2,14 @@ package com.example.qrholder.presentation.home
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.example.qrholder.presentation.core.ObserveUiState
+import com.example.qrholder.presentation.core.ShowState
 import com.example.qrholder.presentation.core.viewmodel.Communication
 import com.example.qrholder.presentation.home.model.HomeUiState
 import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import javax.inject.Inject
 
-interface HomeCommunications : ObserveQrCodes {
-
-    fun showState(state: HomeUiState)
+interface HomeCommunications : ObserveHomeUiState, ShowState<HomeUiState> {
 
     fun changeCompleteList(qrCodes: QrCodeUiCompleteList)
 
@@ -33,22 +33,11 @@ interface HomeCommunications : ObserveQrCodes {
         override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) {
             uiState.observe(owner, observer)
         }
-
-        //todo valuable reason?
-        override fun observeFilter(owner: LifecycleOwner, observer: Observer<String>) {
-            filter.observe(owner, observer)
-        }
     }
 
 }
 
-interface ObserveQrCodes {
-
-    fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>)
-
-    //todo valuable reason?
-    fun observeFilter(owner: LifecycleOwner, observer: Observer<String>)
-}
+interface ObserveHomeUiState : ObserveUiState<HomeUiState>
 
 interface HomeUiStateCommunication : Communication.Mutable<HomeUiState> {
     class Base @Inject constructor() : Communication.Post<HomeUiState>(), HomeUiStateCommunication
@@ -66,11 +55,9 @@ interface CompleteListCommunication : Communication.Mutable<QrCodeUiCompleteList
     ) : Communication.Post<QrCodeUiCompleteList>(),
         CompleteListCommunication {
 
-        //todo Is the naming correct here or not?
         override fun filter(filter: String, uiState: Communication.Mutable<HomeUiState>) {
             liveData.value?.map(completeListMapper, filter, uiState)
         }
-
     }
 }
 

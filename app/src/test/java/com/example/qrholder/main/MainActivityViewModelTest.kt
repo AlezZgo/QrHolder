@@ -1,7 +1,8 @@
 package com.example.qrholder.main
 
 import com.example.qrholder.home.ui.BaseHomeViewModelTest
-import com.example.qrholder.presentation.MainActivityViewModel
+import com.example.qrholder.presentation.main.MainActivityViewModel
+import com.example.qrholder.presentation.main.MainFabUiState
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.Assertions.*
@@ -25,9 +26,12 @@ internal class MainActivityViewModelTest : BaseMainViewModelTest(){
     fun setUp() {
         Dispatchers.setMain(mainThreadSurrogate)
 
+        fabState = TestFabStateCommunication()
+        dispatchersList = BaseHomeViewModelTest.TestDispatchersList()
+
         viewModel = MainActivityViewModel(
             fabState = fabState,
-            dispatchersList = dispatchersList
+            dispatchers = dispatchersList
         )
     }
 
@@ -37,27 +41,27 @@ internal class MainActivityViewModelTest : BaseMainViewModelTest(){
         viewModel.init(true)
 
         assertEquals(1, fabState.fabStateCalledList.size)
-        assertEquals(MainFabState.Closed, fabState.fabStateCalledList[0])
+        assertEquals(MainFabUiState.Closed, fabState.fabStateCalledList[0])
 
         viewModel.init(false)
 
         assertEquals(1, fabState.fabStateCalledList.size)
-        assertEquals(MainFabState.Closed, fabState.fabStateCalledList[0])
+        assertEquals(MainFabUiState.Closed, fabState.fabStateCalledList[0])
 
-        viewModel.changeFabState()
+        viewModel.changeFabState(MainFabUiState.Opened)
 
         assertEquals(2, fabState.fabStateCalledList.size)
-        assertEquals(MainFabState.Opened, fabState.fabStateCalledList[1])
+        assertEquals(MainFabUiState.Opened, fabState.fabStateCalledList[1])
 
         viewModel.init(false)
 
         assertEquals(2, fabState.fabStateCalledList.size)
-        assertEquals(MainFabState.Opened, fabState.fabStateCalledList[1])
+        assertEquals(MainFabUiState.Opened, fabState.fabStateCalledList[1])
 
-        viewModel.changeFabState()
+        viewModel.changeFabState(MainFabUiState.Closed)
 
         assertEquals(3, fabState.fabStateCalledList.size)
-        assertEquals(MainFabState.Closed, fabState.fabStateCalledList[2])
+        assertEquals(MainFabUiState.Closed, fabState.fabStateCalledList[2])
 
     }
 

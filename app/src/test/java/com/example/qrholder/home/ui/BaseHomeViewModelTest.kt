@@ -65,8 +65,6 @@ abstract class BaseHomeViewModelTest {
 
         override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) = Unit
 
-        override fun observeFilter(owner: LifecycleOwner, observer: Observer<String>) = Unit
-
     }
 
     class TestHomeUiStateCommunication : HomeUiStateCommunication {
