@@ -2,7 +2,7 @@ package com.example.qrholder.presentation.home
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.example.qrholder.core.ui.Communication
+import com.example.qrholder.presentation.core.viewmodel.Communication
 import com.example.qrholder.presentation.home.model.HomeUiState
 import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import javax.inject.Inject

@@ -2,7 +2,7 @@ package com.example.qrholder.home.ui
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.example.qrholder.core.ui.DispatchersList
+import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper

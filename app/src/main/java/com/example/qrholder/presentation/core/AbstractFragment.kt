@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.example.qrholder.core.ui.AbstractViewModel
+import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
@@ -53,10 +53,10 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
         _viewBinding = null
     }
 
-    open fun setupViews() = Unit
+    protected open fun setupViews() = Unit
 
-    open fun setupListeners() = Unit
+    protected open fun setupListeners() = Unit
 
-    open fun observe() = Unit
+    protected open fun observe() = Unit
 
 }

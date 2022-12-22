@@ -2,7 +2,7 @@ package com.example.qrholder.di
 
 import android.content.Context
 import com.example.qrholder.core.ManageResources
-import com.example.qrholder.core.ui.DispatchersList
+import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

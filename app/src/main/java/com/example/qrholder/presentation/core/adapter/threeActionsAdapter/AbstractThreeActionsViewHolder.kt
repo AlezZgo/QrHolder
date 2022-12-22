@@ -1,4 +1,4 @@
-package com.example.qrholder.presentation.core.threeActionsAdapter
+package com.example.qrholder.presentation.core.adapter.threeActionsAdapter
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding

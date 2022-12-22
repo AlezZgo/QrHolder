@@ -5,11 +5,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
-import com.example.qrholder.core.ui.AbstractViewModel
-import com.example.qrholder.core.ui.DispatchersList
-import com.example.qrholder.data.cache.db.QrCodesDao
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
+import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import com.example.qrholder.presentation.home.model.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
