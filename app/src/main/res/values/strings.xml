@@ -16,4 +16,5 @@
     <string name="click_to_add_qr_code">Click here to add new Qr code by different ways</string>
     <string name="defaultErrorMessage">Something went wrong</string>
     <string name="empty" />
+    <string name="search_query_hint">Search</string>
 </resources>
