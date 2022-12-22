@@ -13,11 +13,11 @@ typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
 abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
     private val inflate: Inflate<B>,
-    private val clazz : Class<V>
+    private val clazz: Class<V>
 ) : Fragment() {
 
     protected var isSharedViewModel: Boolean = false
-    lateinit var viewModel : V
+    lateinit var viewModel: V
 
     private var _viewBinding: B? = null
     protected val binding get() = checkNotNull(_viewBinding)

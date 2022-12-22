@@ -1,4 +1,4 @@
-package com.example.qrholder.home.data
+package com.example.qrholder.data
 
 import com.example.qrholder.core.TestManageResources
 import com.example.qrholder.data.QrCodeData

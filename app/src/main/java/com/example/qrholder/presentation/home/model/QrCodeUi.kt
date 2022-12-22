@@ -12,7 +12,7 @@ data class QrCodeUi(
 ) : Contains<String>, Match<QrCodeUi> {
     //todo override
     fun map(
-        card : CardView,
+        card: CardView,
         tvTitle: TextView,
         tvContent: TextView,
         ivQrCode: ImageView,

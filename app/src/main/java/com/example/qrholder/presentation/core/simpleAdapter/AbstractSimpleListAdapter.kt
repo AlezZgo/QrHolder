@@ -21,6 +21,6 @@ abstract class AbstractSimpleListAdapter<
         viewHolder(inflate.invoke(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: VH, position: Int) =
-        holder.bind(getItem(position),)
+        holder.bind(getItem(position))
 
 }
