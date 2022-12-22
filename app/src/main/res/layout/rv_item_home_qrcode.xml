@@ -16,7 +16,7 @@
 
 
         <ImageView
-            android:id="@+id/qrCodeImageView"
+            android:id="@+id/ivQrCode"
             android:layout_width="@dimen/qrCodeStandardSize"
             android:layout_height="@dimen/qrCodeStandardSize"
             android:contentDescription="@string/qrcodepreview"
@@ -29,7 +29,7 @@
             tools:ignore="UseCompoundDrawables">
 
             <TextView
-                android:id="@+id/titleTextView"
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -42,7 +42,7 @@
                 tools:text="Ресторан Астория" />
 
             <TextView
-                android:id="@+id/contentTextView"
+                android:id="@+id/tvContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

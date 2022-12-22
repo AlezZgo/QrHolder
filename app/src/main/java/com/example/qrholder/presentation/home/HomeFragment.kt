@@ -12,7 +12,17 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 ) {
 
     private val adapter by lazy {
-        QrCodesAdapter()
+        QrCodesAdapter(
+            onCardClick = { qrCode ->
+                //Todo
+            },
+            onCardLongClick = { qrCode ->
+                //Todo
+            },
+            onImageClick = { qrCode ->
+                //Todo
+            }
+        )
     }
 
     override fun setupViews() {
