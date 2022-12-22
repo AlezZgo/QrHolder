@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 
 internal class CompleteListMapperTest{
 
-    private val homeUiCommunication = BaseViewModelTest.TestHomeUiStateCommunication()
+    private val homeUiCommunication = BaseHomeViewModelTest.TestHomeUiStateCommunication()
 
     private val errorMessage = "Something went wrong"
     private val mapper = CompleteListMapper()

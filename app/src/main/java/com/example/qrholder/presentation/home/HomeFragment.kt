@@ -17,7 +17,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 ) {
 
     @Inject
-    lateinit var manageResources : ManageResources
+    lateinit var manageResources: ManageResources
 
     private val searchView by lazy {
         binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
@@ -39,7 +39,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupViews() {
         super.setupViews()
-        with(binding){
+        with(binding) {
             rvQrList.adapter = adapter
             searchView.queryHint = manageResources.string(R.string.search_query_hint)
         }
@@ -68,9 +68,9 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     override fun setupListeners() {
         super.setupListeners()
         //Todo Is it necessary to remove Listener in onPause?
-        searchView.setOnQueryTextListener(SimpleOnQueryTextListener{ searchText->
-                viewModel.filter(searchText)
-            }
+        searchView.setOnQueryTextListener(SimpleOnQueryTextListener { searchText ->
+            viewModel.filter(searchText)
+        }
         )
     }
 }

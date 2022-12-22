@@ -1,6 +1,6 @@
 package com.example.qrholder.presentation.home.model
 
-import com.example.qrholder.core.ui.Communication
+import com.example.qrholder.presentation.core.viewmodel.Communication
 
 sealed class QrCodeUiCompleteList {
 

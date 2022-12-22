@@ -2,7 +2,7 @@ package com.example.qrholder.home.ui
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.example.qrholder.core.ui.DispatchersList
+import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
@@ -13,7 +13,7 @@ import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 
-abstract class BaseViewModelTest {
+abstract class BaseHomeViewModelTest {
 
     class TestDispatchersList : DispatchersList {
         override fun io(): CoroutineDispatcher = TestCoroutineDispatcher()
@@ -64,8 +64,6 @@ abstract class BaseViewModelTest {
         }
 
         override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) = Unit
-
-        override fun observeFilter(owner: LifecycleOwner, observer: Observer<String>) = Unit
 
     }
 

@@ -5,11 +5,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
-import com.example.qrholder.core.ui.AbstractViewModel
-import com.example.qrholder.core.ui.DispatchersList
-import com.example.qrholder.data.cache.db.QrCodesDao
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.presentation.core.ObserveUiState
+import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
+import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import com.example.qrholder.presentation.home.model.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -23,13 +23,10 @@ class HomeViewModel @Inject constructor(
     private val communications: HomeCommunications,
     private val manageResources: ManageResources,
     private val fetchAllResultMapper: QrCodes.Mapper<Unit>
-) : AbstractViewModel(), ObserveQrCodes, Filter<String> {
+) : AbstractViewModel(), ObserveUiState<HomeUiState>, Filter<String> {
 
     override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) =
         communications.observeUiState(owner, observer)
-
-    override fun observeFilter(owner: LifecycleOwner, observer: Observer<String>) =
-        communications.observeFilter(owner, observer)
 
     override fun filter(filter: String) = communications.filter(filter)
 

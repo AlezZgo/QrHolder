@@ -1,4 +1,4 @@
-package com.example.qrholder.core.ui
+package com.example.qrholder.presentation.core.viewmodel
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
