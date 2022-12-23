@@ -17,4 +17,7 @@
     <string name="defaultErrorMessage">Something went wrong</string>
     <string name="empty" />
     <string name="search_query_hint">Search</string>
+    <string name="tittle">Title</string>
+    <string name="content">Content</string>
+    <string name="build">Build</string>
 </resources>

@@ -2,7 +2,7 @@ Bottom navigation contains 3 nav elements: home, add, menu
     user click on home -> opens HomeScreen
     user click on menu -> opens MenuScreen
     user click on add -> sequentially one after the other appear fab buttons upside the bottom Bar
-        if click on build item -> open buildScreen (coming with next version), now just paint it gray
+        if click on build item -> open buildScreen
         if click on gallery item -> opens bottomSheetFragment with grid layout images
         if click on scan item -> system intent to take photo, then open resultScreen
         if click on the other place -> sequentially one after the other disappear fab buttons
