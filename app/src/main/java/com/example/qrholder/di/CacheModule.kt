@@ -16,25 +16,14 @@ import javax.inject.Inject
 object CacheModule {
 
     @Provides
-    fun provideDatabase(database: Base): QrCodesDatabase = database.provide()
+    fun provideDatabase(@ApplicationContext context: Context): QrCodesDatabase = Room.databaseBuilder(
+        context,
+        QrCodesDatabase::class.java,
+        "qr_codes_database"
+    ).build()
 
     @Provides
     fun provideDao(qrCodesDb: QrCodesDatabase) = qrCodesDb.qrCodesDao()
 
-    class Base @Inject constructor(
-        @ApplicationContext context: Context
-    ) : Provide<QrCodesDatabase> {
-
-        private val db by lazy {
-            Room.databaseBuilder(
-                context,
-                QrCodesDatabase::class.java,
-                "qr_codes_database"
-            ).build()
-        }
-
-        override fun provide(): QrCodesDatabase = db
-
-    }
 
 }

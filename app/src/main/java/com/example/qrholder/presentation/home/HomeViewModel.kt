@@ -6,11 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.domain.HomeInteractor
-import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.domain.model.QrCodes
 import com.example.qrholder.presentation.core.ObserveUiState
 import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList
-import com.example.qrholder.presentation.home.model.HomeUiState
+import com.example.qrholder.presentation.home.model.HomeUi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,18 +23,22 @@ class HomeViewModel @Inject constructor(
     private val communications: HomeCommunications,
     private val manageResources: ManageResources,
     private val fetchAllResultMapper: QrCodes.Mapper<Unit>
-) : AbstractViewModel(), ObserveUiState<HomeUiState>, Filter<String> {
+) : AbstractViewModel(), ObserveUiState<HomeUi>, Filter<String> {
 
-    override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) =
+    override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUi>) =
         communications.observeUiState(owner, observer)
 
     override fun filter(filter: String) = communications.filter(filter)
 
     override fun init() {
         viewModelScope.launch(dispatchers.io()) {
-            communications.showState(HomeUiState.Loading)
+            communications.showState(HomeUi.Loading)
             val result = interactor.fetchAll()
             result.map(fetchAllResultMapper)
+
+            //todo switch dispatcher isn`t right there? is it?
+            //todo it works just because it takes some delay, during which complete list would finish initializing
+            //todo SUGGESTION!!! USE OBSERVE FOREVER!!!!!
             withContext(dispatchers.ui()) {
                 filter(manageResources.string(R.string.empty))
             }

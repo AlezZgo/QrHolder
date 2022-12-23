@@ -11,7 +11,16 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+    </style>
 
+    <style name="Body_ThemeOverlay.MaterialComponents.MaterialAlertDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+    <item name="materialAlertDialogBodyTextStyle">@style/BodyMaterialAlertDialog.MaterialComponents.Body.Text</item>
+</style>
+    <style name="BodyMaterialAlertDialog.MaterialComponents.Body.Text" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textColor">@color/aquamarine_500</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

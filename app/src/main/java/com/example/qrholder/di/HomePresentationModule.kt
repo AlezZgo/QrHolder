@@ -1,13 +1,13 @@
 package com.example.qrholder.di
 
-import com.example.qrholder.domain.QrCode
-import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.domain.model.QrCode
+import com.example.qrholder.domain.model.QrCodes
 import com.example.qrholder.presentation.home.*
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
 import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
 import com.example.qrholder.presentation.home.model.QrCodeUi
-import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.model.QrCodeCompleteListUi
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -39,7 +39,7 @@ interface HomePresentationModule {
     fun bindQrCodesMapper(mapper: QrCodesMapper): QrCodes.Mapper<Unit>
 
     @Binds
-    fun bindCompleteListMapper(mapper: CompleteListMapper): QrCodeUiCompleteList.Mapper<Unit>
+    fun bindCompleteListMapper(mapper: CompleteListMapper): QrCodeCompleteListUi.Mapper<Unit>
 
     @Binds
     fun bindQrCodeToUiMapper(mapper: QrCodeToUiMapper): QrCode.Mapper<QrCodeUi>

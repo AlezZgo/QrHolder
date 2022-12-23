@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.qrholder.BuildConfig
 import com.example.qrholder.databinding.FragmentMenuBinding
+import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
 
-class MenuFragment : Fragment() {
+class MenuFragment : Fragment(), BottomNavViewVisibility.Show {
 
     private lateinit var binding: FragmentMenuBinding
 

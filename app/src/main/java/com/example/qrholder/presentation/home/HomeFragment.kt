@@ -4,8 +4,9 @@ import android.widget.SearchView
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.databinding.FragmentHomeBinding
-import com.example.qrholder.presentation.core.AbstractFragment
 import com.example.qrholder.presentation.core.SimpleOnQueryTextListener
+import com.example.qrholder.presentation.core.fragment.AbstractFragment
+import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
 import com.example.qrholder.presentation.home.adapter.QrCodesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -14,13 +15,17 @@ import javax.inject.Inject
 class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     FragmentHomeBinding::inflate,
     HomeViewModel::class.java
-) {
+), BottomNavViewVisibility.Show {
 
     @Inject
     lateinit var manageResources: ManageResources
 
-    private val searchView by lazy {
-        binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
+    private lateinit var searchView: SearchView
+
+    private val textChangedListener by lazy {
+        SimpleOnQueryTextListener { searchText ->
+            viewModel.filter(searchText)
+        }
     }
 
     private val adapter by lazy {
@@ -41,6 +46,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         super.setupViews()
         with(binding) {
             rvQrList.adapter = adapter
+            searchView = toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
             searchView.queryHint = manageResources.string(R.string.search_query_hint)
         }
     }
@@ -61,16 +67,19 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
                     shimmers = shimmersLayout
                 )
             }
-
         }
     }
 
-    override fun setupListeners() {
-        super.setupListeners()
-        //Todo Is it necessary to remove Listener in onPause?
-        searchView.setOnQueryTextListener(SimpleOnQueryTextListener { searchText ->
-            viewModel.filter(searchText)
-        }
-        )
+    override fun onResume() {
+        super.onResume()
+        searchView.setOnQueryTextListener(textChangedListener)
+        binding.toolbar.requestFocus()
+        if (searchView.query.isEmpty())
+            searchView.onActionViewCollapsed()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        searchView.setOnQueryTextListener(null)
     }
 }
