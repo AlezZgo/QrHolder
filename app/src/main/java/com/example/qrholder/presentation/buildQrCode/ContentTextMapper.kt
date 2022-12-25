@@ -14,25 +14,28 @@ interface ContentTextMapper : Mapper<String, Unit> {
             val sourceTrimmed = source.trim()
 
             communication.map(
-                if (sourceTrimmed.isBlank())
-                    InputEditTextUiState.Error(
+                when {
+                    sourceTrimmed.isBlank() -> InputEditTextUiState.Error(
                         manageResources.string(
                             R.string.input_edit_text_error_this_field_cannot_be_empty
                         )
                     )
-                else if (sourceTrimmed.length < 5)
-                    InputEditTextUiState.Error(
-                        manageResources.string(
-                            R.string.input_edit_text_error_this_field_must_contain_at_least_5_characters
+                    sourceTrimmed.length < 5 ->
+                        InputEditTextUiState.Error(
+                            manageResources.string(
+                                R.string.input_edit_text_error_this_field_must_contain_at_least_5_characters
+                            )
                         )
-                    )
-                else if (sourceTrimmed.length > 300)
-                    InputEditTextUiState.Error(
-                        manageResources.string(
-                            R.string.input_edit_text_error_this_field_must_contain_at_least_5_characters
+                    //todo this block fucked
+                    sourceTrimmed.length > 300 ->
+                        InputEditTextUiState.Error(
+                            manageResources.string(
+                                R.string.content_input_edit_text_error_this_field_must_contain_no_more_then_300_characters
+                            )
                         )
-                    )
-                else InputEditTextUiState.NoError
+                    else -> InputEditTextUiState.NoError
+                }
+
             )
         }
 

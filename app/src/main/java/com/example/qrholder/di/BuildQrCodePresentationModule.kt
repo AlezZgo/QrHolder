@@ -26,13 +26,15 @@ interface BuildQrCodePresentationModule {
     @Binds
     fun bindContentUiStateCommunication(communication: ContentUiStateCommunication.Base): ContentUiStateCommunication
 
+    @Singleton
     @TitleTextMapperAnnotation
     @Binds
-    fun bindTitleTextMapper(mapper: TitleTextMapper): Mapper<String, Unit>
+    fun bindTitleTextMapper(mapper: TitleTextMapper.Base): Mapper<String, Unit>
 
+    @Singleton
     @ContentTextMapperAnnotation
     @Binds
-    fun bindContentTextMapper(mapper: ContentTextMapper): Mapper<String, Unit>
+    fun bindContentTextMapper(mapper: ContentTextMapper.Base): Mapper<String, Unit>
 
 }
 

@@ -1,5 +1,7 @@
 package com.example.qrholder.presentation.buildQrCode
 
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.core.Mapper
@@ -18,27 +20,33 @@ class BuildQrCodeViewModel @Inject constructor(
     private val manageResources : ManageResources,
     @EmptyText private var titleText: String,
     @EmptyText private var contentText: String,
-//    @TitleTextMapperAnnotation private val titleMapper: Mapper<String,Unit>,
-//    @ContentTextMapperAnnotation private val contentMapper: Mapper<String,Unit>,
-) : AbstractViewModel(),ChangeTitle,ChangeContent,Build {
+    @TitleTextMapperAnnotation private val titleMapper: Mapper<String,Unit>,
+    @ContentTextMapperAnnotation private val contentMapper: Mapper<String,Unit>,
+) : AbstractViewModel(),ChangeTitle,ChangeContent,Build, ObserveTitleUiState, ObserveContentUiState {
 
     override fun init() {
         communications.showTitleState(InputEditTextUiState.NoError)
         communications.showContentState(InputEditTextUiState.NoError)
     }
 
-    override fun changeTitle(title: String) {
-        titleText = title
-    }
+    override fun observeTitleUiState(
+        owner: LifecycleOwner,
+        observer: Observer<InputEditTextUiState>
+    ) = communications.observeTitleUiState(owner, observer)
 
-    override fun changeContent(content: String) {
-       contentText = content
-    }
+    override fun observeContentUiState(
+        owner: LifecycleOwner,
+        observer: Observer<InputEditTextUiState>
+    ) = communications.observeContentUiState(owner, observer)
+
+    override fun changeTitle(title: String) { titleText = title }
+
+    override fun changeContent(content: String) { contentText = content }
 
     override fun build() {
-        TODO("Not yet implemented")
+        titleMapper.map(titleText)
+        contentMapper.map(contentText)
     }
-
 
 }
 

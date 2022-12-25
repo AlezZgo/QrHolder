@@ -31,7 +31,7 @@ interface TitleTextMapper : Mapper<String, Unit> {
                 else if (sourceTrimmed.length > 50)
                     InputEditTextUiState.Error(
                         manageResources.string(
-                            R.string.input_edit_text_error_this_field_must_contain_at_least_5_characters
+                            R.string.title_input_edit_text_error_this_field_must_contain_no_more_then_50_characters
                         )
                     )
                 else InputEditTextUiState.NoError
