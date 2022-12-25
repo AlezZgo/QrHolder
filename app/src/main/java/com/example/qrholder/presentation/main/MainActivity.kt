@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity(), InitUI {
     override fun setupListeners() {
         super.setupListeners()
         binding.fabBuild.setOnClickListener {
-            //todo fix navigation, (now in develop)
             navController.navigate(R.id.buildQrCodeFragment)
             viewModel.changeFabState(MainFabUiState.Closed)
         }
