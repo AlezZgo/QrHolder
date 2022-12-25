@@ -1,39 +1,13 @@
 package com.example.qrholder.presentation.main.ui
 
-import com.example.qrholder.core.TestDispatchersList
-import com.example.qrholder.presentation.main.MainActivityViewModel
 import com.example.qrholder.presentation.main.MainFabUiState
 import kotlinx.coroutines.*
-import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class MainActivityViewModelTest : BaseMainViewModelTest() {
-
-    private lateinit var viewModel: MainActivityViewModel
-    private lateinit var dispatchersList: TestDispatchersList
-    private lateinit var fabState: TestFabStateCommunication
-
-    @OptIn(DelicateCoroutinesApi::class)
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
-
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @BeforeEach
-    fun setUp() {
-        Dispatchers.setMain(mainThreadSurrogate)
-
-        fabState = TestFabStateCommunication()
-        dispatchersList = TestDispatchersList()
-
-        viewModel = MainActivityViewModel(
-            fabState = fabState,
-            dispatchers = dispatchersList
-        )
-    }
+internal class MainActivityViewModelTest : BaseMainActivityViewModelTest() {
 
     @Test
     fun `first run app, re-init,changeFabState, re-init, changeFabState`() = runBlocking {

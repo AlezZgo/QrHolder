@@ -18,45 +18,7 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class HomeViewModelViewModelTest {
-
-    private lateinit var communications: TestHomeCommunications
-    private lateinit var interactor: TestQrCodesInteractor
-    private lateinit var mapper: QrCodesMapper
-    private lateinit var dispatchersList: TestDispatchersList
-    private lateinit var manageResources: TestManageResources
-
-    private lateinit var viewModel: HomeViewModel
-
-    @OptIn(DelicateCoroutinesApi::class)
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @BeforeEach
-    fun setUp() {
-        Dispatchers.setMain(mainThreadSurrogate)
-
-        communications = TestHomeCommunications()
-        interactor = TestQrCodesInteractor()
-        mapper = QrCodesMapper(communications, QrCodeToUiMapper())
-        dispatchersList = TestDispatchersList()
-        manageResources = TestManageResources()
-
-        viewModel = HomeViewModel(
-            dispatchers = dispatchersList,
-            communications = communications,
-            interactor = interactor,
-            fetchAllResultMapper = mapper,
-            manageResources = manageResources
-        )
-    }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @AfterEach
-    fun tearDown() {
-        Dispatchers.resetMain()
-        mainThreadSurrogate.close()
-    }
+internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest() {
 
     @Test
     fun `the very first run application`() = runBlocking {

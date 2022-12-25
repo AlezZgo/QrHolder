@@ -9,16 +9,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class HomeInteractorTest {
-
-    private lateinit var interactor: HomeInteractor
-    private lateinit var repository: TestQrCodesRepository
-
-    @BeforeEach
-    fun setUp(){
-        repository = TestQrCodesRepository()
-        interactor = HomeInteractor.Base(repository)
-    }
+class HomeInteractorTest : AbstractHomeInteractorTest() {
 
     @Test
     fun `fetch success empty list`() = runBlocking{
@@ -61,22 +52,6 @@ class HomeInteractorTest {
         repository.changeExpectedResult(error)
         assertEquals(error,repository.allQrCodes())
         assertEquals(1,repository.allNumbersCalledCount)
-    }
-
-    private class TestQrCodesRepository : QrCodesRepository {
-
-        private var expectedQrCodesResult : QrCodes = QrCodes.Success(emptyList())
-        var allNumbersCalledCount = 0
-
-        fun changeExpectedResult(qrCodes : QrCodes){
-            expectedQrCodesResult = qrCodes
-        }
-
-        override suspend fun allQrCodes() : QrCodes {
-            allNumbersCalledCount++
-            return expectedQrCodesResult
-        }
-
     }
 
 }

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 
 internal class QrCodeDataToDomainMapperTest {
 
-
     @Test
     fun `convert Data to domain model`() {
 
@@ -17,7 +16,6 @@ internal class QrCodeDataToDomainMapperTest {
         val actual = dataModel.map(mapper)
 
         assertEquals(QrCode("Title", "Content", path = "content.cat.id1"), actual)
-
 
     }
 }

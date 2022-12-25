@@ -12,20 +12,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class QrCodesRepositoryTest {
-
-    private lateinit var repository: QrCodesRepository
-    private lateinit var mapper: QrCodeDataToDomainMapper
-    private lateinit var cacheDataSource: TestQrCodesCacheDataSource
-    private lateinit var manageResources: TestManageResources
-
-    @BeforeEach
-    fun setUp() {
-        cacheDataSource = TestQrCodesCacheDataSource()
-        manageResources = TestManageResources()
-        mapper = QrCodeDataToDomainMapper()
-        repository = QrCodesRepository.Base(cacheDataSource, mapper, manageResources)
-    }
+class QrCodesRepositoryTest : AbstractQrCodesRepositoryTest(){
 
     @Test
     fun `fetch empty list`() = runBlocking {
