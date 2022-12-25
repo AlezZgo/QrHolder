@@ -1,4 +1,4 @@
-package com.example.qrholder.main.ui
+package com.example.qrholder.presentation.main.ui
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer

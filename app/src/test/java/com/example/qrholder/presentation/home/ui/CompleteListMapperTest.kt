@@ -1,8 +1,9 @@
-package com.example.qrholder.home.ui
+package com.example.qrholder.presentation.home.ui
 
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
 import com.example.qrholder.presentation.home.model.HomeUiState
 import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.home.ui.BaseHomeViewModelTest
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 

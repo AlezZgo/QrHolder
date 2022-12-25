@@ -1,10 +1,11 @@
-package com.example.qrholder.home.ui
+package com.example.qrholder.presentation.home.ui
 
 import com.example.qrholder.domain.QrCode
 import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
 import com.example.qrholder.presentation.home.model.QrCodeUi
 import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.ui.BaseHomeViewModelTest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

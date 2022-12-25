@@ -1,11 +1,10 @@
-package com.example.qrholder.home.domain
+package com.example.qrholder.presentation.home.domain
 
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.QrCode
 import com.example.qrholder.domain.QrCodes
 import com.example.qrholder.data.QrCodesRepository
 import kotlinx.coroutines.runBlocking
-import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

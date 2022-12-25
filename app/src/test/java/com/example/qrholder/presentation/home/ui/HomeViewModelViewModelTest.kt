@@ -1,4 +1,4 @@
-package com.example.qrholder.home.ui
+package com.example.qrholder.presentation.home.ui
 
 import com.example.qrholder.core.TestManageResources
 import com.example.qrholder.domain.QrCode
@@ -9,6 +9,7 @@ import com.example.qrholder.presentation.home.model.HomeUiState
 import com.example.qrholder.presentation.home.HomeViewModel
 import com.example.qrholder.presentation.home.model.QrCodeUi
 import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.ui.BaseHomeViewModelTest
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain

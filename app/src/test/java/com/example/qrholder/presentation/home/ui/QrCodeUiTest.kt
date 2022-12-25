@@ -1,4 +1,4 @@
-package com.example.qrholder.home.ui
+package com.example.qrholder.presentation.home.ui
 
 import com.example.qrholder.presentation.home.model.QrCodeUi
 import org.junit.jupiter.api.Assertions.*

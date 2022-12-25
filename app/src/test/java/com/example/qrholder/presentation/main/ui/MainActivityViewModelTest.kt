@@ -1,8 +1,9 @@
-package com.example.qrholder.main.ui
+package com.example.qrholder.presentation.main.ui
 
-import com.example.qrholder.home.ui.BaseHomeViewModelTest
+import com.example.qrholder.presentation.home.ui.BaseHomeViewModelTest
 import com.example.qrholder.presentation.main.MainActivityViewModel
 import com.example.qrholder.presentation.main.MainFabUiState
+import com.example.qrholder.presentation.main.ui.BaseMainViewModelTest
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.Assertions.*
