@@ -5,11 +5,10 @@ import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
 import com.example.qrholder.presentation.home.model.QrCodeUi
 import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
-import com.example.qrholder.presentation.home.ui.BaseHomeViewModelTest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class QrCodesMapperViewModelTest : BaseHomeViewModelTest() {
+internal class QrCodesMapperViewModelTest {
 
     private val communications = TestHomeCommunications()
     private val qrCodesMapper = QrCodesMapper(communications, QrCodeToUiMapper())
@@ -28,10 +27,10 @@ internal class QrCodesMapperViewModelTest : BaseHomeViewModelTest() {
     fun `handle simple list`() {
 
         val testList = listOf(
-            QrCode("Cat", "www.cat.com","content.cat.id1"),
-            QrCode("Dog", "www.dog.com","content.cat.id2"),
-            QrCode("Duck", "www.duck.com","content.cat.id3"),
-            QrCode("Whale", "www.whale.com","content.cat.id4"),
+            QrCode("Cat", "www.cat.com", "content.cat.id1"),
+            QrCode("Dog", "www.dog.com", "content.cat.id2"),
+            QrCode("Duck", "www.duck.com", "content.cat.id3"),
+            QrCode("Whale", "www.whale.com", "content.cat.id4"),
         )
 
         qrCodesMapper.map(testList, "")
@@ -40,10 +39,10 @@ internal class QrCodesMapperViewModelTest : BaseHomeViewModelTest() {
         assertEquals(
             QrCodeUiCompleteList.Success(
                 listOf(
-                    QrCodeUi("Cat", "www.cat.com","content.cat.id1"),
-                    QrCodeUi("Dog", "www.dog.com","content.cat.id2"),
-                    QrCodeUi("Duck", "www.duck.com","content.cat.id3"),
-                    QrCodeUi("Whale", "www.whale.com","content.cat.id4"),
+                    QrCodeUi("Cat", "www.cat.com", "content.cat.id1"),
+                    QrCodeUi("Dog", "www.dog.com", "content.cat.id2"),
+                    QrCodeUi("Duck", "www.duck.com", "content.cat.id3"),
+                    QrCodeUi("Whale", "www.whale.com", "content.cat.id4"),
                 )
             ), communications.qrCodesCompleteCalledList[0]
         )
@@ -56,7 +55,10 @@ internal class QrCodesMapperViewModelTest : BaseHomeViewModelTest() {
         val errorMessage = "Something went wrong"
         qrCodesMapper.map(emptyList(), errorMessage)
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
-        assertEquals(QrCodeUiCompleteList.Error(errorMessage), communications.qrCodesCompleteCalledList[0])
+        assertEquals(
+            QrCodeUiCompleteList.Error(errorMessage),
+            communications.qrCodesCompleteCalledList[0]
+        )
 
     }
 

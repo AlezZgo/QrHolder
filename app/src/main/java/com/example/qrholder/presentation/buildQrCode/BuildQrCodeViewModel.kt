@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @HiltViewModel
-class BuildQrCodeViewModel : AbstractViewModel() {
+class BuildQrCodeViewModel @Inject constructor() : AbstractViewModel() {
 
     override fun init() {}
 

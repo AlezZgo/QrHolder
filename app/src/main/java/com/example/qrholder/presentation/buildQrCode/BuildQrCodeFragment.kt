@@ -11,22 +11,21 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
     FragmentBuildQrCodeBinding::inflate, BuildQrCodeViewModel::class.java
 ), BottomNavViewVisibility.Hide{
 
-    private val titleWatcher = object : SimpleTextWatcher() {
-        override fun afterTextChanged(title: Editable?) = viewModel.mapTitle(title.toString())
-    }
-    private val contentWatcher = object : SimpleTextWatcher() {
-        override fun afterTextChanged(content: Editable?) = viewModel.mapContent(content.toString())
-    }
+//    private val titleWatcher = object : SimpleTextWatcher() {
+//        override fun afterTextChanged(title: Editable?) = viewModel.mapTitle(title.toString())
+//    }
+//    private val contentWatcher = object : SimpleTextWatcher() {
+//        override fun afterTextChanged(content: Editable?) = viewModel.mapContent(content.toString())
+//    }
 
-    override fun onResume() {
-        super.onResume()
-        binding.tielTitile.addTextChangedListener (titleWatcher)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        binding.tielTitile.removeTextChangedListener(titleWatcher)
-    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             99
+//    override fun onResume() {
+//        super.onResume()
+//        binding.tielTitile.addTextChangedListener (titleWatcher)
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        binding.tielTitile.removeTextChangedListener(titleWatcher)
+//    }
 }
 

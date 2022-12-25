@@ -22,9 +22,11 @@ internal class HomeViewModelViewModelTest {
 
     private lateinit var communications: TestHomeCommunications
     private lateinit var interactor: TestQrCodesInteractor
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var mapper: QrCodesMapper
     private lateinit var dispatchersList: TestDispatchersList
     private lateinit var manageResources: TestManageResources
+
+    private lateinit var viewModel: HomeViewModel
 
     @OptIn(DelicateCoroutinesApi::class)
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
@@ -36,6 +38,7 @@ internal class HomeViewModelViewModelTest {
 
         communications = TestHomeCommunications()
         interactor = TestQrCodesInteractor()
+        mapper = QrCodesMapper(communications, QrCodeToUiMapper())
         dispatchersList = TestDispatchersList()
         manageResources = TestManageResources()
 
@@ -43,7 +46,7 @@ internal class HomeViewModelViewModelTest {
             dispatchers = dispatchersList,
             communications = communications,
             interactor = interactor,
-            fetchAllResultMapper = QrCodesMapper(communications, QrCodeToUiMapper()),
+            fetchAllResultMapper = mapper,
             manageResources = manageResources
         )
     }

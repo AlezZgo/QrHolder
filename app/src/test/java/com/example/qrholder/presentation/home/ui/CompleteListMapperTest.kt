@@ -3,27 +3,26 @@ package com.example.qrholder.presentation.home.ui
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
 import com.example.qrholder.presentation.home.model.HomeUiState
 import com.example.qrholder.presentation.home.model.QrCodeUi
-import com.example.qrholder.presentation.home.ui.BaseHomeViewModelTest
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class CompleteListMapperTest{
+internal class CompleteListMapperTest {
 
-    private val homeUiCommunication = BaseHomeViewModelTest.TestHomeUiStateCommunication()
+    private val homeUiCommunication = TestHomeUiStateCommunication()
 
     private val errorMessage = "Something went wrong"
     private val mapper = CompleteListMapper()
     private val complicatedFilter = "ddlkrjigosdpfoiskepofjspoeifsepo"
     private val filter = "d"
     private val testList = listOf(
-        QrCodeUi("Cat", "www.cat.com",path = "content.cat.id1"),
-        QrCodeUi("Dog", "www.dog.com",path = "content.cat.id2"),
-        QrCodeUi("Duck", "www.duck.com",path = "content.cat.id3"),
-        QrCodeUi("Whale", "www.whale_digger.com",path = "content.cat.id4"),
+        QrCodeUi("Cat", "www.cat.com", path = "content.cat.id1"),
+        QrCodeUi("Dog", "www.dog.com", path = "content.cat.id2"),
+        QrCodeUi("Duck", "www.duck.com", path = "content.cat.id3"),
+        QrCodeUi("Whale", "www.whale_digger.com", path = "content.cat.id4"),
     )
 
     @Test
-    fun `handle error message`(){
+    fun `handle error message`() {
 
         mapper.map(
             testList,
@@ -32,12 +31,12 @@ internal class CompleteListMapperTest{
             homeUiCommunication
         )
 
-        assertEquals(1,homeUiCommunication.homeUiStateCalledList.size)
-        assertEquals(HomeUiState.Error(errorMessage),homeUiCommunication.homeUiStateCalledList[0])
+        assertEquals(1, homeUiCommunication.homeUiStateCalledList.size)
+        assertEquals(HomeUiState.Error(errorMessage), homeUiCommunication.homeUiStateCalledList[0])
     }
 
     @Test
-    fun `handle empty list`(){
+    fun `handle empty list`() {
 
         mapper.map(
             emptyList(),
@@ -46,12 +45,12 @@ internal class CompleteListMapperTest{
             homeUiCommunication
         )
 
-        assertEquals(1,homeUiCommunication.homeUiStateCalledList.size)
-        assertEquals(HomeUiState.Empty,homeUiCommunication.homeUiStateCalledList[0])
+        assertEquals(1, homeUiCommunication.homeUiStateCalledList.size)
+        assertEquals(HomeUiState.Empty, homeUiCommunication.homeUiStateCalledList[0])
     }
 
     @Test
-    fun `handle list with complicated filter, but filtered list is empty`(){
+    fun `handle list with complicated filter, but filtered list is empty`() {
 
         mapper.map(
             testList,
@@ -60,12 +59,12 @@ internal class CompleteListMapperTest{
             homeUiCommunication
         )
 
-        assertEquals(1,homeUiCommunication.homeUiStateCalledList.size)
-        assertEquals(HomeUiState.NothingWasFound,homeUiCommunication.homeUiStateCalledList[0])
+        assertEquals(1, homeUiCommunication.homeUiStateCalledList.size)
+        assertEquals(HomeUiState.NothingWasFound, homeUiCommunication.homeUiStateCalledList[0])
     }
 
     @Test
-    fun `handle list with filter`(){
+    fun `handle list with filter`() {
 
         mapper.map(
             testList,
@@ -74,15 +73,16 @@ internal class CompleteListMapperTest{
             homeUiCommunication
         )
 
-        assertEquals(1,homeUiCommunication.homeUiStateCalledList.size)
+        assertEquals(1, homeUiCommunication.homeUiStateCalledList.size)
         assertEquals(
             HomeUiState.Success(
-            listOf(
-                QrCodeUi("Dog", "www.dog.com",path = "content.cat.id2"),
-                QrCodeUi("Duck", "www.duck.com",path = "content.cat.id3"),
-                QrCodeUi("Whale", "www.whale_digger.com",path = "content.cat.id4")
-            )
-        ),homeUiCommunication.homeUiStateCalledList[0])
+                listOf(
+                    QrCodeUi("Dog", "www.dog.com", path = "content.cat.id2"),
+                    QrCodeUi("Duck", "www.duck.com", path = "content.cat.id3"),
+                    QrCodeUi("Whale", "www.whale_digger.com", path = "content.cat.id4")
+                )
+            ), homeUiCommunication.homeUiStateCalledList[0]
+        )
     }
 
 }

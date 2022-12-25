@@ -1,9 +1,8 @@
 package com.example.qrholder.presentation.main.ui
 
-import com.example.qrholder.presentation.home.ui.BaseHomeViewModelTest
+import com.example.qrholder.core.TestDispatchersList
 import com.example.qrholder.presentation.main.MainActivityViewModel
 import com.example.qrholder.presentation.main.MainFabUiState
-import com.example.qrholder.presentation.main.ui.BaseMainViewModelTest
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.Assertions.*
@@ -12,10 +11,10 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class MainActivityViewModelTest : BaseMainViewModelTest(){
+internal class MainActivityViewModelTest : BaseMainViewModelTest() {
 
     private lateinit var viewModel: MainActivityViewModel
-    private lateinit var dispatchersList: BaseHomeViewModelTest.TestDispatchersList
+    private lateinit var dispatchersList: TestDispatchersList
     private lateinit var fabState: TestFabStateCommunication
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -28,7 +27,7 @@ internal class MainActivityViewModelTest : BaseMainViewModelTest(){
         Dispatchers.setMain(mainThreadSurrogate)
 
         fabState = TestFabStateCommunication()
-        dispatchersList = BaseHomeViewModelTest.TestDispatchersList()
+        dispatchersList = TestDispatchersList()
 
         viewModel = MainActivityViewModel(
             fabState = fabState,
@@ -65,7 +64,6 @@ internal class MainActivityViewModelTest : BaseMainViewModelTest(){
         assertEquals(MainFabUiState.Closed, fabState.fabStateCalledList[2])
 
     }
-
 
 
 }
