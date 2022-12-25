@@ -4,8 +4,9 @@ import android.widget.SearchView
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.databinding.FragmentHomeBinding
-import com.example.qrholder.presentation.core.AbstractFragment
 import com.example.qrholder.presentation.core.SimpleOnQueryTextListener
+import com.example.qrholder.presentation.core.fragment.AbstractFragment
+import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
 import com.example.qrholder.presentation.home.adapter.QrCodesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -14,7 +15,7 @@ import javax.inject.Inject
 class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     FragmentHomeBinding::inflate,
     HomeViewModel::class.java
-) {
+),BottomNavViewVisibility.Show {
 
     @Inject
     lateinit var manageResources: ManageResources
@@ -70,7 +71,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         //Todo Is it necessary to remove Listener in onPause?
         searchView.setOnQueryTextListener(SimpleOnQueryTextListener { searchText ->
             viewModel.filter(searchText)
-            }
+        }
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.example.qrholder.presentation.core
+package com.example.qrholder.presentation.core.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
