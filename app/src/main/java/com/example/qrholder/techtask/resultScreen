@@ -1,0 +1,18 @@
+ProcessingState consist of just 1 animated image
+    (for 6 seconds max) then go to successResultScreen or failureResultScreen
+SuccessState consist of:
+    title text field with hint "title"
+    subtitle immutable text field with link text
+    animated image with generated QrCode
+    button save -> save image and go to homeScreen
+    need an link string as necessary argument
+
+FailureState -> consist of:
+    title text field with hint "title"
+    subtitle immutable text field with link text
+    animated image with generated QrCode
+    button save -> save image and go to homeScreen
+
+    (2 states)
+    timeout -> contains title text: "Failed to process the image". subtitle: "Time's up". Animated image with clock
+    error -> set title text: "Failed to process the image". subtitle: "Something went wrong". Animated image with broken hammer

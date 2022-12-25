@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.viewbinding.ViewBinding
 import com.example.qrholder.core.Match
 import com.example.qrholder.presentation.core.AbstractDiffCallback
-import com.example.qrholder.presentation.core.Inflate
+import com.example.qrholder.presentation.core.fragment.Inflate
 
 abstract class AbstractSimpleListAdapter<
         M : Match<M>,

@@ -54,7 +54,7 @@
             android:textSize="16sp"
             android:visibility="gone"
             app:fontFamily="@font/roboto_mono_medium"
-            tools:text="Nothing was found with this filter. \n Clear the search field and try again!" />
+            android:text="@string/nothing_was_found_with_this_filter_clear_the_search_field_and_try_again" />
 
         <ImageView
             android:id="@+id/ivEmptyFolder"
@@ -76,7 +76,7 @@
             android:textSize="16sp"
             android:visibility="gone"
             app:fontFamily="@font/roboto_mono_medium"
-            tools:text="The storage is empty. \n Create your first QR code!" />
+            android:text="@string/the_storage_is_empty_create_your_first_qr_code" />
 
         <ImageView
             android:id="@+id/ivError"

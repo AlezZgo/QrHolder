@@ -23,15 +23,13 @@ class MainActivity : AppCompatActivity(), InitUI {
     private val navView by lazy { binding.navView }
     private val navController by lazy { findNavController(R.id.nav_host_fragment_activity_main) }
     private val handleBottomNavViewVisibility by lazy { HandleBottomNavViewVisibility.Base() }
-    private val fragmentCreatedCallBack by lazy {
-        object : FragmentManager.FragmentLifecycleCallbacks() {
-            override fun onFragmentViewCreated(
-                fm: FragmentManager,
-                fragment: Fragment,
-                v: View,
-                savedInstanceState: Bundle?
-            ) = handleBottomNavViewVisibility.show(navView, fragment)
-        }
+    private val fragmentCreatedCallBack = object : FragmentManager.FragmentLifecycleCallbacks() {
+        override fun onFragmentViewCreated(
+            fm: FragmentManager,
+            fragment: Fragment,
+            v: View,
+            savedInstanceState: Bundle?
+        ) = handleBottomNavViewVisibility.show(navView, fragment)
     }
 
     private val viewModel by viewModels<MainActivityViewModel>()

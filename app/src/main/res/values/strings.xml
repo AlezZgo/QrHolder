@@ -20,4 +20,6 @@
     <string name="tittle">Title</string>
     <string name="content">Content</string>
     <string name="build">Build</string>
+    <string name="nothing_was_found_with_this_filter_clear_the_search_field_and_try_again">Nothing was found with this filter. \n Clear the search field and try again!</string>
+    <string name="the_storage_is_empty_create_your_first_qr_code">The storage is empty. \n Create your first QR code!</string>
 </resources>

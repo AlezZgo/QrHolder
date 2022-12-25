@@ -1,3 +1,0 @@
-failure (2 states)
-    timeout -> contains title text: "Failed to process the image". subtitle: "Time's up". Animated image with clock
-    error -> set title text: "Failed to process the image". subtitle: "Something went wrong". Animated image with broken hammer
