@@ -22,6 +22,8 @@ abstract class AbstractBuildQrCodeViewModelTest {
     protected lateinit var dispatchersList: TestDispatchersList
     protected lateinit var manageResources: TestManageResources
     protected lateinit var viewModel: BuildQrCodeViewModel
+    protected lateinit var title : String
+    protected lateinit var content : String
 
     @OptIn(DelicateCoroutinesApi::class)
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
@@ -34,11 +36,17 @@ abstract class AbstractBuildQrCodeViewModelTest {
         communications = TestBuildQrCodeCommunications()
         dispatchersList = TestDispatchersList()
         manageResources = TestManageResources()
+        title = ""
+        content = ""
 
         viewModel = BuildQrCodeViewModel(
             dispatchers = dispatchersList,
             communications = communications,
-            manageResources = manageResources
+            manageResources = manageResources,
+            titleText = title,
+            contentText = content,
+            TitleTextMapper.Base(manageResources,communications.titleCommunication),
+            ContentTextMapper.Base(manageResources,communications.titleCommunication)
         )
     }
 

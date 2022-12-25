@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 interface BuildQrCodeCommunications : ShowTitleUiState, ShowContentUiState, ObserveTitleUiState, ObserveContentUiState {
 
-    class Base(
+    class Base@Inject constructor(
         private val titleStateCommunication: TitleUiStateCommunication,
         private val contentStateCommunication: ContentUiStateCommunication,
     ) : BuildQrCodeCommunications {
