@@ -15,7 +15,7 @@ import javax.inject.Inject
 class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     FragmentHomeBinding::inflate,
     HomeViewModel::class.java
-),BottomNavViewVisibility.Show {
+), BottomNavViewVisibility.Show {
 
     @Inject
     lateinit var manageResources: ManageResources
@@ -71,7 +71,6 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         //Todo Is it necessary to remove Listener in onPause?
         searchView.setOnQueryTextListener(SimpleOnQueryTextListener { searchText ->
             viewModel.filter(searchText)
-        }
-        )
+        })
     }
 }

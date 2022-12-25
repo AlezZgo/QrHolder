@@ -10,12 +10,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.qrholder.R
 import com.example.qrholder.databinding.ActivityMainBinding
+import com.example.qrholder.presentation.core.InitUI
 import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), InitUI {
 
     //Todo Should I clear it in onDestroy? I have already checked, there is no any leaks from there
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -37,12 +38,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
         navView.setupWithNavController(navController)
-
         viewModel.init(savedInstanceState == null)
+        setupViews()
+        setupListeners()
+        observe()
+    }
 
+    override fun setupListeners() {
+        super.setupListeners()
+        binding.fabBuild.setOnClickListener {
+            //todo fix navigation, (now in develop)
+            navController.navigate(R.id.buildQrCodeFragment)
+            viewModel.changeFabState(MainFabUiState.Closed)
+        }
+        supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentCreatedCallBack, true)
+    }
+
+    override fun observe() {
+        super.observe()
         viewModel.observeUiState(this) { fabUiState ->
             fabUiState.show(
                 binding.fabParent,
@@ -54,16 +69,6 @@ class MainActivity : AppCompatActivity() {
                 }
             )
         }
-
-        binding.fabBuild.setOnClickListener {
-            //todo fix navigation, (now in develop)
-            navController.navigate(R.id.buildQrCodeFragment)
-            viewModel.changeFabState(MainFabUiState.Closed)
-        }
-
-        supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentCreatedCallBack, true)
-
-
     }
 }
 

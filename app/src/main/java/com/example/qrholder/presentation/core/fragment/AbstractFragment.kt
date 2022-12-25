@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.example.qrholder.presentation.core.InitUI
 import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -14,7 +15,7 @@ typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
     private val inflate: Inflate<B>,
     private val clazz: Class<V>
-) : Fragment() {
+) : Fragment(), InitUI {
 
     protected var isSharedViewModel: Boolean = false
     lateinit var viewModel: V
@@ -53,10 +54,5 @@ abstract class AbstractFragment<B : ViewBinding, V : AbstractViewModel>(
         _viewBinding = null
     }
 
-    protected open fun setupViews() = Unit
-
-    protected open fun setupListeners() = Unit
-
-    protected open fun observe() = Unit
 
 }
