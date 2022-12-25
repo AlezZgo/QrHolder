@@ -10,7 +10,6 @@ interface ManageResources {
 
     class Base @Inject constructor(private val context: Context) : ManageResources {
         override fun string(id: Int) = context.getString(id)
-
     }
 
 }

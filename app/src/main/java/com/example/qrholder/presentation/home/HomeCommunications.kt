@@ -16,22 +16,22 @@ interface HomeCommunications : ObserveHomeUiState, ShowState<HomeUiState> {
     fun filter(text: String)
 
     class Base @Inject constructor(
-        private val uiState: HomeUiStateCommunication,
-        private val filter: FilterCommunication,
-        private val qrCodesCompleteList: CompleteListCommunication
+        private val uiStateCommunication: HomeUiStateCommunication,
+        private val filterCommunication: FilterCommunication,
+        private val qrCodesCompleteListCommunication: CompleteListCommunication
     ) : HomeCommunications {
-        override fun showState(state: HomeUiState) = uiState.map(state)
+        override fun showState(state: HomeUiState) = uiStateCommunication.map(state)
 
         override fun changeCompleteList(qrCodes: QrCodeUiCompleteList) =
-            qrCodesCompleteList.map(qrCodes)
+            qrCodesCompleteListCommunication.map(qrCodes)
 
         override fun filter(text: String) {
-            filter.map(text)
-            qrCodesCompleteList.filter(text, uiState)
+            filterCommunication.map(text)
+            qrCodesCompleteListCommunication.filter(text, uiStateCommunication)
         }
 
         override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUiState>) {
-            uiState.observe(owner, observer)
+            uiStateCommunication.observe(owner, observer)
         }
     }
 

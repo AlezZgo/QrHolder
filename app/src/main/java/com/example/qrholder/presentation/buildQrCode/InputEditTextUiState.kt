@@ -6,7 +6,7 @@ sealed class InputEditTextUiState {
 
     abstract fun show(textInputEditText: TextInputEditText)
 
-    object Success : InputEditTextUiState(){
+    object NoError : InputEditTextUiState(){
         override fun show(textInputEditText: TextInputEditText) {
             textInputEditText.error = null
         }
