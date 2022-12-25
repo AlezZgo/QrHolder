@@ -1,4 +1,4 @@
-package com.example.qrholder.main
+package com.example.qrholder.main.ui
 
 import com.example.qrholder.home.ui.BaseHomeViewModelTest
 import com.example.qrholder.presentation.main.MainActivityViewModel

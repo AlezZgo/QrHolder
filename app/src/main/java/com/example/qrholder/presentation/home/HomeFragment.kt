@@ -70,7 +70,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         //Todo Is it necessary to remove Listener in onPause?
         searchView.setOnQueryTextListener(SimpleOnQueryTextListener { searchText ->
             viewModel.filter(searchText)
-        }
+            }
         )
     }
 }

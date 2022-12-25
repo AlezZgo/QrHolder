@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-kapt'
     id("dagger.hilt.android.plugin")
     id("de.mannodermaus.android-junit5")
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -62,8 +64,6 @@ dependencies {
     androidTestImplementation("androidx.room:room-testing:$room")
 
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
-
-
 }
 
 kapt{

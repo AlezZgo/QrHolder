@@ -7,12 +7,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.qrholder.R
 import com.example.qrholder.databinding.ActivityMainBinding
+import com.example.qrholder.presentation.buildQrCode.BuildQrCodeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    //Todo Should I clear it in onDestroy?
+    //Todo Should I clear it in onDestroy? I have already checked, there is no any leaks from there
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val navView by lazy { binding.navView }
     private val navController by lazy { findNavController(R.id.nav_host_fragment_activity_main) }
@@ -37,6 +38,16 @@ class MainActivity : AppCompatActivity() {
                     viewModel.changeFabState(fabUiState.opposite())
                 }
             )
+        }
+
+        binding.fabBuild.setOnClickListener {
+            //todo fix navigation, (now in develop)
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment_activity_main,BuildQrCodeFragment())
+                .addToBackStack(null)
+                .commit()
+            viewModel.changeFabState(MainFabUiState.Closed)
         }
 
     }

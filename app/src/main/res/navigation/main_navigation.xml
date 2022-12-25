@@ -16,4 +16,9 @@
         android:name="com.example.qrholder.presentation.menu.MenuFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/buildQrCodeFragment"
+        android:name="com.example.qrholder.presentation.buildQrCode.BuildQrCodeFragment"
+        android:label="BuildQrCodeFragment"
+        tools:layout="@layout/fragment_build_qr_code" />
 </navigation>
