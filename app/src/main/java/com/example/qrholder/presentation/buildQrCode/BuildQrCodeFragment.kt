@@ -6,7 +6,9 @@ import com.example.qrholder.databinding.FragmentBuildQrCodeBinding
 import com.example.qrholder.presentation.core.SimpleTextWatcher
 import com.example.qrholder.presentation.core.fragment.AbstractFragment
 import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQrCodeViewModel>(
     FragmentBuildQrCodeBinding::inflate, BuildQrCodeViewModel::class.java
 ), BottomNavViewVisibility.Hide{

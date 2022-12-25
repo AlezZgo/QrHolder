@@ -2,12 +2,11 @@ package com.example.qrholder.presentation.buildQrCode
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.example.qrholder.presentation.home.ui.TestHomeUiStateCommunication
 
 class TestBuildQrCodeCommunications : BuildQrCodeCommunications {
 
-    val titleCommunication = TestInputEditTextUiStateCommunication()
-    val contentCommunication = TestInputEditTextUiStateCommunication()
+    val titleCommunication = TestTitleUiStateCommunication()
+    val contentCommunication = TestTitleUiStateCommunication()
 
     override fun showTitleState(titleState: InputEditTextUiState) {
         titleCommunication.inputEditTextUiStateCalledList.add(titleState)

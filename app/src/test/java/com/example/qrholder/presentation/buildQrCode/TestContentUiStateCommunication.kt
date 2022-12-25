@@ -3,7 +3,7 @@ package com.example.qrholder.presentation.buildQrCode
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 
-class TestInputEditTextUiStateCommunication : TitleUiStateCommunication {
+class TestContentUiStateCommunication : ContentUiStateCommunication {
 
     var inputEditTextUiStateCalledList = mutableListOf<InputEditTextUiState>()
 

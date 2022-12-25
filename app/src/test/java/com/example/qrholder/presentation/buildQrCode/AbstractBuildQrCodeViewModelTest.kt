@@ -1,8 +1,10 @@
 package com.example.qrholder.presentation.buildQrCode
 
+import com.example.qrholder.core.ManageResources
 import com.example.qrholder.core.TestDispatchersList
 import com.example.qrholder.core.TestManageResources
 import com.example.qrholder.core.TestQrCodesInteractor
+import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import com.example.qrholder.presentation.home.HomeViewModel
 import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
@@ -18,9 +20,9 @@ import org.junit.jupiter.api.BeforeEach
 
 abstract class AbstractBuildQrCodeViewModelTest {
 
-    protected lateinit var communications: TestBuildQrCodeCommunications
-    protected lateinit var dispatchersList: TestDispatchersList
-    protected lateinit var manageResources: TestManageResources
+    protected lateinit var dispatchersList: DispatchersList
+    protected lateinit var manageResources: ManageResources
+    protected lateinit var communications: BuildQrCodeCommunications
     protected lateinit var viewModel: BuildQrCodeViewModel
     protected lateinit var title : String
     protected lateinit var content : String
@@ -45,8 +47,8 @@ abstract class AbstractBuildQrCodeViewModelTest {
             manageResources = manageResources,
             titleText = title,
             contentText = content,
-            TitleTextMapper.Base(manageResources,communications.titleCommunication),
-            ContentTextMapper.Base(manageResources,communications.titleCommunication)
+//            TitleTextMapper.Base(manageResources,communications.titleCommunication),
+//            ContentTextMapper.Base(manageResources,communications.titleCommunication)
         )
     }
 

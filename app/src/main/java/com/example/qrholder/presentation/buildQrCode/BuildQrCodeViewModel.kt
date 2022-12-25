@@ -32,7 +32,7 @@ class BuildQrCodeViewModel @Inject constructor(
     }
 
     override fun changeContent(content: String) {
-        contentText = content
+       contentText = content
     }
 
     override fun build() {

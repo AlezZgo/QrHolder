@@ -26,7 +26,5 @@
     <string name="input_edit_text_error_this_field_must_contain_at_least_5_characters">This field must contain at least 5 characters</string>
     <string name="title_input_edit_text_error_this_field_must_contain_no_more_then_50_characters">This field must contain no more than 50 characters</string>
     <string name="content_input_edit_text_error_this_field_must_contain_no_more_then_300_characters">This field must contain no more than 300 characters</string>
-    <string name="defaultTitleText">\"\"</string>
-    <string name="defaultContentText">\"\"</string>
 
 </resources>
