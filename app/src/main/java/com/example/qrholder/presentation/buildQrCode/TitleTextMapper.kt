@@ -16,26 +16,35 @@ interface TitleTextMapper : Mapper<String, Unit> {
             val sourceTrimmed = source.trim()
 
             communication.map(
-                if (sourceTrimmed.isBlank())
-                    InputEditTextUiState.Error(
+                when {
+                    sourceTrimmed.isBlank() -> InputEditTextUiState.Error(
                         manageResources.string(
                             R.string.input_edit_text_error_this_field_cannot_be_empty
                         )
                     )
-                else if (sourceTrimmed.length < 5)
-                    InputEditTextUiState.Error(
-                        manageResources.string(
-                            R.string.input_edit_text_error_this_field_must_contain_at_least_5_characters
+                    sourceTrimmed.length < TITLE_MIN_LENGTH ->
+                        InputEditTextUiState
+                            .Error(
+                                manageResources.stringParametrized(
+                                    R.string.input_edit_text_error_this_field_must_contain_at_least_d_characters,
+                                    TITLE_MIN_LENGTH
+                                )
+                            )
+                    sourceTrimmed.length > TITLE_MAX_LENGTH ->
+                        InputEditTextUiState.Error(
+                            manageResources.stringParametrized(
+                                R.string.input_edit_text_error_this_field_must_contain_no_more_then_d_characters,
+                                TITLE_MAX_LENGTH
+                            )
                         )
-                    )
-                else if (sourceTrimmed.length > 50)
-                    InputEditTextUiState.Error(
-                        manageResources.string(
-                            R.string.title_input_edit_text_error_this_field_must_contain_no_more_then_50_characters
-                        )
-                    )
-                else InputEditTextUiState.NoError
+                    else -> InputEditTextUiState.NoError
+                }
             )
         }
+    }
+
+    companion object {
+        private const val TITLE_MIN_LENGTH = 5
+        private const val TITLE_MAX_LENGTH = 50
     }
 }

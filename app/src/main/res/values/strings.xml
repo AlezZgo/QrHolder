@@ -23,8 +23,7 @@
     <string name="nothing_was_found_with_this_filter_clear_the_search_field_and_try_again">Nothing was found with this filter. \n Clear the search field and try again!</string>
     <string name="the_storage_is_empty_create_your_first_qr_code">The storage is empty. \n Create your first QR code!</string>
     <string name="input_edit_text_error_this_field_cannot_be_empty">This field cannot be empty</string>
-    <string name="input_edit_text_error_this_field_must_contain_at_least_5_characters">This field must contain at least 5 characters</string>
-    <string name="title_input_edit_text_error_this_field_must_contain_no_more_then_50_characters">This field must contain no more than 50 characters</string>
-    <string name="content_input_edit_text_error_this_field_must_contain_no_more_then_300_characters">This field must contain no more than 300 characters</string>
+    <string name="input_edit_text_error_this_field_must_contain_at_least_d_characters">This field must contain at least %d characters</string>
+    <string name="input_edit_text_error_this_field_must_contain_no_more_then_d_characters">This field must contain no more than %d characters</string>
 
 </resources>
