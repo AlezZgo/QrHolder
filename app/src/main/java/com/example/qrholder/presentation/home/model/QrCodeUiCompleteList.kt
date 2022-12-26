@@ -9,7 +9,7 @@ sealed class QrCodeUiCompleteList {
             completeList: List<QrCodeUi>,
             errorMessage: String,
             filter: String,
-            uiState: Communication.Mutable<HomeUiState>
+            uiState: Communication.Mutate<HomeUiState>
         ): T
     }
 

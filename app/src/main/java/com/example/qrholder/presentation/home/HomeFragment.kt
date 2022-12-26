@@ -23,6 +23,11 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     private val searchView by lazy {
         binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
     }
+    private val textChangedListener by lazy {
+        SimpleOnQueryTextListener { searchText ->
+            viewModel.filter(searchText)
+        }
+    }
 
     private val adapter by lazy {
         QrCodesAdapter(
@@ -66,11 +71,13 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         }
     }
 
-    override fun setupListeners() {
-        super.setupListeners()
-        //Todo Is it necessary to remove Listener in onPause?
-        searchView.setOnQueryTextListener(SimpleOnQueryTextListener { searchText ->
-            viewModel.filter(searchText)
-        })
+    override fun onResume() {
+        super.onResume()
+        searchView.setOnQueryTextListener(textChangedListener)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        searchView.setOnQueryTextListener(null)
     }
 }

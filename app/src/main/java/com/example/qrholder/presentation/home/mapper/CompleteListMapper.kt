@@ -11,7 +11,7 @@ class CompleteListMapper @Inject constructor() : QrCodeUiCompleteList.Mapper<Uni
         completeList: List<QrCodeUi>,
         errorMessage: String,
         filter: String,
-        uiState: Communication.Mutable<HomeUiState>
+        uiState: Communication.Mutate<HomeUiState>
     ) {
         val filtered = completeList.filter { it.contains(filter) }
 

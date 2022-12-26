@@ -1,4 +1,4 @@
-package com.example.qrholder.presentation.core
+package com.example.qrholder.presentation.core.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.qrholder.core.Match
