@@ -1,6 +1,7 @@
 package com.example.qrholder.presentation.home
 
 import android.widget.SearchView
+import android.widget.Toast
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.databinding.FragmentHomeBinding
@@ -20,9 +21,8 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     @Inject
     lateinit var manageResources: ManageResources
 
-    private val searchView by lazy {
-        binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
-    }
+    private lateinit var searchView : SearchView
+
     private val textChangedListener by lazy {
         SimpleOnQueryTextListener { searchText ->
             viewModel.filter(searchText)
@@ -45,6 +45,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupViews() {
         super.setupViews()
+        searchView = binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
         with(binding) {
             rvQrList.adapter = adapter
             searchView.queryHint = manageResources.string(R.string.search_query_hint)
@@ -67,7 +68,6 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
                     shimmers = shimmersLayout
                 )
             }
-
         }
     }
 
