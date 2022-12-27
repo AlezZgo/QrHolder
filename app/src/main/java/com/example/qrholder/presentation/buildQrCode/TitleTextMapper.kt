@@ -25,16 +25,16 @@ interface TitleTextMapper : Mapper<String, Unit> {
                     sourceTrimmed.length < TITLE_MIN_LENGTH ->
                         InputEditTextUiState
                             .Error(
-                                manageResources.stringParametrized(
+                                manageResources.string(
                                     R.string.input_edit_text_error_this_field_must_contain_at_least_d_characters,
-                                    TITLE_MIN_LENGTH
+                                    TITLE_MIN_LENGTH.toString()
                                 )
                             )
                     sourceTrimmed.length > TITLE_MAX_LENGTH ->
                         InputEditTextUiState.Error(
-                            manageResources.stringParametrized(
+                            manageResources.string(
                                 R.string.input_edit_text_error_this_field_must_contain_no_more_then_d_characters,
-                                TITLE_MAX_LENGTH
+                                TITLE_MAX_LENGTH.toString()
                             )
                         )
                     else -> InputEditTextUiState.NoError

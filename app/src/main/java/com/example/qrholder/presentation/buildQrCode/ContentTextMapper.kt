@@ -22,16 +22,16 @@ interface ContentTextMapper : Mapper<String, Unit> {
                     )
                     sourceTrimmed.length < 5 ->
                         InputEditTextUiState.Error(
-                            manageResources.stringParametrized(
+                            manageResources.string(
                                 R.string.input_edit_text_error_this_field_must_contain_at_least_d_characters,
-                                CONTENT_MIN_LENGTH
+                                CONTENT_MIN_LENGTH.toString()
                             )
                         )
                     sourceTrimmed.length > 300 ->
                         InputEditTextUiState.Error(
-                            manageResources.stringParametrized(
+                            manageResources.string(
                                 R.string.input_edit_text_error_this_field_must_contain_no_more_then_d_characters,
-                                CONTENT_MAX_LENGTH
+                                CONTENT_MAX_LENGTH.toString()
                             )
                         )
                     else -> InputEditTextUiState.NoError

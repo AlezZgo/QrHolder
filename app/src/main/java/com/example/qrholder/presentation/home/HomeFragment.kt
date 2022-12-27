@@ -1,7 +1,6 @@
 package com.example.qrholder.presentation.home
 
 import android.widget.SearchView
-import android.widget.Toast
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.databinding.FragmentHomeBinding

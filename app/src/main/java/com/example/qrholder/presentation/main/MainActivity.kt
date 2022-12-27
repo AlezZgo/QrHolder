@@ -1,7 +1,9 @@
 package com.example.qrholder.presentation.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -19,9 +21,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), InitUI {
 
-    private lateinit var binding : ActivityMainBinding
-    private lateinit var navView : BottomNavigationView
-    private lateinit var navController : NavController
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navView: BottomNavigationView
+    private lateinit var navController: NavController
     private val handleBottomNavViewVisibility by lazy { HandleBottomNavViewVisibility.Base() }
     private val fragmentCreatedCallBack = object : FragmentManager.FragmentLifecycleCallbacks() {
         override fun onFragmentViewCreated(
@@ -36,12 +38,13 @@ class MainActivity : AppCompatActivity(), InitUI {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         navView = binding.navView
         navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
         viewModel.init(savedInstanceState == null)
+
         setupViews()
         setupListeners()
         observe()
@@ -70,6 +73,25 @@ class MainActivity : AppCompatActivity(), InitUI {
             )
         }
     }
+
+    fun hideKeyboard(clearAction : ()->Unit) {
+        try {
+            val inputManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as (InputMethodManager);
+            val currentFocusedView = currentFocus;
+            if (currentFocusedView != null) {
+                inputManager.hideSoftInputFromWindow(
+                    currentFocusedView.windowToken,
+                    InputMethodManager.HIDE_NOT_ALWAYS
+                );
+                clearAction.invoke()
+            }
+            clearAction.invoke()
+        } catch (e: Exception) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 interface HandleBottomNavViewVisibility {
