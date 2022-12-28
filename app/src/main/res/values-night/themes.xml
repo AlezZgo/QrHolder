@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.QrHolder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/aquamarine_500</item>
+        <item name="colorPrimary">@color/dark_gray</item>
         <item name="colorPrimaryVariant">@color/aquamarine_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
@@ -10,6 +10,6 @@
         <item name="colorSecondaryVariant">@color/aquamarine_500</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" >@color/dark_gray</item>
     </style>
 </resources>

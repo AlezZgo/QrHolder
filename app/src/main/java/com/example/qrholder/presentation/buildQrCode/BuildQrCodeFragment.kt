@@ -22,21 +22,18 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
     override fun observe() {
         super.observe()
 
-        viewModel.observeTitleUiState(viewLifecycleOwner){ titleUiState->
+        viewModel.observeTitleUiState(viewLifecycleOwner){ titleUiState ->
             titleUiState.show(binding.tielTitle)
         }
-        viewModel.observeContentUiState(viewLifecycleOwner){ contentUiState->
+        viewModel.observeContentUiState(viewLifecycleOwner){ contentUiState ->
             contentUiState.show(binding.tielContent)
         }
-
     }
 
     override fun setupListeners() {
         super.setupListeners()
         binding.btnBuild.setOnClickListener { viewModel.build() }
     }
-
-
 
     override fun onResume() {
         super.onResume()

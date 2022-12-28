@@ -20,7 +20,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     @Inject
     lateinit var manageResources: ManageResources
 
-    private lateinit var searchView : SearchView
+    private lateinit var searchView: SearchView
 
     private val textChangedListener by lazy {
         SimpleOnQueryTextListener { searchText ->
@@ -44,9 +44,9 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupViews() {
         super.setupViews()
-        searchView = binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
         with(binding) {
             rvQrList.adapter = adapter
+            searchView = toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
             searchView.queryHint = manageResources.string(R.string.search_query_hint)
         }
     }
@@ -73,6 +73,9 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onResume() {
         super.onResume()
         searchView.setOnQueryTextListener(textChangedListener)
+        binding.toolbar.requestFocus()
+        if (searchView.query.isEmpty())
+            searchView.onActionViewCollapsed()
     }
 
     override fun onPause() {

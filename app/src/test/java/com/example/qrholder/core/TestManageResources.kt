@@ -8,4 +8,6 @@ class TestManageResources : ManageResources {
     }
 
     override fun string(id: Int): String = value
+
+    override fun string(id: Int, vararg args: String?): String = value
 }
