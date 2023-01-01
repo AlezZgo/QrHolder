@@ -64,6 +64,8 @@ dependencies {
     androidTestImplementation("androidx.room:room-testing:$room")
 
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    implementation 'com.github.kenglxn.QRGen:javase:3.0.1'
 }
 
 kapt{

@@ -15,13 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BuildQrCodeViewModel @Inject constructor(
-    private val dispatchers : DispatchersList,
     private val communications : BuildQrCodeCommunications,
-    private val manageResources : ManageResources,
-    @EmptyText private var titleText: String,
-    @EmptyText private var contentText: String,
-    @TitleTextMapperAnnotation private val titleMapper: Mapper<String,Unit>,
-    @ContentTextMapperAnnotation private val contentMapper: Mapper<String,Unit>,
+    private val qrCodeBuilder: QrCodeBuilder
 ) : AbstractViewModel(),ChangeTitle,ChangeContent,Build, ObserveTitleUiState, ObserveContentUiState {
 
     override fun init() {
@@ -39,14 +34,11 @@ class BuildQrCodeViewModel @Inject constructor(
         observer: Observer<InputEditTextUiState>
     ) = communications.observeContentUiState(owner, observer)
 
-    override fun changeTitle(title: String) { titleText = title }
+    override fun changeTitle(title: String) =  qrCodeBuilder.changeTitle(title)
 
-    override fun changeContent(content: String) { contentText = content }
+    override fun changeContent(content: String) = qrCodeBuilder.changeContent(content)
 
-    override fun build() {
-        titleMapper.map(titleText)
-        contentMapper.map(contentText)
-    }
+    override fun build() = qrCodeBuilder.build()
 
 }
 

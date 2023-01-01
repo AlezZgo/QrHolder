@@ -36,6 +36,8 @@ interface BuildQrCodePresentationModule {
     @Binds
     fun bindContentTextMapper(mapper: ContentTextMapper.Base): Mapper<String, Unit>
 
+
+
 }
 
 @Qualifier

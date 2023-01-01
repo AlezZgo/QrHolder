@@ -4,5 +4,5 @@ BuildScreen consist of:
     content text input field
     build button -> create qrCode, go to
 
-    long click on subTitle -> copy link
-    click on qrCode image -> open ImageDialog with increasing brightness to the maximum
+    //todo describe checking editText fields
+    //todo describe build button behaviour
