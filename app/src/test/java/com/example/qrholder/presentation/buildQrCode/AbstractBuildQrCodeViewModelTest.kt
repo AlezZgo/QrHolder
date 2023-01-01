@@ -22,7 +22,7 @@ abstract class AbstractBuildQrCodeViewModelTest {
 
     protected lateinit var dispatchersList: DispatchersList
     protected lateinit var manageResources: ManageResources
-    protected lateinit var communications: BuildQrCodeCommunications
+    protected lateinit var communications: TestBuildQrCodeCommunications
     protected lateinit var viewModel: BuildQrCodeViewModel
     protected lateinit var title : String
     protected lateinit var content : String
@@ -47,8 +47,8 @@ abstract class AbstractBuildQrCodeViewModelTest {
             manageResources = manageResources,
             titleText = title,
             contentText = content,
-//            TitleTextMapper.Base(manageResources,communications.titleCommunication),
-//            ContentTextMapper.Base(manageResources,communications.titleCommunication)
+            TitleTextMapper.Base(manageResources,communications.titleCommunication),
+            ContentTextMapper.Base(manageResources,communications.contentCommunication)
         )
     }
 

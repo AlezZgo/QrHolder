@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 class TestBuildQrCodeCommunications : BuildQrCodeCommunications {
 
     val titleCommunication = TestTitleUiStateCommunication()
-    val contentCommunication = TestTitleUiStateCommunication()
+    val contentCommunication = TestContentUiStateCommunication()
 
     override fun showTitleState(titleState: InputEditTextUiState) {
         titleCommunication.inputEditTextUiStateCalledList.add(titleState)
