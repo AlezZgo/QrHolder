@@ -2,9 +2,10 @@ package com.example.qrholder.di
 
 import com.example.qrholder.core.Mapper
 import com.example.qrholder.presentation.buildQrCode.*
+import com.example.qrholder.presentation.core.SinglePost
+import com.example.qrholder.presentation.home.model.QrCodeUi
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Qualifier
@@ -27,6 +28,14 @@ interface BuildQrCodePresentationModule {
     fun bindContentUiStateCommunication(communication: ContentUiStateCommunication.Base): ContentUiStateCommunication
 
     @Singleton
+    @Binds
+    fun bindBuildResultCommunication(communication: BuildResultCommunication.Base): BuildResultCommunication
+
+    @Singleton
+    @Binds
+    fun bindQrCodeImageBuilder(communication: CreateQrCodeImage.Base): CreateQrCodeImage
+
+    @Singleton
     @TitleTextMapperAnnotation
     @Binds
     fun bindTitleTextMapper(mapper: TitleTextMapper.Base): Mapper<String, Unit>
@@ -35,8 +44,6 @@ interface BuildQrCodePresentationModule {
     @ContentTextMapperAnnotation
     @Binds
     fun bindContentTextMapper(mapper: ContentTextMapper.Base): Mapper<String, Unit>
-
-
 
 }
 

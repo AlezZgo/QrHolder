@@ -2,20 +2,21 @@ package com.example.qrholder.presentation.buildQrCode
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.example.qrholder.domain.ImagePath
+import com.example.qrholder.domain.QrCodeBuildResult
 import com.example.qrholder.presentation.core.IsError
-import com.example.qrholder.presentation.core.SingleLiveEvent
 import com.example.qrholder.presentation.core.SinglePost
 import com.example.qrholder.presentation.core.viewmodel.Communication
 import com.example.qrholder.presentation.home.model.QrCodeUi
 import javax.inject.Inject
 
 interface BuildQrCodeCommunications : ShowTitleUiState, ShowContentUiState, ObserveTitleUiState,
-    ObserveContentUiState, IsError, ShowQrCodeCreatedUiState {
+    ObserveContentUiState, IsError, ShowQrCodeBuildResultState,  ObserveBuildResult {
 
     class Base @Inject constructor(
         private val titleStateCommunication: TitleUiStateCommunication,
         private val contentStateCommunication: ContentUiStateCommunication,
-        private val successStateCommunication: BuildQrCodeSuccessUiStateCommunication,
+        private val buildResultCommunication: BuildResultCommunication,
     ) : BuildQrCodeCommunications {
 
         override fun showTitleState(titleState: InputEditTextUiState) =
@@ -24,8 +25,11 @@ interface BuildQrCodeCommunications : ShowTitleUiState, ShowContentUiState, Obse
         override fun showContentState(contentState: InputEditTextUiState) =
             contentStateCommunication.map(contentState)
 
-        override fun showQrCodeCreatedUiState(qrCode: QrCodeUi) =
-            successStateCommunication.map(qrCode)
+        override fun showBuildResultState(qrCode: QrCodeBuildResult) =
+            buildResultCommunication.map(qrCode)
+
+        override fun observeBuildResultState(owner: LifecycleOwner, observer: Observer<QrCodeBuildResult>) =
+            buildResultCommunication.observe(owner,observer)
 
         override fun observeTitleUiState(
             owner: LifecycleOwner,
@@ -51,8 +55,8 @@ interface ShowContentUiState {
     fun showContentState(contentState: InputEditTextUiState)
 }
 
-interface ShowQrCodeCreatedUiState{
-    fun showQrCodeCreatedUiState(qrCode: QrCodeUi)
+interface ShowQrCodeBuildResultState{
+    fun showBuildResultState(qrCode: QrCodeBuildResult)
 }
 
 interface ObserveTitleUiState {
@@ -61,6 +65,10 @@ interface ObserveTitleUiState {
 
 interface ObserveContentUiState {
     fun observeContentUiState(owner: LifecycleOwner, observer: Observer<InputEditTextUiState>)
+}
+
+interface ObserveBuildResult{
+    fun observeBuildResultState(owner: LifecycleOwner, observer: Observer<QrCodeBuildResult>)
 }
 
 interface TitleUiStateCommunication : Communication.Mutable<InputEditTextUiState>, IsError {
@@ -77,5 +85,7 @@ interface ContentUiStateCommunication : Communication.Mutable<InputEditTextUiSta
     }
 }
 
-class BuildQrCodeSuccessUiStateCommunication : SinglePost<QrCodeUi>()
+interface BuildResultCommunication : Communication.Mutable<QrCodeBuildResult>{
+    class Base @Inject constructor() : Communication.Post<QrCodeBuildResult>(),BuildResultCommunication
+}
 
