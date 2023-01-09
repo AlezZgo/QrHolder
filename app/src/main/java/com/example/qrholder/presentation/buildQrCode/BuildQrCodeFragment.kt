@@ -32,7 +32,7 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
         }
 
         viewModel.observeBuildResultState(viewLifecycleOwner){ buildResult ->
-            buildResult.show {
+            buildResult.show(binding.ivPreview) {
                 if (buildResult is QrCodeBuildResult.Success){
                     Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
                 }else if (buildResult is QrCodeBuildResult.Error){

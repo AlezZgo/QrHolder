@@ -4,6 +4,8 @@ import com.example.qrholder.presentation.home.model.QrCodeUi
 
 sealed class ImagePath {
 
+
+    //todo fix with mapper
     abstract fun map(title: String, content: String): QrCodeBuildResult
 
     data class Success(

@@ -2,13 +2,11 @@ package com.example.qrholder.presentation.buildQrCode
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import com.example.qrholder.di.EmptyText
 import com.example.qrholder.di.QrCodeStandardSize
 import com.google.zxing.BarcodeFormat
-import com.google.zxing.qrcode.QRCodeWriter
+import com.google.zxing.MultiFormatWriter
 import java.util.*
 import javax.inject.Inject
-
 
 
 interface CreateQrCodeImage : Create<String,Bitmap> {
@@ -20,18 +18,23 @@ interface CreateQrCodeImage : Create<String,Bitmap> {
 
         override fun create(input : String) : Bitmap {
 
-                val bitMatrix = QRCodeWriter()
-                    .encode(input, BarcodeFormat.QR_CODE, width, height)
+            val bitMatrix = MultiFormatWriter().encode(input, BarcodeFormat.QR_CODE, 150, 150,null)
 
-                val imageBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+            val w: Int = bitMatrix.width
+            val h: Int = bitMatrix.height
+            val pixels = IntArray(w * h)
 
-                for (i in 0 until width) {
-                    val column = IntArray(height)
-                    Arrays.fill(column, if (bitMatrix.get(i, 0)) Color.BLACK else Color.WHITE)
-                    imageBitmap.setPixels(column, 0, 1, i, 0, 1, height)
+            for (y in 0 until h) {
+                val offset = y * w
+                for (x in 0 until w) {
+                    pixels[offset + x] = if (bitMatrix.get(x, y)) Color.BLACK else Color.WHITE
                 }
+            }
 
-                return imageBitmap
+            val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+            bitmap.setPixels(pixels, 0, width, 0, 0, w, h)
+
+            return bitmap
             }
 
         }

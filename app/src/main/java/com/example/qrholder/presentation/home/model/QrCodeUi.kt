@@ -3,6 +3,7 @@ package com.example.qrholder.presentation.home.model
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import com.bumptech.glide.Glide
 import com.example.qrholder.core.Match
 
 data class QrCodeUi(
@@ -33,6 +34,14 @@ data class QrCodeUi(
         ivQrCode.setOnClickListener {
             onImageClick.invoke(this)
         }
+
+
+
+    }
+
+    fun mapToImage(imageView : ImageView){
+
+        Glide.with(imageView).load(path).into(imageView)
 
     }
 

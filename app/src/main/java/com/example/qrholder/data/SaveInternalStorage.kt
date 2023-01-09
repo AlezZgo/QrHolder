@@ -22,13 +22,14 @@ interface SaveInternalStorage<T>  {
             val path = File(directory, "$name.jpg")
 
             var fos: FileOutputStream? = null
-            try {
+            return try {
                 fos = FileOutputStream(path)
                 // Use the compress method on the BitMap object to write image to the OutputStream
                 model.compress(Bitmap.CompressFormat.PNG, 100, fos)
+                ImagePath.Success(path.path)
             } catch (e: Exception) {
                 e.printStackTrace()
-                return ImagePath.Error(e.message?:"Something went wrong")
+                ImagePath.Error(e.message?:"Something went wrong")
             } finally {
                 try {
                     fos?.close()
@@ -36,7 +37,7 @@ interface SaveInternalStorage<T>  {
                     e.printStackTrace()
                 }
             }
-            return ImagePath.Success(path.path)
+
         }
     }
 
