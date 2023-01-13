@@ -3,10 +3,9 @@ package com.example.qrholder.presentation.buildQrCode
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 
-class TestBuildQrCodeCommunications : BuildQrCodeCommunications {
+class TestBuildQrCodeCommunication : BuildQrCodeCommunications {
 
-    val titleCommunication = TestTitleUiStateCommunication()
-    val contentCommunication = TestContentUiStateCommunication()
+    val buildResultCommunication : BuildResult
 
     override fun showTitleState(titleState: InputEditTextUiState) {
         titleCommunication.inputEditTextUiStateCalledList.add(titleState)

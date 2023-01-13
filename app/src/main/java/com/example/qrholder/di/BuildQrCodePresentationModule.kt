@@ -2,8 +2,6 @@ package com.example.qrholder.di
 
 import com.example.qrholder.core.Mapper
 import com.example.qrholder.presentation.buildQrCode.*
-import com.example.qrholder.presentation.core.SinglePost
-import com.example.qrholder.presentation.home.model.QrCodeUi
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -29,7 +27,7 @@ interface BuildQrCodePresentationModule {
 
     @Singleton
     @Binds
-    fun bindBuildResultCommunication(communication: BuildResultCommunication.Base): BuildResultCommunication
+    fun bindBuildResultCommunication(communication: BuildQrCodeResultCommunication.Base): BuildQrCodeResultCommunication
 
     @Singleton
     @Binds

@@ -25,5 +25,6 @@
     <string name="input_edit_text_error_this_field_cannot_be_empty">This field cannot be empty</string>
     <string name="input_edit_text_error_this_field_must_contain_at_least_d_characters">This field must contain at least %s characters</string>
     <string name="input_edit_text_error_this_field_must_contain_no_more_then_d_characters">This field must contain no more than %s characters</string>
-
+    <string name="field_MIN_cannot_be_less_then_0">field MIN cannot be less then 0</string>
+    <string name="field_MAX_cannot_be_less_or_equal_0">field MAX cannot be less or equal 0</string>
 </resources>

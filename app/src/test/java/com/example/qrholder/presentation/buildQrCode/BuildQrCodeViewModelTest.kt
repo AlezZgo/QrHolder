@@ -7,16 +7,27 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
 
-//    @Test
-//    fun `first run app`() {
-//
-//        viewModel.init(true)
-//        assertEquals(1, communications.titleCommunication.inputEditTextUiStateCalledList.size)
-//        assertEquals(
-//            InputEditTextUiState.NoError,
-//            communications.titleCommunication.inputEditTextUiStateCalledList[0]
-//        )
-//
-//    }
+    @Test
+    fun `first run app`() {
+
+        viewModel.init(true)
+        assertEquals(1, communications.titleCommunication.inputEditTextUiStateCalledList.size)
+        assertEquals(
+            InputEditTextUiState.NoError,
+            communications.titleCommunication.inputEditTextUiStateCalledList[0]
+        )
+    }
+
+    @Test
+    fun `success build qr code`() {
+
+        qrCodeInBuild.changeTitle("Alezzgo app")
+        qrCodeInBuild.changeContent("This is some qr code text from qr code")
+
+        qrCodeInBuild.build()
+
+        communications
+
+    }
 
 }

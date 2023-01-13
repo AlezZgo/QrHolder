@@ -14,7 +14,7 @@ interface QrCodesRepository {
 
     suspend fun allQrCodes(): QrCodes
 
-    suspend fun save(model: Bitmap, name: String) : ImagePath
+    suspend fun saveQrCodeImage(model: Bitmap, name: String) : ImagePath
 
     class Base @Inject constructor(
         private val cacheDataSource: QrCodesCacheDataSource,
@@ -29,7 +29,7 @@ interface QrCodesRepository {
             QrCodes.Failure(e.message ?: manageResources.string(R.string.defaultErrorMessage))
         }
 
-        override suspend fun save(model: Bitmap, name: String): ImagePath = try {
+        override suspend fun saveQrCodeImage(model: Bitmap, name: String): ImagePath = try {
             saveInternalStorage.save(
                 model = model,
                 name = name

@@ -9,12 +9,13 @@ abstract class AbstractQrCodesRepositoryTest {
     protected lateinit var mapper: QrCodeDataToDomainMapper
     protected lateinit var cacheDataSource: QrCodesRepositoryTest.TestQrCodesCacheDataSource
     protected lateinit var manageResources: TestManageResources
+    protected lateinit var saveInternalStorage: TestSaveInternalStorage
 
     @BeforeEach
     fun setUp() {
         cacheDataSource = QrCodesRepositoryTest.TestQrCodesCacheDataSource()
         manageResources = TestManageResources()
         mapper = QrCodeDataToDomainMapper()
-        repository = QrCodesRepository.Base(cacheDataSource, mapper, manageResources)
+        repository = QrCodesRepository.Base(cacheDataSource, mapper, manageResources,saveInternalStorage)
     }
 }

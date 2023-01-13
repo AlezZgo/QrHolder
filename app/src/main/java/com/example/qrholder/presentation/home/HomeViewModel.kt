@@ -35,9 +35,10 @@ class HomeViewModel @Inject constructor(
             communications.showState(HomeUiState.Loading)
             val result = interactor.fetchAll()
             result.map(fetchAllResultMapper)
-            //todo!!!!
+
             //todo switch dispatcher isn`t right there? is it?
             //todo it works just because it takes some delay, during which complete list would finish initializing
+            //todo SUGGESTION!!! USE OBSERVE FOREVER!!!!!
             withContext(dispatchers.ui()) {
                 filter(manageResources.string(R.string.empty))
             }

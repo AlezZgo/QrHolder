@@ -1,14 +1,8 @@
 package com.example.qrholder.presentation.buildQrCode
 
-import com.example.qrholder.core.ManageResources
 import com.example.qrholder.core.TestDispatchersList
-import com.example.qrholder.core.TestManageResources
-import com.example.qrholder.core.TestQrCodesInteractor
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList
-import com.example.qrholder.presentation.home.HomeViewModel
-import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
-import com.example.qrholder.presentation.home.mapper.QrCodesMapper
-import com.example.qrholder.presentation.home.ui.TestHomeCommunications
+import com.example.qrholder.presentation.home.domain.TestQrCodesRepository
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,12 +14,12 @@ import org.junit.jupiter.api.BeforeEach
 
 abstract class AbstractBuildQrCodeViewModelTest {
 
-    protected lateinit var dispatchersList: DispatchersList
-    protected lateinit var manageResources: ManageResources
-    protected lateinit var communications: TestBuildQrCodeCommunications
     protected lateinit var viewModel: BuildQrCodeViewModel
-    protected lateinit var title : String
-    protected lateinit var content : String
+    protected lateinit var communications: TestBuildQrCodeCommunications
+    protected lateinit var qrCodeInBuild: QrCodeInBuild
+    protected lateinit var createQrCodeImage: TestCreateQrCodeImage
+    protected lateinit var qrCodesRepository: TestQrCodesRepository
+    protected lateinit var dispatchersList: DispatchersList
 
     @OptIn(DelicateCoroutinesApi::class)
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
@@ -36,20 +30,19 @@ abstract class AbstractBuildQrCodeViewModelTest {
         Dispatchers.setMain(mainThreadSurrogate)
 
         communications = TestBuildQrCodeCommunications()
+        qrCodeInBuild = QrCodeInBuild("", "")
+        createQrCodeImage = TestCreateQrCodeImage()
+        qrCodesRepository = TestQrCodesRepository()
         dispatchersList = TestDispatchersList()
-        manageResources = TestManageResources()
-        title = ""
-        content = ""
 
         viewModel = BuildQrCodeViewModel(
-            dispatchers = dispatchersList,
             communications = communications,
-            manageResources = manageResources,
-            titleText = title,
-            contentText = content,
-            TitleTextMapper.Base(manageResources,communications.titleCommunication),
-            ContentTextMapper.Base(manageResources,communications.contentCommunication)
+            qrCodeInBuild = qrCodeInBuild,
+            createQrCodeImage = createQrCodeImage,
+            repository = qrCodesRepository,
+            dispatchers = dispatchersList,
         )
+
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
