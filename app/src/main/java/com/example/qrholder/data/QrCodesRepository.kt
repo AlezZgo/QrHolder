@@ -4,9 +4,9 @@ import android.graphics.Bitmap
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.data.cache.QrCodesCacheDataSource
-import com.example.qrholder.domain.ImagePath
-import com.example.qrholder.domain.QrCode
-import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.domain.model.ImagePath
+import com.example.qrholder.domain.model.QrCode
+import com.example.qrholder.domain.model.QrCodes
 import javax.inject.Inject
 
 

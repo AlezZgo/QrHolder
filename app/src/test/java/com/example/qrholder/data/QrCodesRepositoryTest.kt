@@ -1,15 +1,10 @@
 package com.example.qrholder.data
 
-import com.example.qrholder.core.TestManageResources
-import com.example.qrholder.data.QrCodeData
-import com.example.qrholder.data.QrCodeDataToDomainMapper
-import com.example.qrholder.data.QrCodesRepository
 import com.example.qrholder.data.cache.QrCodesCacheDataSource
-import com.example.qrholder.domain.QrCode
-import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.domain.model.QrCode
+import com.example.qrholder.domain.model.QrCodes
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class QrCodesRepositoryTest : AbstractQrCodesRepositoryTest(){

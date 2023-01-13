@@ -38,7 +38,7 @@ object AppModule {
 
     @QrCodeStandardSize
     @Provides
-    fun provideStandardQrCodeSize() = 150
+    fun provideStandardQrCodeSize() = 450
 }
 
 @Qualifier

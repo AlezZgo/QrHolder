@@ -1,6 +1,6 @@
 package com.example.qrholder.presentation.home.ui
 
-import com.example.qrholder.domain.QrCode
+import com.example.qrholder.domain.model.QrCode
 import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
 import com.example.qrholder.presentation.home.model.QrCodeUi

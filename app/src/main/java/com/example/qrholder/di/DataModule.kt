@@ -4,7 +4,7 @@ import com.example.qrholder.data.QrCodeData
 import com.example.qrholder.data.QrCodeDataToDomainMapper
 import com.example.qrholder.data.QrCodesRepository
 import com.example.qrholder.data.cache.QrCodesCacheDataSource
-import com.example.qrholder.domain.QrCode
+import com.example.qrholder.domain.model.QrCode
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

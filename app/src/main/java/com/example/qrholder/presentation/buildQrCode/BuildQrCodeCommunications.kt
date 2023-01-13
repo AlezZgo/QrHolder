@@ -2,12 +2,9 @@ package com.example.qrholder.presentation.buildQrCode
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.example.qrholder.domain.ImagePath
-import com.example.qrholder.domain.QrCodeBuildResult
+import com.example.qrholder.domain.model.QrCodeBuildResult
 import com.example.qrholder.presentation.core.IsError
-import com.example.qrholder.presentation.core.SinglePost
 import com.example.qrholder.presentation.core.viewmodel.Communication
-import com.example.qrholder.presentation.home.model.QrCodeUi
 import javax.inject.Inject
 
 interface BuildQrCodeCommunications : ShowTitleUiState, ShowContentUiState, ObserveTitleUiState,

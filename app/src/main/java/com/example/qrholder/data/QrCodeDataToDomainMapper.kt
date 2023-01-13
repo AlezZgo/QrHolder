@@ -1,6 +1,6 @@
 package com.example.qrholder.data
 
-import com.example.qrholder.domain.QrCode
+import com.example.qrholder.domain.model.QrCode
 import javax.inject.Inject
 
 class QrCodeDataToDomainMapper @Inject constructor() : QrCodeData.Mapper<QrCode> {

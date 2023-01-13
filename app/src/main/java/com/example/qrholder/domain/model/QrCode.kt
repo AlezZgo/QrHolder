@@ -1,4 +1,4 @@
-package com.example.qrholder.domain
+package com.example.qrholder.domain.model
 
 data class QrCode(
     private val title: String,

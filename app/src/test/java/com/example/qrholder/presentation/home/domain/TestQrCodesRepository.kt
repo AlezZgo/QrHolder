@@ -1,7 +1,7 @@
 package com.example.qrholder.presentation.home.domain
 
 import com.example.qrholder.data.QrCodesRepository
-import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.domain.model.QrCodes
 
 class TestQrCodesRepository : QrCodesRepository {
 

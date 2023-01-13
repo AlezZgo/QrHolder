@@ -1,4 +1,4 @@
-package com.example.qrholder.domain
+package com.example.qrholder.domain.model
 
 sealed class QrCodes {
 

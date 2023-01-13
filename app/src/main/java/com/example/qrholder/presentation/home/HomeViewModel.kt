@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.domain.HomeInteractor
-import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.domain.model.QrCodes
 import com.example.qrholder.presentation.core.ObserveUiState
 import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList

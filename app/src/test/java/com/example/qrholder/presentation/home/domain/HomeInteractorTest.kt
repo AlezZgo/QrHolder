@@ -1,12 +1,9 @@
 package com.example.qrholder.presentation.home.domain
 
-import com.example.qrholder.domain.HomeInteractor
-import com.example.qrholder.domain.QrCode
-import com.example.qrholder.domain.QrCodes
-import com.example.qrholder.data.QrCodesRepository
+import com.example.qrholder.domain.model.QrCode
+import com.example.qrholder.domain.model.QrCodes
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class HomeInteractorTest : AbstractHomeInteractorTest() {

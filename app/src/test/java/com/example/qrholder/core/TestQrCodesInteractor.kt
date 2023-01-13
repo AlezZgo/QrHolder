@@ -1,7 +1,7 @@
 package com.example.qrholder.core
 
 import com.example.qrholder.domain.HomeInteractor
-import com.example.qrholder.domain.QrCodes
+import com.example.qrholder.domain.model.QrCodes
 
 class TestQrCodesInteractor : HomeInteractor {
 

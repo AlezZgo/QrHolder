@@ -3,7 +3,7 @@ package com.example.qrholder.presentation.buildQrCode
 import android.text.Editable
 import android.widget.Toast
 import com.example.qrholder.databinding.FragmentBuildQrCodeBinding
-import com.example.qrholder.domain.QrCodeBuildResult
+import com.example.qrholder.domain.model.QrCodeBuildResult
 import com.example.qrholder.presentation.core.SimpleTextWatcher
 import com.example.qrholder.presentation.core.fragment.AbstractFragment
 import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility

@@ -2,7 +2,7 @@ package com.example.qrholder.data
 
 import android.content.Context
 import android.graphics.Bitmap
-import com.example.qrholder.domain.ImagePath
+import com.example.qrholder.domain.model.ImagePath
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.FileOutputStream
@@ -17,7 +17,7 @@ interface SaveInternalStorage<T>  {
     class ImageSave @Inject constructor(
         @ApplicationContext private val appContext: Context
     ) : SaveInternalStorage<Bitmap> {
-        override fun save(model: Bitmap, name: String) : ImagePath{
+        override fun save(model: Bitmap, name: String) : ImagePath {
             val directory: File = appContext.getDir("imageDir", Context.MODE_PRIVATE)
             val path = File(directory, "$name.jpg")
 

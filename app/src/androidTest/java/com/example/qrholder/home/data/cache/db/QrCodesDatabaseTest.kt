@@ -7,7 +7,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.qrholder.data.cache.db.QrCodeCache
 import com.example.qrholder.data.cache.db.QrCodesDao
 import com.example.qrholder.data.cache.db.QrCodesDatabase
-import com.example.qrholder.domain.QrCode
 import junit.framework.Assert.assertEquals
 import org.junit.After
 import org.junit.Before

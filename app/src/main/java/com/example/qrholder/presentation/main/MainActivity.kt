@@ -73,25 +73,6 @@ class MainActivity : AppCompatActivity(), InitUI {
             )
         }
     }
-
-    fun hideKeyboard(clearAction : ()->Unit) {
-        try {
-            val inputManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as (InputMethodManager);
-            val currentFocusedView = currentFocus;
-            if (currentFocusedView != null) {
-                inputManager.hideSoftInputFromWindow(
-                    currentFocusedView.windowToken,
-                    InputMethodManager.HIDE_NOT_ALWAYS
-                );
-                clearAction.invoke()
-            }
-            clearAction.invoke()
-        } catch (e: Exception) {
-            e.printStackTrace();
-        }
-    }
-
 }
 
 interface HandleBottomNavViewVisibility {
