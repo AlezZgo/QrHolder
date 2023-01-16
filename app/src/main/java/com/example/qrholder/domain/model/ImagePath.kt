@@ -1,11 +1,10 @@
 package com.example.qrholder.domain.model
 
+import com.example.qrholder.presentation.buildQrCode.QrCodeBuildResult
 import com.example.qrholder.presentation.home.model.QrCodeUi
 
 sealed class ImagePath {
 
-
-    //todo fix with mapper
     abstract fun map(title: String, content: String): QrCodeBuildResult
 
     data class Success(
@@ -18,6 +17,6 @@ sealed class ImagePath {
     data class Error(
         private val errorMessage: String
     ) : ImagePath() {
-        override fun map(title: String, content: String) = QrCodeBuildResult.Error(errorMessage)
+      override fun map(title: String, content: String)  = QrCodeBuildResult.Error(errorMessage)
     }
 }

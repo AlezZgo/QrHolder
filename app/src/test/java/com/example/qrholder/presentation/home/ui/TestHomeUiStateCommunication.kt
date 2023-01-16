@@ -3,16 +3,16 @@ package com.example.qrholder.presentation.home.ui
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.example.qrholder.presentation.home.HomeUiStateCommunication
-import com.example.qrholder.presentation.home.model.HomeUiState
+import com.example.qrholder.presentation.home.model.HomeUi
 
 class TestHomeUiStateCommunication : HomeUiStateCommunication {
 
-    var homeUiStateCalledList = mutableListOf<HomeUiState>()
+    var homeUiCalledList = mutableListOf<HomeUi>()
 
-    override fun observe(owner: LifecycleOwner, observer: Observer<HomeUiState>) = Unit
+    override fun observe(owner: LifecycleOwner, observer: Observer<HomeUi>) = Unit
 
-    override fun map(source: HomeUiState) {
-        homeUiStateCalledList.add(source)
+    override fun map(source: HomeUi) {
+        homeUiCalledList.add(source)
     }
 
 }

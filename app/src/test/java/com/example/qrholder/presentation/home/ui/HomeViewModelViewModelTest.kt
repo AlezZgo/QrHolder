@@ -2,9 +2,9 @@ package com.example.qrholder.presentation.home.ui
 
 import com.example.qrholder.domain.model.QrCode
 import com.example.qrholder.domain.model.QrCodes
-import com.example.qrholder.presentation.home.model.HomeUiState
+import com.example.qrholder.presentation.home.model.HomeUi
 import com.example.qrholder.presentation.home.model.QrCodeUi
-import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.model.QrCodeCompleteListUi
 import kotlinx.coroutines.*
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -28,13 +28,13 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(emptyList()),
+            QrCodeCompleteListUi.Success(emptyList()),
             communications.qrCodesCompleteCalledList[0]
         )
 
         assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
-        assertEquals(HomeUiState.Empty, communications.uiStateCalledList[1])
+        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
+        assertEquals(HomeUi.Empty, communications.uiStateCalledList[1])
     }
 
     @Test
@@ -52,13 +52,13 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Error(errorMessage),
+            QrCodeCompleteListUi.Error(errorMessage),
             communications.qrCodesCompleteCalledList[0]
         )
 
         assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
-        assertEquals(HomeUiState.Error(errorMessage), communications.uiStateCalledList[1])
+        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
+        assertEquals(HomeUi.Error(errorMessage), communications.uiStateCalledList[1])
     }
 
     @Test
@@ -116,7 +116,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(
+            QrCodeCompleteListUi.Success(
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -138,9 +138,9 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
         )
 
         assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
+        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
         assertEquals(
-            HomeUiState.Success(
+            HomeUi.Success(
                 qrCodes = listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -192,7 +192,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(
+            QrCodeCompleteListUi.Success(
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -214,9 +214,9 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
         )
 
         assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUiState.Loading, communications.uiStateCalledList[0])
+        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
         assertEquals(
-            HomeUiState.Success(
+            HomeUi.Success(
                 qrCodes = listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -297,7 +297,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(
+            QrCodeCompleteListUi.Success(
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -320,7 +320,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(3, communications.uiStateCalledList.size)
         assertEquals(
-            HomeUiState.Success(
+            HomeUi.Success(
                 qrCodes = listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -363,7 +363,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(
+            QrCodeCompleteListUi.Success(
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -386,7 +386,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(3, communications.uiStateCalledList.size)
         assertEquals(
-            HomeUiState.Success(
+            HomeUi.Success(
                 qrCodes = listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -457,7 +457,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(
+            QrCodeCompleteListUi.Success(
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -480,7 +480,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(3, communications.uiStateCalledList.size)
         assertEquals(
-            HomeUiState.NothingWasFound, communications.uiStateCalledList[2]
+            HomeUi.NothingWasFound, communications.uiStateCalledList[2]
         )
 
         viewModel.init(isFirstRun = false)
@@ -514,7 +514,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(
+            QrCodeCompleteListUi.Success(
                 listOf(
                     QrCodeUi(
                         title = "Test title 1",
@@ -537,7 +537,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
 
         assertEquals(3, communications.uiStateCalledList.size)
         assertEquals(
-            HomeUiState.NothingWasFound, communications.uiStateCalledList[2]
+            HomeUi.NothingWasFound, communications.uiStateCalledList[2]
         )
     }
 

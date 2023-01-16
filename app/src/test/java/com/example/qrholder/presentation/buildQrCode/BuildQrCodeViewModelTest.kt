@@ -1,5 +1,9 @@
 package com.example.qrholder.presentation.buildQrCode
 
+import com.example.qrholder.domain.model.ImagePath
+import com.example.qrholder.presentation.core.validation.TextValidationResult
+import com.example.qrholder.presentation.home.model.QrCodeUi
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -8,26 +12,76 @@ import org.junit.jupiter.api.TestInstance
 internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
 
     @Test
-    fun `first run app`() {
+    fun `build qr code with success`()  = runBlocking {
 
-        viewModel.init(true)
-        assertEquals(1, communications.titleCommunication.inputEditTextUiStateCalledList.size)
+        val newTitle = "New Title"
+        val newContent = "New Content"
+        val expectedImagePath = "//InternalStorageLink"
+
+        validateTitle.changeValidationResult(TextValidationResult.Success(newTitle))
+        validateContent.changeValidationResult(TextValidationResult.Success(newContent))
+
+        repository.changeExpectedSaveImageResult(ImagePath.Success(expectedImagePath))
+
+        viewModel.changeTitle(newTitle)
+        viewModel.changeContent(newContent)
+
+        viewModel.build()
+//todo
+        assertEquals(1, createQrCodeImage.createQrCodeImageCalledList.size)
+        assertEquals(newContent, createQrCodeImage.createQrCodeImageCalledList[0])
+
+        assertEquals(1, repository.saveImageCalledList.size)
+        assertEquals(newTitle, repository.saveImageCalledList[0])
+
+        assertEquals(1, communication.buildResult.size)
         assertEquals(
-            InputEditTextUiState.NoError,
-            communications.titleCommunication.inputEditTextUiStateCalledList[0]
+            QrCodeUi(newTitle, newContent, expectedImagePath),
+            communication.buildResult[0]
         )
+
     }
 
     @Test
-    fun `success build qr code`() {
+    fun `build qr code with errors`()  = runBlocking {
 
-        qrCodeInBuild.changeTitle("Alezzgo app")
-        qrCodeInBuild.changeContent("This is some qr code text from qr code")
+        val newTitle = "New Title"
+        val errorTitle = "New"
+        val newContent = "New Content"
+        val errorContent = "         "
 
-        qrCodeInBuild.build()
+        validateTitle.changeValidationResult(
+            TextValidationResult.Error("This field must contain at least 5 characters")
+        )
+        validateContent.changeValidationResult(
+            TextValidationResult.Success(newContent)
+        )
 
-        communications
+        viewModel.changeTitle(errorTitle)
+        viewModel.changeContent(newContent)
 
+        viewModel.build()
+
+        assertEquals(0, createQrCodeImage.createQrCodeImageCalledList.size)
+        assertEquals(0, repository.saveImageCalledList.size)
+        assertEquals(0, communication.buildResult.size)
+
+        validateContent.changeValidationResult(
+            TextValidationResult.Error("This field must contain at least 5 characters")
+        )
+        validateTitle.changeValidationResult(
+            TextValidationResult.Success(newTitle)
+        )
+
+        viewModel.changeTitle(newTitle)
+        viewModel.changeContent(errorContent)
+
+        viewModel.build()
+
+        assertEquals(0, createQrCodeImage.createQrCodeImageCalledList.size)
+        assertEquals(0, repository.saveImageCalledList.size)
+        assertEquals(0, communication.buildResult.size)
     }
+
 
 }

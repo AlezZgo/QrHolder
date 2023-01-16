@@ -4,7 +4,7 @@ import com.example.qrholder.domain.model.QrCode
 import com.example.qrholder.domain.model.QrCodes
 import com.example.qrholder.presentation.home.HomeCommunications
 import com.example.qrholder.presentation.home.model.QrCodeUi
-import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.model.QrCodeCompleteListUi
 import javax.inject.Inject
 
 class QrCodesMapper @Inject constructor(
@@ -14,9 +14,9 @@ class QrCodesMapper @Inject constructor(
     override fun map(list: List<QrCode>, errorMessage: String) {
         communications.changeCompleteList(
             if (errorMessage.isEmpty())
-                QrCodeUiCompleteList.Success(list.map { it.map(qrCodeToUiMapper) })
+                QrCodeCompleteListUi.Success(list.map { it.map(qrCodeToUiMapper) })
             else
-                QrCodeUiCompleteList.Error(errorMessage)
+                QrCodeCompleteListUi.Error(errorMessage)
         )
     }
 }

@@ -8,13 +8,13 @@ import com.google.zxing.MultiFormatWriter
 import javax.inject.Inject
 
 
-interface CreateQrCodeImage : Create<String,Bitmap> {
+interface CreateQrCodeImage : Create<String,Bitmap?> {
 
     class Base @Inject constructor(
         @QrCodeStandardSize private var qrCodeWidth: Int,
     ) : CreateQrCodeImage {
 
-        override fun create(input : String) : Bitmap {
+        override fun create(input : String) : Bitmap? {
 
             val bitMatrix = MultiFormatWriter().encode(input, BarcodeFormat.QR_CODE, qrCodeWidth, qrCodeWidth,null)
 

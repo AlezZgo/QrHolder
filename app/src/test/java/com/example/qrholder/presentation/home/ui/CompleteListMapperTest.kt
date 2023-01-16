@@ -1,7 +1,7 @@
 package com.example.qrholder.presentation.home.ui
 
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
-import com.example.qrholder.presentation.home.model.HomeUiState
+import com.example.qrholder.presentation.home.model.HomeUi
 import com.example.qrholder.presentation.home.model.QrCodeUi
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -31,8 +31,8 @@ internal class CompleteListMapperTest {
             homeUiCommunication
         )
 
-        assertEquals(1, homeUiCommunication.homeUiStateCalledList.size)
-        assertEquals(HomeUiState.Error(errorMessage), homeUiCommunication.homeUiStateCalledList[0])
+        assertEquals(1, homeUiCommunication.homeUiCalledList.size)
+        assertEquals(HomeUi.Error(errorMessage), homeUiCommunication.homeUiCalledList[0])
     }
 
     @Test
@@ -45,8 +45,8 @@ internal class CompleteListMapperTest {
             homeUiCommunication
         )
 
-        assertEquals(1, homeUiCommunication.homeUiStateCalledList.size)
-        assertEquals(HomeUiState.Empty, homeUiCommunication.homeUiStateCalledList[0])
+        assertEquals(1, homeUiCommunication.homeUiCalledList.size)
+        assertEquals(HomeUi.Empty, homeUiCommunication.homeUiCalledList[0])
     }
 
     @Test
@@ -59,8 +59,8 @@ internal class CompleteListMapperTest {
             homeUiCommunication
         )
 
-        assertEquals(1, homeUiCommunication.homeUiStateCalledList.size)
-        assertEquals(HomeUiState.NothingWasFound, homeUiCommunication.homeUiStateCalledList[0])
+        assertEquals(1, homeUiCommunication.homeUiCalledList.size)
+        assertEquals(HomeUi.NothingWasFound, homeUiCommunication.homeUiCalledList[0])
     }
 
     @Test
@@ -73,15 +73,15 @@ internal class CompleteListMapperTest {
             homeUiCommunication
         )
 
-        assertEquals(1, homeUiCommunication.homeUiStateCalledList.size)
+        assertEquals(1, homeUiCommunication.homeUiCalledList.size)
         assertEquals(
-            HomeUiState.Success(
+            HomeUi.Success(
                 listOf(
                     QrCodeUi("Dog", "www.dog.com", path = "content.cat.id2"),
                     QrCodeUi("Duck", "www.duck.com", path = "content.cat.id3"),
                     QrCodeUi("Whale", "www.whale_digger.com", path = "content.cat.id4")
                 )
-            ), homeUiCommunication.homeUiStateCalledList[0]
+            ), homeUiCommunication.homeUiCalledList[0]
         )
     }
 

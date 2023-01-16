@@ -8,7 +8,7 @@ import com.example.qrholder.presentation.home.adapter.QrCodesAdapter
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.appbar.MaterialToolbar
 
-sealed class HomeUiState {
+sealed class HomeUi {
 
     abstract fun show(
         toolbar: MaterialToolbar,
@@ -23,7 +23,7 @@ sealed class HomeUiState {
         shimmers: ShimmerFrameLayout,
     )
 
-    object Loading : HomeUiState() {
+    object Loading : HomeUi() {
         override fun show(
             toolbar: MaterialToolbar,
             recyclerView: RecyclerView,
@@ -52,7 +52,7 @@ sealed class HomeUiState {
 
     data class Success(
         private val qrCodes: List<QrCodeUi> = emptyList()
-    ) : HomeUiState() {
+    ) : HomeUi() {
         override fun show(
             toolbar: MaterialToolbar,
             recyclerView: RecyclerView,
@@ -82,7 +82,7 @@ sealed class HomeUiState {
 
     }
 
-    object Empty : HomeUiState() {
+    object Empty : HomeUi() {
         override fun show(
             toolbar: MaterialToolbar,
             recyclerView: RecyclerView,
@@ -109,7 +109,7 @@ sealed class HomeUiState {
 
     }
 
-    object NothingWasFound : HomeUiState() {
+    object NothingWasFound : HomeUi() {
         override fun show(
             toolbar: MaterialToolbar,
             recyclerView: RecyclerView,
@@ -138,7 +138,7 @@ sealed class HomeUiState {
 
     data class Error(
         private val errorMessage: String
-    ) : HomeUiState() {
+    ) : HomeUi() {
         override fun show(
             toolbar: MaterialToolbar,
             recyclerView: RecyclerView,

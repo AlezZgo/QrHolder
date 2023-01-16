@@ -4,7 +4,7 @@ import com.example.qrholder.domain.model.QrCode
 import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
 import com.example.qrholder.presentation.home.model.QrCodeUi
-import com.example.qrholder.presentation.home.model.QrCodeUiCompleteList
+import com.example.qrholder.presentation.home.model.QrCodeCompleteListUi
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -18,7 +18,7 @@ internal class QrCodesMapperViewModelTest {
         qrCodesMapper.map(emptyList(), "")
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(emptyList()),
+            QrCodeCompleteListUi.Success(emptyList()),
             communications.qrCodesCompleteCalledList[0]
         )
     }
@@ -37,7 +37,7 @@ internal class QrCodesMapperViewModelTest {
 
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Success(
+            QrCodeCompleteListUi.Success(
                 listOf(
                     QrCodeUi("Cat", "www.cat.com", "content.cat.id1"),
                     QrCodeUi("Dog", "www.dog.com", "content.cat.id2"),
@@ -56,7 +56,7 @@ internal class QrCodesMapperViewModelTest {
         qrCodesMapper.map(emptyList(), errorMessage)
         assertEquals(1, communications.qrCodesCompleteCalledList.size)
         assertEquals(
-            QrCodeUiCompleteList.Error(errorMessage),
+            QrCodeCompleteListUi.Error(errorMessage),
             communications.qrCodesCompleteCalledList[0]
         )
 

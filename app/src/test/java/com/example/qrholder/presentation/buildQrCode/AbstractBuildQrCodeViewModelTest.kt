@@ -15,11 +15,14 @@ import org.junit.jupiter.api.BeforeEach
 abstract class AbstractBuildQrCodeViewModelTest {
 
     protected lateinit var viewModel: BuildQrCodeViewModel
-    protected lateinit var communications: TestBuildQrCodeCommunications
-    protected lateinit var qrCodeInBuild: QrCodeInBuild
-    protected lateinit var createQrCodeImage: TestCreateQrCodeImage
-    protected lateinit var qrCodesRepository: TestQrCodesRepository
+    protected lateinit var communication: TestQrCodeBuiltCommunication
     protected lateinit var dispatchersList: DispatchersList
+    protected lateinit var repository: TestQrCodesRepository
+    protected lateinit var createQrCodeImage: TestCreateQrCodeImage
+    protected lateinit var validateTitle: TestValidateText
+    protected lateinit var validateContent: TestValidateText
+    protected lateinit var titleText: String
+    protected lateinit var contentText: String
 
     @OptIn(DelicateCoroutinesApi::class)
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
@@ -29,18 +32,24 @@ abstract class AbstractBuildQrCodeViewModelTest {
     fun setUp() {
         Dispatchers.setMain(mainThreadSurrogate)
 
-        communications = TestBuildQrCodeCommunications()
-        qrCodeInBuild = QrCodeInBuild("", "")
-        createQrCodeImage = TestCreateQrCodeImage()
-        qrCodesRepository = TestQrCodesRepository()
+        communication = TestQrCodeBuiltCommunication()
         dispatchersList = TestDispatchersList()
+        repository = TestQrCodesRepository()
+        createQrCodeImage = TestCreateQrCodeImage()
+        validateTitle = TestValidateText()
+        validateContent = TestValidateText()
+        titleText = ""
+        contentText = ""
 
         viewModel = BuildQrCodeViewModel(
-            communications = communications,
-            qrCodeInBuild = qrCodeInBuild,
-            createQrCodeImage = createQrCodeImage,
-            repository = qrCodesRepository,
+            communication = communication,
             dispatchers = dispatchersList,
+            repository = repository,
+            createQrCodeImage = createQrCodeImage,
+            validateTitle = validateTitle,
+            validateContent = validateContent,
+            titleText = titleText,
+            contentText = contentText
         )
 
     }

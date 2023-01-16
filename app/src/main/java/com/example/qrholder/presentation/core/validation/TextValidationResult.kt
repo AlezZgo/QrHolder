@@ -1,6 +1,5 @@
 package com.example.qrholder.presentation.core.validation
 
-
 interface ValidationResult<T>
 
 sealed class TextValidationResult : ValidationResult<String> {

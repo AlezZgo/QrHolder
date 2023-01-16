@@ -7,10 +7,15 @@ import com.example.qrholder.domain.model.QrCodes
 
 class TestQrCodesRepository : QrCodesRepository {
 
-    var expectedSaveImagePath = ImagePath.Error(errorMessage = "Something went wrong")
+    var saveImageCalledList = listOf<String>()
+    private var expectedQrCodeImageSaveResult : ImagePath = ImagePath.Error("SomeThing went wrong")
 
     private var expectedQrCodesResult: QrCodes = QrCodes.Success(emptyList())
     var allNumbersCalledCount = 0
+
+    fun changeExpectedSaveImageResult(qrCodeImagePath: ImagePath) {
+        expectedQrCodeImageSaveResult = qrCodeImagePath
+    }
 
     fun changeExpectedResult(qrCodes: QrCodes) {
         expectedQrCodesResult = qrCodes
@@ -21,6 +26,7 @@ class TestQrCodesRepository : QrCodesRepository {
         return expectedQrCodesResult
     }
 
-    override suspend fun saveQrCodeImage(model: Bitmap, name: String) = expectedSaveImagePath
+    override suspend fun saveQrCodeImage(model: Bitmap, name: String) =
+        expectedQrCodeImageSaveResult
 
 }
