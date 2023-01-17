@@ -1,5 +1,6 @@
 package com.example.qrholder.presentation.buildQrCode
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
@@ -53,12 +54,12 @@ class BuildQrCodeViewModel @Inject constructor(
             contentValidationResult is TextValidationResult.Success){
             viewModelScope.launch(dispatchers.io()) {
                 val image = createQrCodeImage.create(contentText)
-                image?.let {
-                    val imagePath = repository.saveQrCodeImage(it,titleText)
+                val imagePath = repository.saveQrCodeImage(image,titleText)
+
                     communication.map(
                         imagePath.map(titleText,contentText)
                     )
-                }
+
 
 
             }

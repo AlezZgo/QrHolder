@@ -10,11 +10,9 @@ import com.example.qrholder.domain.model.QrCodes
 import javax.inject.Inject
 
 
-interface QrCodesRepository {
+interface QrCodesRepository : SaveQrCodeImage{
 
     suspend fun allQrCodes(): QrCodes
-
-    suspend fun saveQrCodeImage(model: Bitmap, name: String) : ImagePath
 
     class Base @Inject constructor(
         private val cacheDataSource: QrCodesCacheDataSource,
@@ -32,7 +30,7 @@ interface QrCodesRepository {
         override suspend fun saveQrCodeImage(model: Bitmap, name: String): ImagePath = try {
             saveInternalStorage.save(
                 model = model,
-                name = name
+                name = name,
             )
         }catch (e : Exception){
             ImagePath.Error(e.message?:"Something went wrong")
@@ -41,4 +39,8 @@ interface QrCodesRepository {
 
     }
 
+}
+
+interface SaveQrCodeImage{
+    suspend fun saveQrCodeImage(model: Bitmap, name: String) : ImagePath
 }

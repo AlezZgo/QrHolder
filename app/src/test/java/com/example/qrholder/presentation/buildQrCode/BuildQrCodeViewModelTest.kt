@@ -27,7 +27,7 @@ internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
         viewModel.changeContent(newContent)
 
         viewModel.build()
-//todo
+
         assertEquals(1, createQrCodeImage.createQrCodeImageCalledList.size)
         assertEquals(newContent, createQrCodeImage.createQrCodeImageCalledList[0])
 

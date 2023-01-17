@@ -7,7 +7,7 @@ import com.example.qrholder.domain.model.QrCodes
 
 class TestQrCodesRepository : QrCodesRepository {
 
-    var saveImageCalledList = listOf<String>()
+    var saveImageCalledList = mutableListOf<ImagePath>()
     private var expectedQrCodeImageSaveResult : ImagePath = ImagePath.Error("SomeThing went wrong")
 
     private var expectedQrCodesResult: QrCodes = QrCodes.Success(emptyList())
@@ -26,7 +26,12 @@ class TestQrCodesRepository : QrCodesRepository {
         return expectedQrCodesResult
     }
 
-    override suspend fun saveQrCodeImage(model: Bitmap, name: String) =
-        expectedQrCodeImageSaveResult
+    override suspend fun saveQrCodeImage(model: Bitmap, name: String): ImagePath {
+
+        saveImageCalledList.add(expectedQrCodeImageSaveResult)
+
+        return expectedQrCodeImageSaveResult
+    }
+
 
 }

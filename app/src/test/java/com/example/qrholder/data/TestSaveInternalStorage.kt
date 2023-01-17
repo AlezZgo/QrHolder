@@ -5,7 +5,11 @@ import com.example.qrholder.domain.model.ImagePath
 
 class TestSaveInternalStorage : SaveInternalStorage<Bitmap> {
 
-    var expectedResult = ImagePath.Error("Nothing to save")
+    private var expectedResult : ImagePath= ImagePath.Error("Nothing to save")
 
-    override fun save(model: Bitmap, name: String) = expectedResult
+    fun changeExpectedResult(imagePath : ImagePath) {
+        expectedResult = imagePath
+    }
+
+    override fun save(model: Bitmap, name: String): ImagePath = expectedResult
 }

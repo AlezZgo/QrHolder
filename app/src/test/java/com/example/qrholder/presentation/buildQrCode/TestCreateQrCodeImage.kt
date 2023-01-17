@@ -5,10 +5,10 @@ import android.graphics.Bitmap
 class TestCreateQrCodeImage : CreateQrCodeImage {
 
     var createQrCodeImageCalledList = mutableListOf<String>()
-//todo
-    override fun create(input: String): Bitmap? {
+
+    override fun create(input: String): Bitmap {
         createQrCodeImageCalledList.add(input)
-        return null
+        return Bitmap.createBitmap(4,4,Bitmap.Config.ARGB_8888)
     }
 
 }
