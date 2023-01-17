@@ -19,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), InitUI {
 
+    //todo fix bug with bottom navigation hide
     private lateinit var binding: ActivityMainBinding
     private lateinit var navView: BottomNavigationView
     private lateinit var navController: NavController
