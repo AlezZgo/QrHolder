@@ -5,10 +5,8 @@ import com.example.qrholder.presentation.core.validation.TextValidationResult
 import com.example.qrholder.presentation.core.validation.Validate
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Qualifier
 
 @InstallIn(ViewModelComponent::class)
@@ -16,11 +14,11 @@ import javax.inject.Qualifier
 interface BuildQrCodeModule {
 
 
-    @TitleValidator
+    @Title
     @Binds
     fun bindValidateTitle(validateTitle: ValidateBuildQrCodeTitleText): Validate<String,TextValidationResult>
 
-    @ContentValidator
+    @Content
     @Binds
     fun bindValidateContent(validateTitle: ValidateBuildQrCodeContentText): Validate<String,TextValidationResult>
 
@@ -29,14 +27,23 @@ interface BuildQrCodeModule {
 
 
     @Binds
+    fun bindValidateTitleCommunication(communication: ValidateTitleCommunication.Base): ValidateTitleCommunication
+
+
+    @Binds
+    fun bindValidateContentCommunication(communication: ValidateContentCommunication.Base): ValidateContentCommunication
+
+    @Binds
     fun bindContentUiStateCommunication(communication: CreateQrCodeImage.Base): CreateQrCodeImage
 
 }
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class TitleValidator
+annotation class Title
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class ContentValidator
+annotation class Content
+
+

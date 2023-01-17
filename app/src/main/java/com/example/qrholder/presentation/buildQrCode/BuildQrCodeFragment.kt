@@ -1,16 +1,25 @@
 package com.example.qrholder.presentation.buildQrCode
 
+import android.app.AlertDialog
 import android.text.Editable
+import android.widget.Toast
+import com.example.qrholder.R
+import com.example.qrholder.core.HideKeyBoard
 import com.example.qrholder.databinding.FragmentBuildQrCodeBinding
 import com.example.qrholder.presentation.core.SimpleTextWatcher
 import com.example.qrholder.presentation.core.fragment.AbstractFragment
 import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQrCodeViewModel>(
     FragmentBuildQrCodeBinding::inflate, BuildQrCodeViewModel::class.java
 ), BottomNavViewVisibility.Hide {
+
+    @Inject
+    lateinit var hideKeyBoard: HideKeyBoard
 
     private val titleTextChangedListener = object : SimpleTextWatcher() {
         override fun afterTextChanged(title: Editable?) = viewModel.changeTitle(title.toString())
@@ -24,16 +33,40 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
         super.observe()
 
         viewModel.observeBuildResultState(viewLifecycleOwner) { buildResult ->
-//            buildResult.show(binding.ivPreview) {
-//                if (buildResult is BuildQrCodeUi.Success){
-//                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-//                }else if (buildResult is BuildQrCodeUi.Error){
-//                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
-//                }else{
-//                    Toast.makeText(context, "fuck", Toast.LENGTH_SHORT).show()
-//                }
-//            }
+            buildResult.show(
+                //todo move to another fragment
+                successBuildAction = { qrCode->
 
+                    view?.let {
+                        hideKeyBoard.hideKeyboardFrom(requireContext(),it)
+                    }
+
+                    MaterialAlertDialogBuilder(requireContext(),
+                        R.style.Body_ThemeOverlay_MaterialComponents_MaterialAlertDialog)
+                        .setTitle("Success")
+                        .setMessage("Success")
+                        .show()
+
+
+
+                },
+                errorBuildAction = { errorMessage ->
+                    MaterialAlertDialogBuilder(requireContext(),
+                        R.style.Body_ThemeOverlay_MaterialComponents_MaterialAlertDialog)
+                        .setTitle(getString(R.string.error))
+                        .setMessage(errorMessage)
+                    .show()
+                }
+            )
+
+        }
+
+        viewModel.observeTitle(viewLifecycleOwner){ validationResult ->
+            validationResult.show(binding.tielTitle)
+        }
+
+        viewModel.observeContent(viewLifecycleOwner){ validationResult ->
+            validationResult.show(binding.tielContent)
         }
 
     }

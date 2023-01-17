@@ -2,6 +2,7 @@ package com.example.qrholder.di
 
 import android.content.Context
 import android.graphics.Bitmap
+import com.example.qrholder.core.HideKeyBoard
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.data.SaveInternalStorage
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList
@@ -32,6 +33,9 @@ object AppModule {
         @ApplicationContext context: Context
     ) : SaveInternalStorage<Bitmap> = SaveInternalStorage.ImageSave(context)
 
+    @Provides
+    fun bindHideKeyBoard() : HideKeyBoard = HideKeyBoard.Base()
+
     @EmptyText
     @Provides
     fun provideEmptyText() = ""
@@ -39,6 +43,14 @@ object AppModule {
     @QrCodeStandardSize
     @Provides
     fun provideStandardQrCodeSize() = 450
+
+    @IntZero
+    @Provides
+    fun provideIntZero() = 0
+
+    @IntMax
+    @Provides
+    fun provideIntMax() = Int.MAX_VALUE
 }
 
 @Qualifier
@@ -48,3 +60,11 @@ annotation class EmptyText
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class QrCodeStandardSize
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class IntZero
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class IntMax

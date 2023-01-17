@@ -4,13 +4,11 @@ import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import javax.inject.Inject
 
-class LengthCondition(
+class LengthCondition (
     private val min: Int = 0,
     private val max: Int = Int.MAX_VALUE,
+    private val manageResources: ManageResources
 ) : TextCondition {
-
-    @Inject
-    lateinit var manageResources: ManageResources
 
     override fun validate(model: String): TextValidationResult {
 
