@@ -6,9 +6,11 @@ class TestCreateQrCodeImage : CreateQrCodeImage {
 
     var createQrCodeImageCalledList = mutableListOf<String>()
 
-    override fun create(input: String): Bitmap {
+    override fun create(input: String): BitmapWrapper {
         createQrCodeImageCalledList.add(input)
-        return Bitmap.createBitmap(4,4,Bitmap.Config.ARGB_8888)
+        return TestBitmapWrapper()
     }
 
 }
+
+

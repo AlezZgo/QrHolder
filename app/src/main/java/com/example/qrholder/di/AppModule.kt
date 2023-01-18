@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import com.example.qrholder.core.HideKeyBoard
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.data.SaveInternalStorage
+import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import com.google.zxing.qrcode.QRCodeWriter
 import dagger.Binds
@@ -30,8 +31,9 @@ object AppModule {
 
     @Provides
     fun bindSaveBitmapToInternalStorage(
-        @ApplicationContext context: Context
-    ) : SaveInternalStorage<Bitmap> = SaveInternalStorage.ImageSave(context)
+        @ApplicationContext context: Context,
+        manageResources: ManageResources
+    ) : SaveInternalStorage<BitmapWrapper> = SaveInternalStorage.ImageSave(context,manageResources)
 
     @Provides
     fun bindHideKeyBoard() : HideKeyBoard = HideKeyBoard.Base()

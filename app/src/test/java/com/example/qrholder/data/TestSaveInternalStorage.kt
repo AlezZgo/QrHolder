@@ -1,15 +1,15 @@
 package com.example.qrholder.data
 
-import android.graphics.Bitmap
 import com.example.qrholder.domain.model.ImagePath
+import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 
-class TestSaveInternalStorage : SaveInternalStorage<Bitmap> {
+class TestSaveInternalStorage : SaveInternalStorage<BitmapWrapper> {
 
-    private var expectedResult : ImagePath= ImagePath.Error("Nothing to save")
+    private var expectedResult: ImagePath = ImagePath.Error("Nothing to save")
 
-    fun changeExpectedResult(imagePath : ImagePath) {
+    fun changeExpectedResult(imagePath: ImagePath) {
         expectedResult = imagePath
     }
 
-    override fun save(model: Bitmap, name: String): ImagePath = expectedResult
+    override fun save(model: BitmapWrapper, name: String): ImagePath = expectedResult
 }

@@ -1,5 +1,6 @@
 package com.example.qrholder.presentation.core
 
+import com.example.qrholder.core.TestManageResources
 import com.example.qrholder.presentation.core.validation.LengthCondition
 import com.example.qrholder.presentation.core.validation.TextValidationResult
 import org.junit.Test
@@ -8,19 +9,21 @@ import org.junit.jupiter.api.Assertions.assertEquals
 
 class LengthConditionTest {
 
-    val lengthNoConditions = LengthCondition()
+    val manageResources = TestManageResources()
 
-    val lengthValidatorMinNegative = LengthCondition(min = -1)
-    val lengthValidatorMaxNegative = LengthCondition(max = -1)
-    val lengthValidatorMaxZero = LengthCondition(min = 0)
+    val lengthNoConditions = LengthCondition(manageResources = manageResources)
 
-    val lengthValidatorMinZero = LengthCondition(min = 0)
+    val lengthValidatorMinNegative = LengthCondition(min = -1,manageResources = manageResources)
+    val lengthValidatorMaxNegative = LengthCondition(max = -1,manageResources = manageResources)
+    val lengthValidatorMaxZero = LengthCondition(min = 0,manageResources = manageResources)
 
-    val lengthValidatorMin3 = LengthCondition(min = 3)
+    val lengthValidatorMinZero = LengthCondition(min = 0,manageResources = manageResources)
+
+    val lengthValidatorMin3 = LengthCondition(min = 3,manageResources = manageResources)
 
 
-    val lengthValidatorMin3Max35 = LengthCondition(min = 3, max = 35)
-    val lengthValidatorMin3Max36 = LengthCondition(min = 3, max = 36)
+    val lengthValidatorMin3Max35 = LengthCondition(min = 3, max = 35,manageResources = manageResources)
+    val lengthValidatorMin3Max36 = LengthCondition(min = 3, max = 36,manageResources = manageResources)
 
     val emptyText = ""
     val blankText = "           "
@@ -30,6 +33,8 @@ class LengthConditionTest {
 
     @Test
     fun `validate empty text`() {
+
+        manageResources.changeExpected("This field cannot be empty")
 
         assertEquals(
             TextValidationResult.Success(emptyText),
@@ -55,6 +60,8 @@ class LengthConditionTest {
 
     @Test
     fun `validate blank text`() {
+
+        manageResources.changeExpected("This field cannot be empty")
 
         assertEquals(
             TextValidationResult.Success(blankText),
@@ -109,6 +116,8 @@ class LengthConditionTest {
     @Test
     fun `validate text with 36 characters`() {
 
+        manageResources.changeExpected("This field must contain no more than 35 characters")
+
         assertEquals(
             TextValidationResult.Success(textWith36SCharacters),
             lengthNoConditions.validate(textWith36SCharacters)
@@ -137,6 +146,8 @@ class LengthConditionTest {
 
     @Test
     fun `validate text with 2 characters`() {
+
+        manageResources.changeExpected("This field must contain at least 3 characters")
 
         assertEquals(
             TextValidationResult.Success(textWith2Characters),

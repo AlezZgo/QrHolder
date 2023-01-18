@@ -16,6 +16,7 @@ abstract class AbstractQrCodesRepositoryTest {
         cacheDataSource = QrCodesRepositoryTest.TestQrCodesCacheDataSource()
         manageResources = TestManageResources()
         mapper = QrCodeDataToDomainMapper()
+        saveInternalStorage = TestSaveInternalStorage()
         repository = QrCodesRepository.Base(cacheDataSource, mapper, manageResources,saveInternalStorage)
     }
 }

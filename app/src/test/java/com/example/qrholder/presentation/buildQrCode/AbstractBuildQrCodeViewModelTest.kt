@@ -15,7 +15,9 @@ import org.junit.jupiter.api.BeforeEach
 abstract class AbstractBuildQrCodeViewModelTest {
 
     protected lateinit var viewModel: BuildQrCodeViewModel
-    protected lateinit var communication: TestQrCodeBuiltCommunication
+    protected lateinit var qrCodeBuiltcommunication: TestQrCodeBuiltCommunication
+    protected lateinit var titleCommunication: TestValidateTitleCommunication
+    protected lateinit var contentCommunication: TestValidateContentCommunication
     protected lateinit var dispatchersList: DispatchersList
     protected lateinit var repository: TestQrCodesRepository
     protected lateinit var createQrCodeImage: TestCreateQrCodeImage
@@ -32,7 +34,9 @@ abstract class AbstractBuildQrCodeViewModelTest {
     fun setUp() {
         Dispatchers.setMain(mainThreadSurrogate)
 
-        communication = TestQrCodeBuiltCommunication()
+        qrCodeBuiltcommunication = TestQrCodeBuiltCommunication()
+        titleCommunication = TestValidateTitleCommunication()
+        contentCommunication = TestValidateContentCommunication()
         dispatchersList = TestDispatchersList()
         repository = TestQrCodesRepository()
         createQrCodeImage = TestCreateQrCodeImage()
@@ -42,7 +46,9 @@ abstract class AbstractBuildQrCodeViewModelTest {
         contentText = ""
 
         viewModel = BuildQrCodeViewModel(
-            communication = communication,
+            qrCodeBuiltCommunication = qrCodeBuiltcommunication,
+            validateTitleCommunication = titleCommunication,
+            validateContentCommunication = contentCommunication,
             dispatchers = dispatchersList,
             repository = repository,
             createQrCodeImage = createQrCodeImage,

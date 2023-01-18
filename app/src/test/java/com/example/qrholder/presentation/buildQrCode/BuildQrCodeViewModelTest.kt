@@ -32,12 +32,12 @@ internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
         assertEquals(newContent, createQrCodeImage.createQrCodeImageCalledList[0])
 
         assertEquals(1, repository.saveImageCalledList.size)
-        assertEquals(newTitle, repository.saveImageCalledList[0])
+        assertEquals(ImagePath.Success(expectedImagePath), repository.saveImageCalledList[0])
 
-        assertEquals(1, communication.buildResult.size)
+        assertEquals(1, qrCodeBuiltcommunication.buildResult.size)
         assertEquals(
-            QrCodeUi(newTitle, newContent, expectedImagePath),
-            communication.buildResult[0]
+            QrCodeBuildResult.Success(QrCodeUi(newTitle, newContent, expectedImagePath)),
+            qrCodeBuiltcommunication.buildResult[0]
         )
 
     }
@@ -64,7 +64,7 @@ internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
 
         assertEquals(0, createQrCodeImage.createQrCodeImageCalledList.size)
         assertEquals(0, repository.saveImageCalledList.size)
-        assertEquals(0, communication.buildResult.size)
+        assertEquals(0, qrCodeBuiltcommunication.buildResult.size)
 
         validateContent.changeValidationResult(
             TextValidationResult.Error("This field must contain at least 5 characters")
@@ -80,7 +80,7 @@ internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
 
         assertEquals(0, createQrCodeImage.createQrCodeImageCalledList.size)
         assertEquals(0, repository.saveImageCalledList.size)
-        assertEquals(0, communication.buildResult.size)
+        assertEquals(0, qrCodeBuiltcommunication.buildResult.size)
     }
 
 

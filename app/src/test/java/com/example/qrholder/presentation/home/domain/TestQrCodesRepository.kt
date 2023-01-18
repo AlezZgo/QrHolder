@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import com.example.qrholder.data.QrCodesRepository
 import com.example.qrholder.domain.model.ImagePath
 import com.example.qrholder.domain.model.QrCodes
+import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 
 class TestQrCodesRepository : QrCodesRepository {
 
@@ -26,7 +27,7 @@ class TestQrCodesRepository : QrCodesRepository {
         return expectedQrCodesResult
     }
 
-    override suspend fun saveQrCodeImage(model: Bitmap, name: String): ImagePath {
+    override suspend fun saveQrCodeImage(model: BitmapWrapper, name: String): ImagePath {
 
         saveImageCalledList.add(expectedQrCodeImageSaveResult)
 

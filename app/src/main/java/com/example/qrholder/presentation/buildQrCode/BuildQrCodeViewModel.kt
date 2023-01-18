@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BuildQrCodeViewModel @Inject constructor(
-    private val communication: QrCodeBuiltCommunication,
+    private val qrCodeBuiltCommunication: QrCodeBuiltCommunication,
     private val validateTitleCommunication: ValidateTitleCommunication,
     private val validateContentCommunication: ValidateContentCommunication,
     private val dispatchers: DispatchersList,
@@ -28,14 +28,14 @@ class BuildQrCodeViewModel @Inject constructor(
     @EmptyText private var titleText: String,
     @EmptyText private var contentText: String,
 ) : AbstractViewModel(), ChangeTitle, ChangeContent, Build, ValidateTitle, ValidateContent,
-    ObserveQrCodeBuildResult, ObserveTitle,ObserveContent {
+    ObserveQrCodeBuildResult, ObserveTitle, ObserveContent {
 
     override fun init() {}
 
     override fun observeBuildResultState(
         owner: LifecycleOwner,
         observer: Observer<QrCodeBuildResult>
-    ) = communication.observe(owner, observer)
+    ) = qrCodeBuiltCommunication.observe(owner, observer)
 
     override fun changeTitle(title: String) {
         titleText = title
@@ -53,18 +53,14 @@ class BuildQrCodeViewModel @Inject constructor(
         validateTitleCommunication.map(titleValidationResult)
         validateContentCommunication.map(contentValidationResult)
 
-        if(titleValidationResult is TextValidationResult.Success &&
-            contentValidationResult is TextValidationResult.Success){
+        if (titleValidationResult is TextValidationResult.Success &&
+            contentValidationResult is TextValidationResult.Success
+        ) {
             viewModelScope.launch(dispatchers.io()) {
-                val image = createQrCodeImage.create(contentText)
-                val imagePath = repository.saveQrCodeImage(image,titleText)
-
-                    communication.map(
-                        imagePath.map(titleText,contentText)
-                    )
-
-
-
+                qrCodeBuiltCommunication.map(
+                    createQrCodeImage.create(contentText).save(titleText, repository)
+                        .map(titleText, contentText)
+                )
             }
 
         }
@@ -74,14 +70,14 @@ class BuildQrCodeViewModel @Inject constructor(
 
     override fun validateTitle(title: String) = validateTitle.validate(title)
 
-    override fun validateContent(content: String) =  validateContent.validate(content)
+    override fun validateContent(content: String) = validateContent.validate(content)
 
     override fun observeTitle(owner: LifecycleOwner, observer: Observer<TextValidationResult>) {
-        validateTitleCommunication.observe(owner,observer)
+        validateTitleCommunication.observe(owner, observer)
     }
 
     override fun observeContent(owner: LifecycleOwner, observer: Observer<TextValidationResult>) {
-        validateContentCommunication.observe(owner,observer)
+        validateContentCommunication.observe(owner, observer)
     }
 
 }
@@ -119,6 +115,7 @@ interface ObserveQrCodeBuildResult {
 interface ObserveTitle {
     fun observeTitle(owner: LifecycleOwner, observer: Observer<TextValidationResult>)
 }
+
 interface ObserveContent {
     fun observeContent(owner: LifecycleOwner, observer: Observer<TextValidationResult>)
 }
