@@ -28,5 +28,14 @@
         android:id="@+id/buildQrCodeFragment"
         android:name="com.example.qrholder.presentation.buildQrCode.BuildQrCodeFragment"
         android:label="BuildQrCodeFragment"
-        tools:layout="@layout/fragment_build_qr_code" />
+        tools:layout="@layout/fragment_build_qr_code" >
+        <action
+            android:id="@+id/action_buildQrCodeFragment_to_successfullyBuiltFragment"
+            app:destination="@id/successfullyBuiltFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successfullyBuiltFragment"
+        android:name="com.example.qrholder.presentation.successfullyBuilt.SuccessfullyBuiltFragment"
+        android:label="SuccessfullyBuiltFragment"
+        tools:layout="@layout/fragment_successfully_built"/>
 </navigation>

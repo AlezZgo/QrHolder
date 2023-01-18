@@ -1,8 +1,7 @@
 package com.example.qrholder.presentation.buildQrCode
 
-import android.app.AlertDialog
 import android.text.Editable
-import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.qrholder.R
 import com.example.qrholder.core.HideKeyBoard
 import com.example.qrholder.databinding.FragmentBuildQrCodeBinding
@@ -35,37 +34,27 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
         viewModel.observeBuildResultState(viewLifecycleOwner) { buildResult ->
             buildResult.show(
                 //todo move to another fragment
-                successBuildAction = { qrCode->
-
-                    view?.let {
-                        hideKeyBoard.hideKeyboardFrom(requireContext(),it)
-                    }
-
-                    MaterialAlertDialogBuilder(requireContext(),
-                        R.style.Body_ThemeOverlay_MaterialComponents_MaterialAlertDialog)
-                        .setTitle("Success")
-                        .setMessage("Success")
-                        .show()
-
-
-
+                successBuildAction = { qrCode ->
+                    findNavController().navigate(BuildQrCodeFragmentDirections.actionBuildQrCodeFragmentToSuccessfullyBuiltFragment())
                 },
                 errorBuildAction = { errorMessage ->
-                    MaterialAlertDialogBuilder(requireContext(),
-                        R.style.Body_ThemeOverlay_MaterialComponents_MaterialAlertDialog)
+                    MaterialAlertDialogBuilder(
+                        requireContext(),
+                        R.style.Body_ThemeOverlay_MaterialComponents_MaterialAlertDialog
+                    )
                         .setTitle(getString(R.string.error))
                         .setMessage(errorMessage)
-                    .show()
+                        .show()
                 }
             )
 
         }
 
-        viewModel.observeTitle(viewLifecycleOwner){ validationResult ->
+        viewModel.observeTitle(viewLifecycleOwner) { validationResult ->
             validationResult.show(binding.tielTitle)
         }
 
-        viewModel.observeContent(viewLifecycleOwner){ validationResult ->
+        viewModel.observeContent(viewLifecycleOwner) { validationResult ->
             validationResult.show(binding.tielContent)
         }
 
