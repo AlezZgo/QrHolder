@@ -21,7 +21,7 @@ class SuccessfullyBuiltFragment :
     override fun setupListeners() {
         super.setupListeners()
         binding.BtnOk.setOnClickListener {
-            findNavController().navigate(SuccessfullyBuiltFragmentDirections.actionSuccessfullyBuiltFragmentToNavigationHome())
+            findNavController().navigateUp()
         }
     }
 }
