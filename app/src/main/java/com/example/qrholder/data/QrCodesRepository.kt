@@ -1,6 +1,5 @@
 package com.example.qrholder.data
 
-import android.graphics.Bitmap
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.data.cache.QrCodesCacheDataSource
@@ -11,7 +10,7 @@ import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 import javax.inject.Inject
 
 
-interface QrCodesRepository : SaveQrCodeImage{
+interface QrCodesRepository : SaveQrCode {
 
     suspend fun allQrCodes(): QrCodes
 
@@ -28,20 +27,22 @@ interface QrCodesRepository : SaveQrCodeImage{
             QrCodes.Failure(e.message ?: manageResources.string(R.string.defaultErrorMessage))
         }
 
-        override suspend fun saveQrCodeImage(model: BitmapWrapper, name: String): ImagePath = try {
+        override suspend fun saveImage(model: BitmapWrapper, name: String): ImagePath =
             saveInternalStorage.save(
                 model = model,
                 name = name,
             )
-        }catch (e : Exception){
-            ImagePath.Error(e.message?:manageResources.string(R.string.defaultErrorMessage))
-        }
+        
+
+        override suspend fun save(qrCode: QrCodeData) = cacheDataSource.save(qrCode)
 
 
     }
 
 }
 
-interface SaveQrCodeImage{
-    suspend fun saveQrCodeImage(model: BitmapWrapper, name: String) : ImagePath
+interface SaveQrCode {
+    suspend fun saveImage(model: BitmapWrapper, name: String): ImagePath
+
+    suspend fun save(qrCode: QrCodeData)
 }

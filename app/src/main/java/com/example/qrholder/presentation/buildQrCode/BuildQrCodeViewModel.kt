@@ -3,10 +3,15 @@ package com.example.qrholder.presentation.buildQrCode
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
+import com.example.qrholder.R
+import com.example.qrholder.core.ManageResources
+import com.example.qrholder.data.QrCodeData
 import com.example.qrholder.data.QrCodesRepository
 import com.example.qrholder.di.Content
 import com.example.qrholder.di.EmptyText
 import com.example.qrholder.di.Title
+import com.example.qrholder.domain.model.QrCode
+import com.example.qrholder.presentation.core.model.QrCodeUi
 import com.example.qrholder.presentation.core.validation.TextValidationResult
 import com.example.qrholder.presentation.core.validation.Validate
 import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
@@ -23,6 +28,9 @@ class BuildQrCodeViewModel @Inject constructor(
     private val dispatchers: DispatchersList,
     private val repository: QrCodesRepository,
     private val createQrCodeImage: CreateQrCodeImage,
+    private val qrCodeToUiMapper: QrCode.Mapper<QrCodeUi>,
+    private val qrCodeToDataMapper: QrCode.Mapper<QrCodeData>,
+    private val manageResources: ManageResources,
     @Title private val validateTitle: Validate<String, TextValidationResult>,
     @Content private val validateContent: Validate<String, TextValidationResult>,
     @EmptyText private var titleText: String,
@@ -56,10 +64,23 @@ class BuildQrCodeViewModel @Inject constructor(
         if (titleValidationResult is TextValidationResult.Success &&
             contentValidationResult is TextValidationResult.Success
         ) {
+            //todo change to coroutine scope
+            //todo I have messed with these mappers :D
+            //todo I 'm second-guessing a decision
             viewModelScope.launch(dispatchers.io()) {
+
                 qrCodeBuiltCommunication.map(
-                    createQrCodeImage.create(contentText).save(titleText, repository)
-                        .map(titleText, contentText)
+                    try {
+                        QrCodeBuildResult.Success(
+                            createQrCodeImage.create(contentText)
+                                .save(titleText, contentText, repository, qrCodeToDataMapper)
+                                .map(qrCodeToUiMapper)
+                        )
+                    } catch (e: Exception) {
+                        QrCodeBuildResult.Error(
+                            e.message ?: manageResources.string(R.string.defaultErrorMessage)
+                        )
+                    }
                 )
             }
 
