@@ -1,7 +1,7 @@
 package com.example.qrholder.presentation.home.mapper
 
 import com.example.qrholder.domain.model.QrCode
-import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.core.model.QrCodeUi
 import javax.inject.Inject
 
 class QrCodeToUiMapper @Inject constructor() : QrCode.Mapper<QrCodeUi> {

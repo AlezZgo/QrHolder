@@ -2,7 +2,7 @@ package com.example.qrholder.presentation.home.ui
 
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
 import com.example.qrholder.presentation.home.model.HomeUi
-import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.core.model.QrCodeUi
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

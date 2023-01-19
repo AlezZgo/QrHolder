@@ -1,7 +1,7 @@
 package com.example.qrholder.domain.model
 
 import com.example.qrholder.presentation.buildQrCode.QrCodeBuildResult
-import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.core.model.QrCodeUi
 
 sealed class ImagePath {
 

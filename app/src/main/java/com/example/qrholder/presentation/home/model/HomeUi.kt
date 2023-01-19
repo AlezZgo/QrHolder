@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.qrholder.presentation.core.model.QrCodeUi
 import com.example.qrholder.presentation.home.adapter.QrCodesAdapter
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.appbar.MaterialToolbar

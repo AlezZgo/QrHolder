@@ -2,7 +2,7 @@ package com.example.qrholder.presentation.buildQrCode
 
 import com.example.qrholder.domain.model.ImagePath
 import com.example.qrholder.presentation.core.validation.TextValidationResult
-import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.core.model.QrCodeUi
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

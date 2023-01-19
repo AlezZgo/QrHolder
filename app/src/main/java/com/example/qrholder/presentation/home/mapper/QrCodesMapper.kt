@@ -3,7 +3,7 @@ package com.example.qrholder.presentation.home.mapper
 import com.example.qrholder.domain.model.QrCode
 import com.example.qrholder.domain.model.QrCodes
 import com.example.qrholder.presentation.home.HomeCommunications
-import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.core.model.QrCodeUi
 import com.example.qrholder.presentation.home.model.QrCodeCompleteListUi
 import javax.inject.Inject
 
