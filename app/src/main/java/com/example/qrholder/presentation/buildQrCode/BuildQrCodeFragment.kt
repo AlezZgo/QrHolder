@@ -35,7 +35,11 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
             buildResult.show(
                 //todo move to another fragment
                 successBuildAction = { qrCode ->
-                    findNavController().navigate(BuildQrCodeFragmentDirections.actionBuildQrCodeFragmentToSuccessfullyBuiltFragment())
+                    findNavController().navigate(
+                        BuildQrCodeFragmentDirections.actionBuildQrCodeFragmentToSuccessfullyBuiltFragment(
+                            qrCode
+                        )
+                    )
                 },
                 errorBuildAction = { errorMessage ->
                     MaterialAlertDialogBuilder(

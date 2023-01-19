@@ -6,7 +6,7 @@ import com.example.qrholder.presentation.home.*
 import com.example.qrholder.presentation.home.mapper.CompleteListMapper
 import com.example.qrholder.presentation.home.mapper.QrCodeToUiMapper
 import com.example.qrholder.presentation.home.mapper.QrCodesMapper
-import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.core.model.QrCodeUi
 import com.example.qrholder.presentation.home.model.QrCodeCompleteListUi
 import dagger.Binds
 import dagger.Module

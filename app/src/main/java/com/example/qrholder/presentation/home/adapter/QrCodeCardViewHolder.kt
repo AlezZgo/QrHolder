@@ -2,7 +2,7 @@ package com.example.qrholder.presentation.home.adapter
 
 import com.example.qrholder.databinding.RvItemHomeQrcodeBinding
 import com.example.qrholder.presentation.core.adapter.threeActionsAdapter.AbstractThreeActionsViewHolder
-import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.core.model.QrCodeUi
 
 class QrCodeCardViewHolder(
     private val binding: RvItemHomeQrcodeBinding

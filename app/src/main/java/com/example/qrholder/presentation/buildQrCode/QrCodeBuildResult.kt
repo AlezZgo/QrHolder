@@ -1,11 +1,11 @@
 package com.example.qrholder.presentation.buildQrCode
 
-import com.example.qrholder.presentation.home.model.QrCodeUi
+import com.example.qrholder.presentation.core.model.QrCodeUi
 
 sealed class QrCodeBuildResult {
 
     abstract fun show(
-        successBuildAction: (result: QrCodeBuildResult) -> Unit,
+        successBuildAction: (result: QrCodeUi) -> Unit,
         errorBuildAction: (errorMessage: String) -> Unit
     )
 
@@ -13,10 +13,10 @@ sealed class QrCodeBuildResult {
         private val qrCode: QrCodeUi
     ) : QrCodeBuildResult() {
         override fun show(
-            successBuildAction: (result: QrCodeBuildResult) -> Unit,
+            successBuildAction: (result: QrCodeUi) -> Unit,
             errorBuildAction: (errorMessage: String) -> Unit
         ) {
-            successBuildAction.invoke(this)
+            successBuildAction.invoke(qrCode)
         }
 
     }
@@ -25,7 +25,7 @@ sealed class QrCodeBuildResult {
         private val errorMessage: String
     ) : QrCodeBuildResult() {
         override fun show(
-            successBuildAction: (result: QrCodeBuildResult) -> Unit,
+            successBuildAction: (result: QrCodeUi) -> Unit,
             errorBuildAction: (errorMessage: String) -> Unit
         ) {
             errorBuildAction.invoke(errorMessage)
