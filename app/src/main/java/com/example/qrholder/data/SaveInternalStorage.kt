@@ -29,10 +29,10 @@ interface SaveInternalStorage<T>  {
             return try {
                 fos = FileOutputStream(path)
                 model.compress(Bitmap.CompressFormat.PNG, 100, fos)
-                ImagePath.Success(path.path)
+                ImagePath(path.path)
             } catch (e: Exception) {
                 e.printStackTrace()
-                ImagePath.Error(e.message?:manageResources.string(R.string.defaultErrorMessage))
+                throw Exception(e.message?:manageResources.string(R.string.unable_to_save_image_to_internal_storage))
             } finally {
                 try {
                     fos?.close()

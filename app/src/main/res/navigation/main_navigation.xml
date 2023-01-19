@@ -39,9 +39,6 @@
         android:name="com.example.qrholder.presentation.successfullyBuilt.SuccessfullyBuiltFragment"
         android:label="SuccessfullyBuiltFragment"
         tools:layout="@layout/fragment_successfully_built">
-        <action
-            android:id="@+id/action_successfullyBuiltFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
         <argument
             android:name="QrCode"
             app:argType="com.example.qrholder.presentation.core.model.QrCodeUi" />

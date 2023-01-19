@@ -27,7 +27,7 @@ class TestQrCodesRepository : QrCodesRepository {
         return expectedQrCodesResult
     }
 
-    override suspend fun saveQrCodeImage(model: BitmapWrapper, name: String): ImagePath {
+    override suspend fun saveImage(model: BitmapWrapper, name: String): ImagePath {
 
         saveImageCalledList.add(expectedQrCodeImageSaveResult)
 
