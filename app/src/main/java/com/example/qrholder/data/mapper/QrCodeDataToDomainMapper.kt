@@ -1,5 +1,6 @@
-package com.example.qrholder.data
+package com.example.qrholder.data.mapper
 
+import com.example.qrholder.data.QrCodeData
 import com.example.qrholder.domain.model.QrCode
 import javax.inject.Inject
 

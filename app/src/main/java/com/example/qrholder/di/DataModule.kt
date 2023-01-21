@@ -1,7 +1,7 @@
 package com.example.qrholder.di
 
 import com.example.qrholder.data.QrCodeData
-import com.example.qrholder.data.QrCodeDataToDomainMapper
+import com.example.qrholder.data.mapper.QrCodeDataToDomainMapper
 import com.example.qrholder.data.QrCodesRepository
 import com.example.qrholder.data.cache.QrCodesCacheDataSource
 import com.example.qrholder.data.cache.db.QrCodeCache

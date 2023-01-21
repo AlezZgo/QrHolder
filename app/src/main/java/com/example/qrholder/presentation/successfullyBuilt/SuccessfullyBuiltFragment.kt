@@ -13,14 +13,16 @@ class SuccessfullyBuiltFragment :
 
     override fun setupViews() {
         super.setupViews()
-        args.qrCode.loadImage(binding.ivQrCode)
-        args.qrCode.loadTitle(binding.tvTitle)
-        args.qrCode.loadContent(binding.tvContent)
+        with(args.qrCode) {
+            loadImage(binding.ivQrCode)
+            loadTitle(binding.tvTitle)
+            loadContent(binding.tvContent)
+        }
     }
 
     override fun setupListeners() {
         super.setupListeners()
-        binding.BtnOk.setOnClickListener {
+        binding.btnOk.setOnClickListener {
             findNavController().navigateUp()
         }
     }

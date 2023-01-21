@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 class QrCodeDataToCacheMapper @Inject constructor() : QrCodeData.Mapper<QrCodeCache> {
     override fun map(title: String, content: String, path: String) =
-        QrCodeCache(title, content, path)
+        QrCodeCache(title, content, path, System.currentTimeMillis())
 }

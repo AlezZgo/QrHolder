@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 data class QrCodeCache(
     @PrimaryKey @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "content") val content: String,
-    @ColumnInfo(name = "path") val path: String
+    @ColumnInfo(name = "path") val path: String,
+    @ColumnInfo(name = "date") val date: Long
 )

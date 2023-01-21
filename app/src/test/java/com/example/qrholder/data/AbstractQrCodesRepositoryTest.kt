@@ -1,6 +1,7 @@
 package com.example.qrholder.data
 
 import com.example.qrholder.core.TestManageResources
+import com.example.qrholder.data.mapper.QrCodeDataToDomainMapper
 import org.junit.jupiter.api.BeforeEach
 
 abstract class AbstractQrCodesRepositoryTest {

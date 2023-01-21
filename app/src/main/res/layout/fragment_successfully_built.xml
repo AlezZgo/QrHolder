@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/BtnOk"
+        android:id="@+id/btnOk"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/roboto_mono_medium"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/BtnOk"
+        app:layout_constraintBottom_toTopOf="@+id/btnOk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"

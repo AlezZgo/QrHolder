@@ -1,5 +1,6 @@
 package com.example.qrholder.data
 
+import com.example.qrholder.data.mapper.QrCodeDataToDomainMapper
 import com.example.qrholder.domain.model.QrCode
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
