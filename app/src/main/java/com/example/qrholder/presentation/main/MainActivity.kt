@@ -19,18 +19,15 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), InitUI {
 
-    //todo fix bug with bottom navigation hide
     private lateinit var binding: ActivityMainBinding
     private lateinit var navView: BottomNavigationView
     private lateinit var navController: NavController
     private val handleBottomNavViewVisibility by lazy { HandleBottomNavViewVisibility.Base() }
     private val fragmentCreatedCallBack = object : FragmentManager.FragmentLifecycleCallbacks() {
-        override fun onFragmentViewCreated(
-            fm: FragmentManager,
-            fragment: Fragment,
-            v: View,
-            savedInstanceState: Bundle?
-        ) = handleBottomNavViewVisibility.show(navView, fragment)
+        override fun onFragmentStarted(fm: FragmentManager, fragment: Fragment) {
+            super.onFragmentStarted(fm, fragment)
+            handleBottomNavViewVisibility.show(navView, fragment)
+        }
     }
 
     private val viewModel by viewModels<MainActivityViewModel>()

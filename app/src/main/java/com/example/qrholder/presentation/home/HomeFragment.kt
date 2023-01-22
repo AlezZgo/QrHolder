@@ -46,7 +46,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
         super.setupViews()
         with(binding) {
             rvQrList.adapter = adapter
-            searchView = toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
+            searchView = toolbar.menu.findItem(R.id.appBarSearch).actionView as SearchView
             searchView.queryHint = manageResources.string(R.string.search_query_hint)
         }
     }

@@ -38,6 +38,5 @@ internal class QrCodesDatabaseTest : DatabaseForTest() {
         dao.insert(qrCodeWithAnotherTitle)
         actual = dao.allQrCodes()
 
-        assertEquals(listOf(qrCodeWithAnotherTitle,qrCodeWithTheSameTitle),actual)
-    }
+        assertEquals(listOf(qrCodeWithAnotherTitle,qrCodeWithTheSameTitle),actual)    }
 }

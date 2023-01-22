@@ -1,13 +1,12 @@
-package com.example.qrholder.home.data.cache.db
+package com.example.qrholder.home.data.cache.db.core
 
-import androidx.recyclerview.widget.RecyclerView
+
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -16,7 +15,7 @@ import org.junit.Rule
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-abstract class BaseAndroidTest {
+abstract class BaseAndroidTest : DatabaseForTest() {
 
     @get:Rule
     var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
@@ -30,36 +29,20 @@ abstract class BaseAndroidTest {
         check(matches(withText(value)))
     }
 
-    protected fun ViewInteraction.click() {
-        perform(ViewActions.click())
-    }
-
-    protected fun ViewInteraction.isDisplayed(){
+    protected fun ViewInteraction.checkIsDisplayed() {
         check(matches(ViewMatchers.isDisplayed()))
     }
 
-    protected fun ViewInteraction.checkRecyclerIsNotEmpty(){
-        this.check { view, noViewFoundException ->
-            noViewFoundException?.apply {
-                throw this
-            }
-            view is RecyclerView && view.adapter != null && (view.adapter?.itemCount ?: -1) > 0
-        }
-    }
-
-    protected fun ViewInteraction.checkRecyclerItemsIsEquals(count : Int){
-        this.check { view, noViewFoundException ->
-            noViewFoundException?.apply {
-                throw this
-            }
-            view is RecyclerView && view.adapter != null && (view.adapter?.itemCount ?: -1) == count
-        }
+    protected fun ViewInteraction.click() {
+        perform(ViewActions.click())
     }
 
     protected fun Int.viewInRecycler(position: Int, viewId: Int): ViewInteraction =
         onView(RecyclerViewMatcher(this).atPosition(position, viewId))
 
-    protected fun ViewInteraction.swipeDown(){
-        perform(ViewActions.swipeDown())
+    protected fun changeOrientation(screenOrientation: Int) {
+        activityScenarioRule.scenario.onActivity {
+            it.requestedOrientation = screenOrientation
+        }
     }
 }
