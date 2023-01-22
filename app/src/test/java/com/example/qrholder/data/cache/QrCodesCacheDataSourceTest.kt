@@ -4,6 +4,7 @@ import com.example.qrholder.data.QrCodeData
 import com.example.qrholder.data.cache.QrCodesCacheDataSource
 import com.example.qrholder.data.cache.db.QrCodeCache
 import com.example.qrholder.data.cache.db.QrCodesDao
+import com.example.qrholder.data.mapper.QrCodeDataToCacheMapper
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -13,11 +14,13 @@ class QrCodesCacheDataSourceTest {
 
     private lateinit var cacheDataSource: QrCodesCacheDataSource
     private lateinit var dao: TestQrCodesDao
+    private lateinit var mapper : QrCodeDataToCacheMapper
 
     @BeforeEach
     fun setUp() {
         dao = TestQrCodesDao()
-        cacheDataSource = QrCodesCacheDataSource.Base(dao)
+        mapper = QrCodeDataToCacheMapper()
+        cacheDataSource = QrCodesCacheDataSource.Base(dao,mapper)
     }
 
     @Test
@@ -27,17 +30,20 @@ class QrCodesCacheDataSourceTest {
                 QrCodeCache(
                     title = "test title 1",
                     content = "test1@gmail.com",
-                    path = "android.images.12022022190056.png"
+                    path = "android.images.12022022190056.png",
+                    1
                 ),
                 QrCodeCache(
                     title = "test title 2",
                     content = "test2@gmail.com",
-                    path = "android.images.12022022190052.png"
+                    path = "android.images.12022022190052.png",
+                    2
                 ),
                 QrCodeCache(
                     title = "test title 3",
                     content = "test3@gmail.com",
-                    path = "android.images.12022022190055.png"
+                    path = "android.images.12022022190055.png",
+                    3
                 ),
             )
         )
@@ -71,7 +77,8 @@ class QrCodesCacheDataSourceTest {
             QrCodeCache(
                 title = "test title 1",
                 content = "test1@gmail.com",
-                path = "android.images.12022022190056.png"
+                path = "android.images.12022022190056.png",
+                1
             )
         )
 
@@ -101,6 +108,10 @@ class QrCodesCacheDataSourceTest {
 
         override fun insert(qrCode: QrCodeCache) {
             qrCodes.add(qrCode)
+        }
+
+        override fun clearAll() {
+            qrCodes.clear()
         }
 
     }

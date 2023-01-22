@@ -5,7 +5,7 @@ import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 
 class TestSaveInternalStorage : SaveInternalStorage<BitmapWrapper> {
 
-    private var expectedResult: ImagePath = ImagePath.Error("Nothing to save")
+    private var expectedResult: ImagePath = ImagePath("")
 
     fun changeExpectedResult(imagePath: ImagePath) {
         expectedResult = imagePath

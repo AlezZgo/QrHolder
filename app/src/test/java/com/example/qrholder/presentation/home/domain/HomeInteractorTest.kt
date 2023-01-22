@@ -10,16 +10,15 @@ class HomeInteractorTest : AbstractHomeInteractorTest() {
 
     @Test
     fun `fetch success empty list`() = runBlocking{
-        val emptyQrCodes = QrCodes.Success(emptyList())
-        repository.changeExpectedResult(emptyQrCodes)
+        val emptyQrCodes = QrCodes.Success()
+        repository.changeExpectedResult(error = "",list = emptyList())
         assertEquals(emptyQrCodes,repository.allQrCodes())
-        assertEquals(1,repository.allNumbersCalledCount)
+        assertEquals(1,repository.allQrCodesCalledCount)
     }
 
     @Test
     fun `fetch success list`() = runBlocking{
-        val qrCodes = QrCodes.Success(
-            qrCodes = listOf(
+        val qrCodes = listOf(
                 QrCode(
                     title = "Test title 1",
                     content = "www.something.test",
@@ -36,19 +35,20 @@ class HomeInteractorTest : AbstractHomeInteractorTest() {
                     path = "content.cat.id3"
                 )
             )
-        )
 
-        repository.changeExpectedResult(qrCodes)
-        assertEquals(qrCodes,repository.allQrCodes())
-        assertEquals(1,repository.allNumbersCalledCount)
+
+        repository.changeExpectedResult(error = "", list = qrCodes)
+        assertEquals(QrCodes.Success(qrCodes),repository.allQrCodes())
+        assertEquals(1,repository.allQrCodesCalledCount)
     }
 
     @Test
     fun `handle error`() = runBlocking{
-        val error = QrCodes.Failure("something went wrong")
-        repository.changeExpectedResult(error)
-        assertEquals(error,repository.allQrCodes())
-        assertEquals(1,repository.allNumbersCalledCount)
+        val errorMessage = "something went wrong"
+        repository.changeExpectedResult(error = errorMessage,list = emptyList())
+
+        assertEquals(QrCodes.Failure(errorMessage),repository.allQrCodes())
+        assertEquals(1,repository.allQrCodesCalledCount)
     }
 
 }

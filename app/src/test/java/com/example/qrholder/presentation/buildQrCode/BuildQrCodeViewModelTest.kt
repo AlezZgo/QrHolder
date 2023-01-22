@@ -21,7 +21,7 @@ internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
         validateTitle.changeValidationResult(TextValidationResult.Success(newTitle))
         validateContent.changeValidationResult(TextValidationResult.Success(newContent))
 
-        repository.changeExpectedSaveImageResult(ImagePath.Success(expectedImagePath))
+        repository.changeExpectedSaveImageResult(ImagePath(expectedImagePath))
 
         viewModel.changeTitle(newTitle)
         viewModel.changeContent(newContent)
@@ -32,12 +32,12 @@ internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
         assertEquals(newContent, createQrCodeImage.createQrCodeImageCalledList[0])
 
         assertEquals(1, repository.saveImageCalledList.size)
-        assertEquals(ImagePath.Success(expectedImagePath), repository.saveImageCalledList[0])
+        assertEquals(ImagePath(expectedImagePath), repository.saveImageCalledList[0])
 
-        assertEquals(1, qrCodeBuiltcommunication.buildResult.size)
+        assertEquals(1, qrCodeBuiltCommunication.buildResult.size)
         assertEquals(
             QrCodeBuildResult.Success(QrCodeUi(newTitle, newContent, expectedImagePath)),
-            qrCodeBuiltcommunication.buildResult[0]
+            qrCodeBuiltCommunication.buildResult[0]
         )
 
     }
@@ -64,7 +64,7 @@ internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
 
         assertEquals(0, createQrCodeImage.createQrCodeImageCalledList.size)
         assertEquals(0, repository.saveImageCalledList.size)
-        assertEquals(0, qrCodeBuiltcommunication.buildResult.size)
+        assertEquals(0, qrCodeBuiltCommunication.buildResult.size)
 
         validateContent.changeValidationResult(
             TextValidationResult.Error("This field must contain at least 5 characters")
@@ -80,7 +80,7 @@ internal class BuildQrCodeViewModelTest : AbstractBuildQrCodeViewModelTest() {
 
         assertEquals(0, createQrCodeImage.createQrCodeImageCalledList.size)
         assertEquals(0, repository.saveImageCalledList.size)
-        assertEquals(0, qrCodeBuiltcommunication.buildResult.size)
+        assertEquals(0, qrCodeBuiltCommunication.buildResult.size)
     }
 
 

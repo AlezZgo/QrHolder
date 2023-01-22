@@ -69,13 +69,13 @@ class QrCodesRepositoryTest : AbstractQrCodesRepositoryTest(){
 
     class TestQrCodesCacheDataSource : QrCodesCacheDataSource {
 
-        private var list = emptyList<QrCodeData>()
+        private var list = mutableListOf<QrCodeData>()
         private var exception = Exception("something went wrong")
         private var expectedError = false
 
         fun changeExpectedResult(list: List<QrCodeData>) {
             expectedError = false
-            this.list = list
+            this.list = list.toMutableList()
         }
 
         fun changeExpectedError(exception: Exception) {
@@ -84,5 +84,9 @@ class QrCodesRepositoryTest : AbstractQrCodesRepositoryTest(){
         }
 
         override suspend fun allQrCodes() = if (expectedError) throw exception else list
+
+        override suspend fun save(qrCode: QrCodeData) {
+            list.add(qrCode)
+        }
     }
 }
