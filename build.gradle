@@ -21,6 +21,6 @@ task clean(type: Delete) {
 }
 
 ext{
-    room = '2.4.3'
+    room = '2.5.0'
     junit = '5.9.1'
 }
