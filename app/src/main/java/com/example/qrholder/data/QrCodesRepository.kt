@@ -13,6 +13,7 @@ import javax.inject.Inject
 interface QrCodesRepository : SaveQrCode {
 
     suspend fun allQrCodes(): QrCodes
+    suspend fun delete(qrCodeTitle: String)
 
     class Base @Inject constructor(
         private val cacheDataSource: QrCodesCacheDataSource,
@@ -25,6 +26,10 @@ interface QrCodesRepository : SaveQrCode {
             QrCodes.Success(cacheDataSource.allQrCodes().map { it.map(mapper) })
         } catch (e: Exception) {
             QrCodes.Failure(e.message ?: manageResources.string(R.string.defaultErrorMessage))
+        }
+
+        override suspend fun delete(qrCodeTitle: String) {
+            cacheDataSource.delete(qrCodeTitle = qrCodeTitle)
         }
 
         override suspend fun saveImage(model: BitmapWrapper, name: String): ImagePath =

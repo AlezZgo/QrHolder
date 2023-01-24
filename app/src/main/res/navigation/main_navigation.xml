@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_buildQrCodeFragment"
             app:destination="@id/buildQrCodeFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_onItemClickDialogFragment"
+            app:destination="@id/onItemClickDialogFragment" />
     </fragment>
 
     <fragment
@@ -43,4 +46,13 @@
             android:name="QrCode"
             app:argType="com.example.qrholder.presentation.core.model.QrCodeUi" />
     </fragment>
+    <dialog
+        android:id="@+id/onItemClickDialogFragment"
+        android:name="com.example.qrholder.presentation.onItemClickDialogFragment.OnItemClickDialogFragment"
+        android:label="OnItemClickDialogFragment"
+        tools:layout="@layout/dialog_fragment_on_item_click">
+        <argument
+            android:name="QrCode"
+            app:argType="com.example.qrholder.presentation.core.model.QrCodeUi" />
+    </dialog>
 </navigation>

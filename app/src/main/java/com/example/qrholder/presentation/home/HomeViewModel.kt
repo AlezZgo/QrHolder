@@ -8,6 +8,7 @@ import com.example.qrholder.core.ManageResources
 import com.example.qrholder.domain.HomeInteractor
 import com.example.qrholder.domain.model.QrCodes
 import com.example.qrholder.presentation.core.ObserveUiState
+import com.example.qrholder.presentation.core.model.QrCodeUi
 import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import com.example.qrholder.presentation.home.model.HomeUi
@@ -37,12 +38,24 @@ class HomeViewModel @Inject constructor(
             result.map(fetchAllResultMapper)
 
             //todo switch dispatcher isn`t right there? is it?
-            //todo it works just because it takes some delay, during which complete list would finish initializing
+            //todo it works just because it takes some delay,
+            //during which complete list would finish initializing
             //todo SUGGESTION!!! USE OBSERVE FOREVER!!!!!
             withContext(dispatchers.ui()) {
                 filter(manageResources.string(R.string.empty))
             }
         }
+    }
+
+    fun delete(model: QrCodeUi) {
+        viewModelScope.launch(dispatchers.io()) {
+            model.delete(delete = interactor)
+            interactor.fetchAll().map(fetchAllResultMapper)
+            withContext(dispatchers.ui()) {
+                communications.reFilter()
+            }
+        }
+
     }
 }
 

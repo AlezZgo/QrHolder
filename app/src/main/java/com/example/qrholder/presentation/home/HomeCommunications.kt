@@ -9,7 +9,7 @@ import com.example.qrholder.presentation.home.model.HomeUi
 import com.example.qrholder.presentation.home.model.QrCodeCompleteListUi
 import javax.inject.Inject
 
-interface HomeCommunications : ObserveHomeUiState, ShowState<HomeUi> {
+interface HomeCommunications : ObserveHomeUiState, ShowState<HomeUi>,Refilter {
 
     fun changeCompleteList(qrCodes: QrCodeCompleteListUi)
 
@@ -30,6 +30,10 @@ interface HomeCommunications : ObserveHomeUiState, ShowState<HomeUi> {
             qrCodesCompleteListCommunication.filter(text, uiStateCommunication)
         }
 
+        override fun reFilter() {
+            qrCodesCompleteListCommunication.filter(filterCommunication.currentFilter(),uiStateCommunication)
+        }
+
         override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUi>) {
             uiStateCommunication.observe(owner, observer)
         }
@@ -44,7 +48,13 @@ interface HomeUiStateCommunication : Communication.Mutable<HomeUi> {
 }
 
 interface FilterCommunication : Communication.Mutable<String> {
-    class Base @Inject constructor() : Communication.Post<String>(), FilterCommunication
+    fun currentFilter() : String
+
+    class Base @Inject constructor() : Communication.Post<String>(), FilterCommunication{
+
+        override fun currentFilter() : String = liveData.value?:""
+
+    }
 }
 
 interface CompleteListCommunication : Communication.Mutable<QrCodeCompleteListUi>,
@@ -58,11 +68,17 @@ interface CompleteListCommunication : Communication.Mutable<QrCodeCompleteListUi
         override fun filter(filter: String, uiState: Communication.Mutable<HomeUi>) {
             liveData.value?.map(completeListMapper, filter, uiState)
         }
+
+
     }
 }
 
 interface FilterToState<F : Any, S : Any> {
 
     fun filter(filter: F, uiState: Communication.Mutable<HomeUi>)
+}
+
+interface Refilter {
+    fun  reFilter()
 }
 

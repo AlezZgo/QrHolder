@@ -12,6 +12,7 @@ interface QrCodesCacheDataSource {
     suspend fun allQrCodes(): List<QrCodeData>
 
     suspend fun save(qrCode: QrCodeData)
+    suspend fun delete(qrCodeTitle: String)
 
     class Base @Inject constructor(
         private val dao: QrCodesDao,
@@ -33,6 +34,10 @@ interface QrCodesCacheDataSource {
 
         override suspend fun save(qrCode: QrCodeData) = mutex.withLock {
             dao.insert(qrCode.map(mapper))
+        }
+
+        override suspend fun delete(qrCodeTitle: String) {
+            dao.delete(qrCodeTitle = qrCodeTitle)
         }
 
     }

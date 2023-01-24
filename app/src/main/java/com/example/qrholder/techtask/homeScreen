@@ -35,7 +35,7 @@ HomeScreen QrCode Item consist of:
 
     user clicks on Qr Code(root) -> description screen opens
     user clicks on image -> imageDialog opens with increasing screen brightness to max level
-    user long click on Qr Code(root) -> popup menu shows
+    user long click on Qr Code(root) -> dialog fragment shows
         if click on share item -> system intent to share
         if click on browse item -> system intent to browse
         if click on delete item -> item is removed from the list

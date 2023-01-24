@@ -1,6 +1,8 @@
 package com.example.qrholder.presentation.home
 
 import android.widget.SearchView
+import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.databinding.FragmentHomeBinding
@@ -31,10 +33,10 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     private val adapter by lazy {
         QrCodesAdapter(
             onCardClick = { qrCode ->
-                //Todo
+
             },
             onCardLongClick = { qrCode ->
-                //Todo
+                findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToOnItemClickDialogFragment(qrCode))
             },
             onImageClick = { qrCode ->
                 //Todo
@@ -44,6 +46,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun setupViews() {
         super.setupViews()
+        isSharedViewModel = true
         with(binding) {
             rvQrList.adapter = adapter
             searchView = toolbar.menu.findItem(R.id.appBarSearch).actionView as SearchView

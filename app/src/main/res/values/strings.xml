@@ -30,5 +30,9 @@
     <string name="error">Error</string>
     <string name="successful_creation">Successful creation</string>
     <string name="ok">Ok</string>
-    <string name="unable_to_save_image_to_internal_storage">Unable t osave image to internal storage</string>
+    <string name="unable_to_save_image_to_internal_storage">Unable to save image to internal storage</string>
+    <string name="share">Share</string>
+    <string name="browse">Browse</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>
