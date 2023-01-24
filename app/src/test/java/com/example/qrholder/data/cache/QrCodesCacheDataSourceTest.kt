@@ -104,10 +104,14 @@ class QrCodesCacheDataSourceTest {
             this.qrCodes = qrCodes.toMutableList()
         }
 
-        override fun allQrCodes(): List<QrCodeCache> = qrCodes
+        override suspend fun allQrCodes(): List<QrCodeCache> = qrCodes
 
-        override fun insert(qrCode: QrCodeCache) {
+        override suspend fun insert(qrCode: QrCodeCache) {
             qrCodes.add(qrCode)
+        }
+
+        override fun delete(qrCodeTitle: String) {
+            qrCodes.removeIf { it.title == qrCodeTitle }
         }
 
         override fun clearAll() {

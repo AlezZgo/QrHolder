@@ -39,6 +39,8 @@ class TestQrCodesRepository : QrCodesRepository {
 
     }
 
+    override suspend fun delete(qrCodeTitle: String) = Unit
+
     override suspend fun saveImage(model: BitmapWrapper, name: String): ImagePath {
 
         saveImageCalledList.add(expectedQrCodeImageSaveResult)

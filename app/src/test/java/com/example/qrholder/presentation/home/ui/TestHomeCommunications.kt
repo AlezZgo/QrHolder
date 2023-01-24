@@ -22,6 +22,11 @@ class TestHomeCommunications : HomeCommunications {
         testHomeCommunication.map(state)
     }
 
+    override fun reFilter() {
+        filterCalledList.add(filterCalledList.last())
+        qrCodesCompleteList.map(mapper = mapper, filter = filterCalledList.last(), uiState = testHomeCommunication)
+    }
+
     override fun changeCompleteList(qrCodes: QrCodeCompleteListUi) {
         qrCodesCompleteCalledList.add(qrCodes)
         qrCodesCompleteList = qrCodes

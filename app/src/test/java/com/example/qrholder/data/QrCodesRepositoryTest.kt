@@ -88,5 +88,7 @@ class QrCodesRepositoryTest : AbstractQrCodesRepositoryTest(){
         override suspend fun save(qrCode: QrCodeData) {
             list.add(qrCode)
         }
+
+        override suspend fun delete(qrCodeTitle: String) = Unit
     }
 }

@@ -17,4 +17,6 @@ class TestQrCodesInteractor : HomeInteractor {
         fetchAllCalledList.add(result)
         return result
     }
+
+    override suspend fun delete(model: String) = Unit
 }
