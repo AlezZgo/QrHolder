@@ -12,7 +12,6 @@ import java.io.FileOutputStream
 import java.io.IOException
 import javax.inject.Inject
 
-
 interface SaveInternalStorage<T>  {
 
     fun save(model: T, name: String) : ImagePath

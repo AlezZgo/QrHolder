@@ -1,8 +1,7 @@
 <resources>
-    <!-- Base application theme. -->
+
     <style name="Theme.QrHolder" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/dark_gray</item>
     </style>
-
 
 </resources>

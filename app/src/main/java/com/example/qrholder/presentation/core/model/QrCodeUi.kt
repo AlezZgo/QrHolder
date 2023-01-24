@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
+import android.text.Editable
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -12,6 +14,8 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.qrholder.core.Delete
 import com.example.qrholder.core.Match
 import com.example.qrholder.presentation.core.loadImage.load
+import com.example.qrholder.presentation.core.loadImage.loadWithoutCaching
+import com.example.qrholder.presentation.editQrCode.Edit
 import kotlinx.parcelize.Parcelize
 
 
@@ -33,7 +37,7 @@ data class QrCodeUi(
     ) {
         tvTitle.text = title
         tvContent.text = content
-        ivQrCode.load(path)
+        ivQrCode.loadWithoutCaching(path)
         card.setOnClickListener {
             onCardClick.invoke(this)
         }
@@ -48,6 +52,8 @@ data class QrCodeUi(
     }
 
     suspend fun delete(delete : Delete<String>) = delete.delete(title)
+
+    fun edit(editor : Edit) = editor.edit(title)
 
     fun share(context : Context) {
         val shareIntent = Intent(Intent.ACTION_SEND);
@@ -67,7 +73,11 @@ data class QrCodeUi(
 
     fun loadTitle(textView : TextView) { textView.text = title }
 
+    fun loadTitle(editText : EditText) { editText.setText(title) }
+
     fun loadContent(textView : TextView) { textView.text = content }
+
+    fun loadContent(editText : EditText) { editText.setText(content) }
 
     override fun contains(text: String) = title.contains(text, true) or content.contains(text, true)
 
@@ -79,7 +89,6 @@ data class QrCodeUi(
 
 interface Contains<T> {
     fun contains(text: T): Boolean
-
 }
 
 

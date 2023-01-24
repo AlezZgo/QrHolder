@@ -1,9 +1,11 @@
-package com.example.qrholder.presentation.buildQrCode
+package com.example.qrholder.presentation.editQrCode
 
 import android.text.Editable
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.qrholder.R
-import com.example.qrholder.databinding.FragmentBuildQrCodeBinding
+import com.example.qrholder.databinding.FragmentEditQrCodeBinding
+import com.example.qrholder.presentation.buildQrCode.BuildQrCodeFragmentDirections
 import com.example.qrholder.presentation.core.SimpleTextWatcher
 import com.example.qrholder.presentation.core.fragment.AbstractFragment
 import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
@@ -11,17 +13,23 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQrCodeViewModel>(
-    FragmentBuildQrCodeBinding::inflate, BuildQrCodeViewModel::class.java
-), BottomNavViewVisibility.Hide {
+class EditQrCodeFragment : AbstractFragment<FragmentEditQrCodeBinding, EditQrCodeVIewModel>(
+    FragmentEditQrCodeBinding::inflate, EditQrCodeVIewModel::class.java
+), BottomNavViewVisibility.Hide  {
 
+    private val args by navArgs<EditQrCodeFragmentArgs>()
 
-    private val titleTextChangedListener = object : SimpleTextWatcher() {
-        override fun afterTextChanged(s: Editable?) = viewModel.changeTitle(s.toString())
-    }
     private val contentTextChangedListener = object : SimpleTextWatcher() {
-        override fun afterTextChanged(s: Editable?) =
-            viewModel.changeContent(s.toString())
+        override fun afterTextChanged(content: Editable?) =
+            viewModel.changeContent(content.toString())
+    }
+
+    override fun setupViews() {
+        super.setupViews()
+        args.qrCode.run {
+            loadTitle(binding.tielTitle)
+            loadContent(binding.tielContent)
+        }
     }
 
     override fun observe() {
@@ -31,28 +39,18 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
             buildResult.show(
                 //todo move to another fragment
                 successBuildAction = { qrCode ->
-                    findNavController().navigate(
-                        BuildQrCodeFragmentDirections.actionBuildQrCodeFragmentToSuccessfullyBuiltFragment(
-                            qrCode
-                        )
-                    )
+                    findNavController().popBackStack()
                 },
                 errorBuildAction = { errorMessage ->
                     MaterialAlertDialogBuilder(
                         requireContext(),
-                    )
-                        .setTitle(getString(R.string.error))
+                    ).setTitle(getString(R.string.error))
                         .setMessage(errorMessage)
                         .show()
                 }
             )
 
         }
-
-        viewModel.observeTitle(viewLifecycleOwner) { validationResult ->
-            validationResult.show(binding.tielTitle)
-        }
-
         viewModel.observeContent(viewLifecycleOwner) { validationResult ->
             validationResult.show(binding.tielContent)
         }
@@ -61,19 +59,16 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
 
     override fun setupListeners() {
         super.setupListeners()
-        binding.btnBuild.setOnClickListener { viewModel.build() }
+        binding.btnBuild.setOnClickListener { args.qrCode.edit(viewModel) }
     }
 
     override fun onResume() {
         super.onResume()
-        binding.tielTitle.addTextChangedListener(titleTextChangedListener)
         binding.tielContent.addTextChangedListener(contentTextChangedListener)
     }
 
     override fun onPause() {
         super.onPause()
-        binding.tielTitle.removeTextChangedListener(titleTextChangedListener)
         binding.tielContent.removeTextChangedListener(contentTextChangedListener)
     }
 }
-

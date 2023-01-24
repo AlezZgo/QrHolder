@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
     private val communications: HomeCommunications,
     private val manageResources: ManageResources,
     private val fetchAllResultMapper: QrCodes.Mapper<Unit>
-) : AbstractViewModel(), ObserveUiState<HomeUi>, Filter<String> {
+) : AbstractViewModel(), ObserveUiState<HomeUi>, Filter<String>,Delete<QrCodeUi> {
 
     override fun observeUiState(owner: LifecycleOwner, observer: Observer<HomeUi>) =
         communications.observeUiState(owner, observer)
@@ -47,7 +47,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun delete(model: QrCodeUi) {
+    override fun delete(model: QrCodeUi) {
         viewModelScope.launch(dispatchers.io()) {
             model.delete(delete = interactor)
             interactor.fetchAll().map(fetchAllResultMapper)
@@ -55,10 +55,13 @@ class HomeViewModel @Inject constructor(
                 communications.reFilter()
             }
         }
-
     }
 }
 
 interface Filter<T> {
     fun filter(filter: T)
+}
+
+interface Delete<T>{
+    fun delete(model: T)
 }

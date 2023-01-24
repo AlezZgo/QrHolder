@@ -1,5 +1,6 @@
 package com.example.qrholder.di
 
+import com.example.qrholder.data.DeleteInternalStorage
 import com.example.qrholder.data.QrCodeData
 import com.example.qrholder.data.mapper.QrCodeDataToDomainMapper
 import com.example.qrholder.data.QrCodesRepository
@@ -21,6 +22,9 @@ interface DataModule {
     fun bindQrCodesRepository(qrCodesRepository: QrCodesRepository.Base): QrCodesRepository
 
     @Binds
+    fun bindDeleteInternalStorage(deleteInternalStorage: DeleteInternalStorage.Base): DeleteInternalStorage
+
+    @Binds
     fun bindQrCodesCacheDataSource(qrCodesCacheDataSource: QrCodesCacheDataSource.Base): QrCodesCacheDataSource
 
     @Binds
@@ -31,4 +35,6 @@ interface DataModule {
 
     @Binds
     fun bindQrCodeToDataMapper(mapper: QrCodeToDataMapper): QrCode.Mapper<QrCodeData>
+
+
 }

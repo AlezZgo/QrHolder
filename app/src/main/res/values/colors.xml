@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="aquamarine_200">#80DEEA</color>
+    <color name="red">#F44336</color>
     <color name="aquamarine_500">#00BCD4</color>
     <color name="aquamarine_700">#0097A7</color>
     <color name="aquamarine_900">#006064</color>
