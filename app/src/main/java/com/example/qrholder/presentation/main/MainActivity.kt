@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity(), InitUI {
                 binding.fabScan.isGone = true
                 binding.fabGallery.isGone = true
             }
-
         }
     }
 
