@@ -23,13 +23,13 @@ class LengthCondition (
                     R.string.input_edit_text_error_this_field_cannot_be_empty
                 )
             )
-            trimmedText.length <= min -> TextValidationResult.Error(
+            trimmedText.length < min -> TextValidationResult.Error(
                 manageResources.string(
                     R.string.input_edit_text_error_this_field_must_contain_at_least_d_characters,
                     min.toString()
                 )
             )
-            trimmedText.length >= max -> TextValidationResult.Error(
+            trimmedText.length > max -> TextValidationResult.Error(
                 manageResources.string(
                     R.string.input_edit_text_error_this_field_must_contain_no_more_then_d_characters,
                     max.toString()
