@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.QrHolder" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/aquamarine_200</item>
+
     </style>
 
     <style name="AlertDialog.Custom" parent="Theme.AppCompat.Dialog.Alert">

@@ -39,7 +39,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
                 findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToOnItemClickDialogFragment(qrCode))
             },
             onImageClick = { qrCode ->
-                //Todo
+                findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToQrCodeImageDialogFragment(qrCode))
             }
         )
     }

@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.qrholder">
 
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
     <application
         android:name=".core.QrHolderApp"
         android:icon="@drawable/ic_app"
