@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
@@ -31,6 +32,12 @@ class MainActivity : AppCompatActivity(), InitUI {
         override fun onFragmentStarted(fm: FragmentManager, fragment: Fragment) {
             super.onFragmentStarted(fm, fragment)
             handleBottomNavViewVisibility.show(navView, fragment)
+            if(fragment is BottomNavViewVisibility.Hide){
+                binding.fabBuild.isGone = true
+                binding.fabScan.isGone = true
+                binding.fabGallery.isGone = true
+            }
+
         }
     }
 
