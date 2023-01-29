@@ -7,7 +7,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class QrCodesRepositoryTest : AbstractQrCodesRepositoryTest(){
+class QrCodesRepositoryTest : AbstractQrCodesRepositoryTest() {
 
     @Test
     fun `fetch empty list`() = runBlocking {

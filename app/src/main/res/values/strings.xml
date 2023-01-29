@@ -35,4 +35,8 @@
     <string name="browse">Browse</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="support_link">https://t.me/AlezZGO</string>
+    <string name="cancel">Cancel</string>
+    <string name="sure_delete_qr_code">Are you sure want to delete this qr code?</string>
+
 </resources>

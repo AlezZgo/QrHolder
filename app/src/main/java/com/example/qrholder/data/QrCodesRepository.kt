@@ -10,16 +10,18 @@ import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 import javax.inject.Inject
 
 
-interface QrCodesRepository : SaveQrCode {
+interface QrCodesRepository : SaveQrCode, DeleteQrCodeImage {
 
     suspend fun allQrCodes(): QrCodes
+
     suspend fun delete(qrCodeTitle: String)
 
     class Base @Inject constructor(
         private val cacheDataSource: QrCodesCacheDataSource,
         private val mapper: QrCodeData.Mapper<QrCode>,
         private val manageResources: ManageResources,
-        private val saveInternalStorage: SaveInternalStorage<BitmapWrapper>
+        private val saveInternalStorage: SaveInternalStorage<BitmapWrapper>,
+        private val deleteInternalStorage: DeleteInternalStorage
     ) : QrCodesRepository {
 
         override suspend fun allQrCodes(): QrCodes = try {
@@ -32,15 +34,17 @@ interface QrCodesRepository : SaveQrCode {
             cacheDataSource.delete(qrCodeTitle = qrCodeTitle)
         }
 
-        override suspend fun saveImage(model: BitmapWrapper, name: String): ImagePath =
+        override fun deleteImage(path: String) {
+            deleteInternalStorage.deleteImage(path)
+        }
+
+        override suspend fun saveImage(model: BitmapWrapper, name: String) =
             saveInternalStorage.save(
                 model = model,
                 name = name,
             )
-        
 
         override suspend fun save(qrCode: QrCodeData) = cacheDataSource.save(qrCode)
-
 
     }
 
@@ -51,3 +55,5 @@ interface SaveQrCode {
 
     suspend fun save(qrCode: QrCodeData)
 }
+
+
