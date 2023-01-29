@@ -40,7 +40,6 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
                 errorBuildAction = { errorMessage ->
                     MaterialAlertDialogBuilder(
                         requireContext(),
-                        R.style.Body_ThemeOverlay_MaterialComponents_MaterialAlertDialog
                     )
                         .setTitle(getString(R.string.error))
                         .setMessage(errorMessage)

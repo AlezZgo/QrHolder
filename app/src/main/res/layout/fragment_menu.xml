@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
+            style=""
             android:layout_margin="4dp"
             android:elevation="32dp"
             app:cardCornerRadius="@dimen/cv_corner_radius"
@@ -34,7 +35,8 @@
                     android:id="@+id/ivSupport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_baseline_contact_support_24" />
+                    app:srcCompat="@drawable/ic_baseline_contact_support_24"
+                    app:tint="?attr/colorOnBackground" />
 
                 <TextView
                     android:id="@+id/tvSupport"
@@ -71,6 +73,7 @@
                     android:id="@+id/ivRateApp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:tint="?attr/colorOnBackground"
                     app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
                 <TextView

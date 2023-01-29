@@ -1,11 +1,14 @@
 package com.example.qrholder.presentation.confirmDialog
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
@@ -32,6 +35,7 @@ class ConfirmDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.tvTitle.text = args.title
         binding.btnOk.setOnClickListener {
+
             requireActivity().supportFragmentManager
                 .setFragmentResult(CONFIRM_DIALOG_RESULT,Bundle().apply { putString(CONFIRM_DIALOG_RESULT,OK) })
             dismiss()

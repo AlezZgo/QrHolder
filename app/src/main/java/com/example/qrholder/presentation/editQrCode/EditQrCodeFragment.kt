@@ -44,7 +44,6 @@ class EditQrCodeFragment : AbstractFragment<FragmentEditQrCodeBinding, EditQrCod
                 errorBuildAction = { errorMessage ->
                     MaterialAlertDialogBuilder(
                         requireContext(),
-                        R.style.Body_ThemeOverlay_MaterialComponents_MaterialAlertDialog
                     ).setTitle(getString(R.string.error))
                         .setMessage(errorMessage)
                         .show()
