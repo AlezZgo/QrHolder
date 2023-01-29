@@ -16,8 +16,6 @@ import com.example.qrholder.presentation.home.HomeViewModel
 
 class ConfirmDialogFragment : DialogFragment() {
 
-    private val viewModel by activityViewModels<HomeViewModel>()
-
     private lateinit var binding: FragmentConfirmDialogBinding
 
     private val args by navArgs<ConfirmDialogFragmentArgs>()
@@ -32,9 +30,21 @@ class ConfirmDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        args.confirmDialogInitState.show(binding.tvTitle,binding.btnOk,binding.btnCancel){
+        binding.tvTitle.text = args.title
+        binding.btnOk.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .setFragmentResult(CONFIRM_DIALOG_RESULT,Bundle().apply { putString(CONFIRM_DIALOG_RESULT,OK) })
             dismiss()
         }
-
+        binding.btnCancel.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .setFragmentResult(CONFIRM_DIALOG_RESULT,Bundle().apply { putString(CONFIRM_DIALOG_RESULT,CANCEL) })
+            dismiss()
+        }
+    }
+    companion object{
+        const val CONFIRM_DIALOG_RESULT = "confirm_dialog_result"
+        const val OK = "ok"
+        private const val CANCEL = "cancel"
     }
 }

@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.qrholder.R
 import com.example.qrholder.databinding.DialogFragmentOnItemClickBinding
-import com.example.qrholder.presentation.confirmDialog.ConfirmDialogInitState
+import com.example.qrholder.presentation.confirmDialog.ConfirmDialogFragment
 import com.example.qrholder.presentation.home.HomeViewModel
 
 
@@ -30,6 +30,16 @@ class OnItemClickDialogFragment : DialogFragment() {
         binding = DialogFragmentOnItemClickBinding.inflate(inflater)
         binding.run {
 
+            requireActivity().supportFragmentManager
+                .setFragmentResultListener(ConfirmDialogFragment.CONFIRM_DIALOG_RESULT, viewLifecycleOwner) { _, bundle ->
+                    if(bundle.getString(ConfirmDialogFragment.CONFIRM_DIALOG_RESULT) == ConfirmDialogFragment.OK){
+                        viewModel.delete(args.qrCode)
+                        dismiss()
+                    }else{
+                        dismiss()
+                    }
+                }
+
             share.setOnClickListener {
                 args.qrCode.share(binding.root.context)
                 dismiss()
@@ -39,15 +49,11 @@ class OnItemClickDialogFragment : DialogFragment() {
                 dismiss()
             }
             delete.setOnClickListener {
-                findNavController().navigate(OnItemClickDialogFragmentDirections.actionOnItemClickDialogFragmentToConfirmDialogFragment(
-                    ConfirmDialogInitState(
-                        title = getString(R.string.sure_delete_qr_code),
-                        positiveAction = {
-                            viewModel.delete(args.qrCode)
-                        },
-                        negativeAction = {}
+                findNavController().navigate(
+                    OnItemClickDialogFragmentDirections.actionOnItemClickDialogFragmentToConfirmDialogFragment(
+                        getString(R.string.sure_delete_qr_code)
                     )
-                ))
+                )
             }
             edit.setOnClickListener {
                 findNavController().navigate(
