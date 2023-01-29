@@ -1,8 +1,10 @@
 package com.example.qrholder.presentation.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -14,7 +16,9 @@ import com.example.qrholder.databinding.ActivityMainBinding
 import com.example.qrholder.presentation.core.InitUI
 import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), InitUI {
@@ -52,6 +56,22 @@ class MainActivity : AppCompatActivity(), InitUI {
             navController.navigate(R.id.buildQrCodeFragment)
             viewModel.changeFabState(MainFabUiState.Closed)
         }
+        binding.fabScan.setOnClickListener {
+            IntentIntegrator(this).apply {
+                setOrientationLocked(false)
+                setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+                setPrompt("Scan a qr code")
+                setCameraId(0)
+                setBeepEnabled(false)
+                initiateScan()
+            }
+            viewModel.changeFabState(MainFabUiState.Closed)
+        }
+        viewModel.observeQrCodeScanned(this) {
+            navController.navigate(
+                R.id.buildQrCodeFragment,
+                Bundle().apply { putString("content", it) })
+        }
         supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentCreatedCallBack, true)
     }
 
@@ -69,6 +89,15 @@ class MainActivity : AppCompatActivity(), InitUI {
             )
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (result?.contents != null) {
+            viewModel.changeQrCodeScanned(result.contents)
+        }
+
+    }
+
 }
 
 interface HandleBottomNavViewVisibility {

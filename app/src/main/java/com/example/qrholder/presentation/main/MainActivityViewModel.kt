@@ -13,7 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
     private val fabState: MainFabStateCommunication,
-    private val dispatchers: DispatchersList
+    private val dispatchers: DispatchersList,
+    private val qrCodeScannedCommunication: QrCodeScannedCommunication
 ) : AbstractViewModel(), ChangeFabState<MainFabUiState>, ObserveUiState<MainFabUiState> {
 
     override fun init() {
@@ -24,10 +25,13 @@ class MainActivityViewModel @Inject constructor(
 
     override fun changeFabState(model: MainFabUiState) = fabState.map(model)
 
-
     override fun observeUiState(owner: LifecycleOwner, observer: Observer<MainFabUiState>) =
         fabState.observe(owner, observer)
 
+    fun changeQrCodeScanned(content : String) = qrCodeScannedCommunication.map(content)
+
+    fun observeQrCodeScanned(owner: LifecycleOwner, observer: Observer<String>) =
+        qrCodeScannedCommunication.observe(owner, observer)
 }
 
 interface ChangeFabState<T> {

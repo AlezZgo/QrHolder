@@ -2,6 +2,7 @@ package com.example.qrholder.presentation.buildQrCode
 
 import android.text.Editable
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.qrholder.R
 import com.example.qrholder.databinding.FragmentBuildQrCodeBinding
 import com.example.qrholder.presentation.core.SimpleTextWatcher
@@ -15,6 +16,7 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
     FragmentBuildQrCodeBinding::inflate, BuildQrCodeViewModel::class.java
 ), BottomNavViewVisibility.Hide {
 
+    private val args by navArgs<BuildQrCodeFragmentArgs>()
 
     private val titleTextChangedListener = object : SimpleTextWatcher() {
         override fun afterTextChanged(s: Editable?) = viewModel.changeTitle(s.toString())
@@ -22,6 +24,12 @@ class BuildQrCodeFragment : AbstractFragment<FragmentBuildQrCodeBinding, BuildQr
     private val contentTextChangedListener = object : SimpleTextWatcher() {
         override fun afterTextChanged(s: Editable?) =
             viewModel.changeContent(s.toString())
+    }
+
+    override fun setupViews() {
+        super.setupViews()
+        binding.tielContent.setText(args.content)
+        viewModel.changeContent(args.content)
     }
 
     override fun observe() {

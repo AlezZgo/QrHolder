@@ -39,6 +39,10 @@
             android:id="@+id/action_buildQrCodeFragment_to_successfullyBuiltFragment"
             app:destination="@id/successfullyBuiltFragment"
             app:popUpTo="@id/navigation_home" />
+        <argument
+            android:name="content"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
     <fragment
         android:id="@+id/successfullyBuiltFragment"
