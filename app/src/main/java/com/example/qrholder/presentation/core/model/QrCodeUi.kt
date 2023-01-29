@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import com.example.qrholder.core.Delete
 import com.example.qrholder.core.Match
+import com.example.qrholder.domain.FetchQrCode
 import com.example.qrholder.presentation.core.loadImage.load
 import com.example.qrholder.presentation.core.loadImage.loadWithoutCaching
 import com.example.qrholder.presentation.editQrCode.Edit
@@ -69,7 +70,9 @@ data class QrCodeUi(
         startActivity(context,intent,Bundle())
     }
 
-    fun loadImage(imageView : ImageView) = imageView.load(path)
+    suspend fun reload(loader : FetchQrCode<QrCodeUi>) = loader.fetchQrCode(title = title)
+
+    fun loadImage(imageView : ImageView) = imageView.loadWithoutCaching(path)
 
     fun loadTitle(textView : TextView) { textView.text = title }
 

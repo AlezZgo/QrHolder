@@ -6,7 +6,10 @@ import androidx.room.*
 interface QrCodesDao {
 
     @Query("SELECT * FROM qr_codes_table ORDER BY date DESC")
-    suspend fun allQrCodes(): List<QrCodeCache>
+    suspend fun selectAll(): List<QrCodeCache>
+
+    @Query("SELECT * FROM qr_codes_table WHERE title=:qrCodeTitle")
+    suspend fun select(qrCodeTitle: String): QrCodeCache?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(qrCode: QrCodeCache)

@@ -104,7 +104,7 @@ class QrCodesCacheDataSourceTest {
             this.qrCodes = qrCodes.toMutableList()
         }
 
-        override suspend fun allQrCodes(): List<QrCodeCache> = qrCodes
+        override suspend fun selectAll(): List<QrCodeCache> = qrCodes
 
         override suspend fun insert(qrCode: QrCodeCache) {
             qrCodes.add(qrCode)

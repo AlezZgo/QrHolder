@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navigation_home_to_qrCodeImageDialogFragment"
             app:destination="@id/qrCodeImageDialogFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
     </fragment>
 
     <fragment
@@ -96,4 +99,22 @@
             android:name="qrCode"
             app:argType="com.example.qrholder.presentation.core.model.QrCodeUi" />
     </dialog>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.example.qrholder.presentation.description.DescriptionFragment"
+        android:label="fragment_description"
+        tools:layout="@layout/fragment_description" >
+        <argument
+            android:name="qrCode"
+            app:argType="com.example.qrholder.presentation.core.model.QrCodeUi" />
+        <action
+            android:id="@+id/action_descriptionFragment_to_qrCodeImageDialogFragment"
+            app:destination="@id/qrCodeImageDialogFragment" />
+        <action
+            android:id="@+id/action_descriptionFragment_to_confirmDialogFragment"
+            app:destination="@id/confirmDialogFragment" />
+        <action
+            android:id="@+id/action_descriptionFragment_to_editQrCodeFragment"
+            app:destination="@id/editQrCodeFragment" />
+    </fragment>
 </navigation>

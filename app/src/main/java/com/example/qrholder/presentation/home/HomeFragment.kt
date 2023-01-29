@@ -33,7 +33,7 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
     private val adapter by lazy {
         QrCodesAdapter(
             onCardClick = { qrCode ->
-
+                findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToDescriptionFragment(qrCode))
             },
             onCardLongClick = { qrCode ->
                 findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToOnItemClickDialogFragment(qrCode))

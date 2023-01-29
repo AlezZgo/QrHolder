@@ -3,6 +3,7 @@ package com.example.qrholder.data
 import com.example.qrholder.R
 import com.example.qrholder.core.ManageResources
 import com.example.qrholder.data.cache.QrCodesCacheDataSource
+import com.example.qrholder.domain.FetchQrCode
 import com.example.qrholder.domain.model.ImagePath
 import com.example.qrholder.domain.model.QrCode
 import com.example.qrholder.domain.model.QrCodes
@@ -10,7 +11,8 @@ import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 import javax.inject.Inject
 
 
-interface QrCodesRepository : SaveQrCode, DeleteQrCodeImage, SystemSettingsNeverShow {
+interface QrCodesRepository : SaveQrCode, DeleteQrCodeImage, SystemSettingsNeverShow,
+    FetchQrCode<QrCode> {
 
     suspend fun allQrCodes(): QrCodes
 
@@ -30,6 +32,7 @@ interface QrCodesRepository : SaveQrCode, DeleteQrCodeImage, SystemSettingsNever
             QrCodes.Failure(e.message ?: manageResources.string(R.string.defaultErrorMessage))
         }
 
+
         override suspend fun delete(qrCodeTitle: String) {
             cacheDataSource.delete(qrCodeTitle = qrCodeTitle)
         }
@@ -42,6 +45,11 @@ interface QrCodesRepository : SaveQrCode, DeleteQrCodeImage, SystemSettingsNever
 
         override fun saveSystemSettingsNeverShow(neverShow: Boolean) =
             cacheDataSource.saveSystemSettingsNeverShow(neverShow = neverShow)
+
+        override suspend fun fetchQrCode(title: String): QrCode {
+            val qrCodeCache =  cacheDataSource.fetchQrCode(title = title)
+            return QrCode(qrCodeCache.title,qrCodeCache.content,qrCodeCache.path)
+        }
 
         override suspend fun saveImage(model: BitmapWrapper, name: String) =
             saveInternalStorage.save(
