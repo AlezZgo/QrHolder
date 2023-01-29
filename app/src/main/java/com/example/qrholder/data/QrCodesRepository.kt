@@ -10,7 +10,7 @@ import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 import javax.inject.Inject
 
 
-interface QrCodesRepository : SaveQrCode, DeleteQrCodeImage {
+interface QrCodesRepository : SaveQrCode, DeleteQrCodeImage, SystemSettingsNeverShow {
 
     suspend fun allQrCodes(): QrCodes
 
@@ -38,6 +38,11 @@ interface QrCodesRepository : SaveQrCode, DeleteQrCodeImage {
             deleteInternalStorage.deleteImage(path)
         }
 
+        override fun fetchSystemSettingsNeverShow() = cacheDataSource.fetchSystemSettingsNeverShow()
+
+        override fun saveSystemSettingsNeverShow(neverShow: Boolean) =
+            cacheDataSource.saveSystemSettingsNeverShow(neverShow = neverShow)
+
         override suspend fun saveImage(model: BitmapWrapper, name: String) =
             saveInternalStorage.save(
                 model = model,
@@ -54,6 +59,11 @@ interface SaveQrCode {
     suspend fun saveImage(model: BitmapWrapper, name: String): ImagePath
 
     suspend fun save(qrCode: QrCodeData)
+}
+
+interface SystemSettingsNeverShow {
+    fun fetchSystemSettingsNeverShow(): Boolean
+    fun saveSystemSettingsNeverShow(neverShow: Boolean)
 }
 
 

@@ -38,5 +38,10 @@
     <string name="support_link">https://t.me/AlezZGO</string>
     <string name="cancel">Cancel</string>
     <string name="sure_delete_qr_code">Are you sure want to delete this qr code?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enable_changing_system_settings_title">Enable changing system settings for this application to manage the brightness of your screen</string>
+    <string name="enable_changing_system_settings_content">changing system settings is not enabled for this application. Do you want to go to settings menu?</string>
+    <string name="never_show_it_again">never show it again</string>
 
 </resources>
