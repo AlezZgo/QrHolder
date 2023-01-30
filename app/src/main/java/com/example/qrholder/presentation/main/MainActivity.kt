@@ -1,5 +1,6 @@
 package com.example.qrholder.presentation.main
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import android.Manifest.permission.*
+import android.widget.Toast
 import com.example.qrholder.R
 import com.example.qrholder.databinding.ActivityMainBinding
 import com.example.qrholder.presentation.core.InitUI
@@ -20,6 +24,11 @@ import com.example.qrholder.presentation.home.HomeFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import ru.mintrocket.lib.mintpermissions.MintPermissionsController
+import ru.mintrocket.lib.mintpermissions.ext.isDenied
+import ru.mintrocket.lib.mintpermissions.ext.isGranted
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -41,6 +50,9 @@ class MainActivity : AppCompatActivity(), InitUI {
         }
     }
 
+    @Inject
+    lateinit var permissionsController : MintPermissionsController
+
     private val viewModel by viewModels<MainActivityViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +72,7 @@ class MainActivity : AppCompatActivity(), InitUI {
     override fun setupListeners() {
         super.setupListeners()
         binding.fabBuild.setOnClickListener {
-            navController.navigate(HomeFragmentDirections.actionNavigationHomeToBuildQrCodeFragment())
+            navController.navigate(R.id.buildQrCodeFragment)
             viewModel.changeFabState(MainFabUiState.Closed)
         }
         binding.fabScan.setOnClickListener {
@@ -75,7 +87,16 @@ class MainActivity : AppCompatActivity(), InitUI {
             viewModel.changeFabState(MainFabUiState.Closed)
         }
         binding.fabGallery.setOnClickListener {
-            navController.navigate(HomeFragmentDirections.actionNavigationHomeToScanFromGalleryBottomSheetDialogFragment())
+
+            lifecycleScope.launch{
+                val result = permissionsController.request(READ_MEDIA_IMAGES)
+                if(result.isGranted()){
+                    navController.navigate(R.id.scanFromGalleryBottomSheetDialogFragment)
+                }else{
+                    permissionsController.request(READ_MEDIA_IMAGES)
+                }
+            }
+
         }
         viewModel.observeQrCodeScanned(this) {
             navController.navigate(

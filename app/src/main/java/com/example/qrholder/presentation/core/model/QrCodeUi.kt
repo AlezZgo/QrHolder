@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.net.toUri
 import com.example.qrholder.core.Delete
 import com.example.qrholder.core.Match
 import com.example.qrholder.domain.FetchQrCode
@@ -58,9 +59,8 @@ data class QrCodeUi(
 
     fun share(context : Context) {
         val shareIntent = Intent(Intent.ACTION_SEND);
-        shareIntent.type = "text/plain";
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, title);
         shareIntent.putExtra(Intent.EXTRA_TEXT, content);
+        shareIntent.type = "text/plain";
         startActivity(context,shareIntent, Bundle());
     }
 

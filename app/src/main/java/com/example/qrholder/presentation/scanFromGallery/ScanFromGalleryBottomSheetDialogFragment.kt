@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.qrholder.databinding.FragmentScanFromGalleryBinding
@@ -35,11 +36,12 @@ class ScanFromGalleryBottomSheetDialogFragment : BottomSheetDialogFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.init(true)
-        viewModel.observeUiState(viewLifecycleOwner){
-            galleryAdapter.submitList(it)
+        viewModel.observeUiState(viewLifecycleOwner){ images ->
+            galleryAdapter.submitList(images)
+            binding.floatingActionButton.isVisible = images.find { it.isSelected() } !=null
         }
-
         binding.recyclerView.adapter = galleryAdapter
+
 
     }
 

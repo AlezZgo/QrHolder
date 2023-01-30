@@ -8,13 +8,14 @@ import com.example.qrholder.presentation.core.viewmodel.AbstractViewModel
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import ru.mintrocket.lib.mintpermissions.MintPermissionsController
 import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
     private val fabState: MainFabStateCommunication,
     private val dispatchers: DispatchersList,
-    private val qrCodeScannedCommunication: QrCodeScannedCommunication
+    private val qrCodeScannedCommunication: QrCodeScannedCommunication,
 ) : AbstractViewModel(), ChangeFabState<MainFabUiState>, ObserveUiState<MainFabUiState> {
 
     override fun init() {

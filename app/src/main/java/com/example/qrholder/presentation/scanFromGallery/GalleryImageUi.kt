@@ -22,7 +22,7 @@ data class GalleryImageUi(
         container: LinearLayout,
         onImageClick: (image: GalleryImageUi) -> Unit
     ) {
-        ivGalleryImage.load(R.drawable.ic_app)
+        ivGalleryImage.load(path)
 
         ivGalleryImage.setDebounceClickListener {
             onImageClick.invoke(this)
@@ -42,6 +42,8 @@ data class GalleryImageUi(
     override fun opposite() = this.copy(selected = !selected)
 
     fun unselected() = this.copy(selected = false)
+
+    fun isSelected() = selected
 }
 
 interface Opposite<T>{

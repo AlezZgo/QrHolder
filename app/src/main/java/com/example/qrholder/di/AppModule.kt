@@ -6,12 +6,14 @@ import com.example.qrholder.core.ManageResources
 import com.example.qrholder.data.SaveInternalStorage
 import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 import com.example.qrholder.presentation.core.ManageBrightness
+import com.example.qrholder.presentation.core.ManageExternalStorageImages
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import ru.mintrocket.lib.mintpermissions.MintPermissions
 import javax.inject.Qualifier
 
 @InstallIn(SingletonComponent::class)
@@ -30,6 +32,16 @@ object AppModule {
 
     @Provides
     fun provideDispatcherList(): DispatchersList = DispatchersList.Base()
+
+    @Provides
+    fun providePermissionsController() = MintPermissions.controller
+
+    @Provides
+    fun provideManageExternalStorageImages(@ApplicationContext context: Context): ManageExternalStorageImages =
+        ManageExternalStorageImages.Base(context)
+
+    @Provides
+    fun providePermissionsManager() = MintPermissions.createManager()
 
     @Provides
     fun provideSaveBitmapToInternalStorage(
