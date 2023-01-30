@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navigation_home_to_descriptionFragment"
             app:destination="@id/descriptionFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_scanFromGalleryBottomSheetDialogFragment"
+            app:destination="@id/scanFromGalleryBottomSheetDialogFragment" />
     </fragment>
 
     <fragment
@@ -117,4 +120,13 @@
             android:id="@+id/action_descriptionFragment_to_editQrCodeFragment"
             app:destination="@id/editQrCodeFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/scanFromGalleryBottomSheetDialogFragment"
+        android:name="com.example.qrholder.presentation.scanFromGallery.ScanFromGalleryBottomSheetDialogFragment"
+        android:label="ScanFromGalleryBottomSheetDialogFragment"
+        tools:layout="@layout/fragment_scan_from_gallery">
+        <action
+            android:id="@+id/action_scanFromGalleryBottomSheetDialogFragment_to_buildQrCodeFragment"
+            app:destination="@id/buildQrCodeFragment" />
+    </dialog>
 </navigation>

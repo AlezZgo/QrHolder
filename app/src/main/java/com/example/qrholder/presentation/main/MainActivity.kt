@@ -16,6 +16,7 @@ import com.example.qrholder.R
 import com.example.qrholder.databinding.ActivityMainBinding
 import com.example.qrholder.presentation.core.InitUI
 import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
+import com.example.qrholder.presentation.home.HomeFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity(), InitUI {
     override fun setupListeners() {
         super.setupListeners()
         binding.fabBuild.setOnClickListener {
-            navController.navigate(R.id.buildQrCodeFragment)
+            navController.navigate(HomeFragmentDirections.actionNavigationHomeToBuildQrCodeFragment())
             viewModel.changeFabState(MainFabUiState.Closed)
         }
         binding.fabScan.setOnClickListener {
@@ -72,6 +73,9 @@ class MainActivity : AppCompatActivity(), InitUI {
                 initiateScan()
             }
             viewModel.changeFabState(MainFabUiState.Closed)
+        }
+        binding.fabGallery.setOnClickListener {
+            navController.navigate(HomeFragmentDirections.actionNavigationHomeToScanFromGalleryBottomSheetDialogFragment())
         }
         viewModel.observeQrCodeScanned(this) {
             navController.navigate(
