@@ -41,7 +41,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enable_changing_system_settings_title">Enable changing system settings for this application to manage the brightness of your screen</string>
-    <string name="enable_changing_system_settings_content">changing system settings is not enabled for this application. Do you want to go to settings menu?</string>
+    <string name="enable_changing_system_settings_content">Auto increasing brightness will be allowed only if you will give us the system settings changing permission </string>
     <string name="never_show_it_again">never show it again</string>
+    <string name="enable_read_images_from_gallery_title">App needs a permission to get access to your gallery images</string>
+    <string name="enable_read_images_from_gallery_content">To have an ability to get qr code from gallery images you must have to give the appropriate permission</string>
+    <string name="no_thanks">no thanks</string>
+    <string name="permission_denied">Permission denied</string>
+    <string name="permission_denied_forever_message">"You have denied permission forever. You can change your decision in app settings.\nWould you like to open app settings? "</string>
 
 </resources>

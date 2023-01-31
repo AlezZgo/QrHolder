@@ -1,11 +1,17 @@
 package com.example.qrholder.presentation.main
 
 
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.Nullable
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -14,13 +20,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import android.Manifest.permission.*
-import android.widget.Toast
 import com.example.qrholder.R
 import com.example.qrholder.databinding.ActivityMainBinding
 import com.example.qrholder.presentation.core.InitUI
 import com.example.qrholder.presentation.core.fragment.BottomNavViewVisibility
-import com.example.qrholder.presentation.home.HomeFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +31,7 @@ import kotlinx.coroutines.launch
 import ru.mintrocket.lib.mintpermissions.MintPermissionsController
 import ru.mintrocket.lib.mintpermissions.ext.isDenied
 import ru.mintrocket.lib.mintpermissions.ext.isGranted
+import ru.mintrocket.lib.mintpermissions.ext.isNeedsRationale
 import javax.inject.Inject
 
 
@@ -42,7 +46,7 @@ class MainActivity : AppCompatActivity(), InitUI {
         override fun onFragmentStarted(fm: FragmentManager, fragment: Fragment) {
             super.onFragmentStarted(fm, fragment)
             handleBottomNavViewVisibility.show(navView, fragment)
-            if(fragment is BottomNavViewVisibility.Hide){
+            if (fragment is BottomNavViewVisibility.Hide) {
                 binding.fabBuild.isGone = true
                 binding.fabScan.isGone = true
                 binding.fabGallery.isGone = true
@@ -51,7 +55,7 @@ class MainActivity : AppCompatActivity(), InitUI {
     }
 
     @Inject
-    lateinit var permissionsController : MintPermissionsController
+    lateinit var permissionsController: MintPermissionsController
 
     private val viewModel by viewModels<MainActivityViewModel>()
 
@@ -88,12 +92,52 @@ class MainActivity : AppCompatActivity(), InitUI {
         }
         binding.fabGallery.setOnClickListener {
 
-            lifecycleScope.launch{
-                val result = permissionsController.request(READ_MEDIA_IMAGES)
-                if(result.isGranted()){
-                    navController.navigate(R.id.scanFromGalleryBottomSheetDialogFragment)
-                }else{
-                    permissionsController.request(READ_MEDIA_IMAGES)
+
+            //todo fix
+            lifecycleScope.launch {
+
+                val permission = if (Build.VERSION.SDK_INT == Build.VERSION_CODES.TIRAMISU) {
+                    READ_MEDIA_IMAGES
+                } else {
+                    READ_EXTERNAL_STORAGE
+                }
+
+                val result = permissionsController.request(permission)
+
+                when {
+                    result.isGranted() -> {
+                        navController.navigate(R.id.scanFromGalleryBottomSheetDialogFragment)
+                    }
+                    result.isDenied() -> {
+                        val appSettingsIntent = Intent(
+                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                            Uri.fromParts("package", packageName, null)
+
+                        )
+
+                        AlertDialog.Builder(this@MainActivity)
+                            .setTitle(getString(R.string.permission_denied))
+                            .setMessage(getString(R.string.permission_denied_forever_message))
+                            .setPositiveButton(getString(R.string.ok)) { _, _ ->
+                                lifecycleScope.launch {
+                                    startActivity(appSettingsIntent)
+                                }
+                            }.setNegativeButton(getString(R.string.no_thanks)) { dialog, _ ->
+                                dialog.dismiss()
+                            }.show()
+
+
+                    }
+                    result.isNeedsRationale() -> {
+                        AlertDialog.Builder(this@MainActivity)
+                            .setTitle(getString(R.string.enable_read_images_from_gallery_title))
+                            .setMessage(getString(R.string.enable_read_images_from_gallery_content))
+                            .setPositiveButton(getString(R.string.ok)) { _, _ ->
+                                lifecycleScope.launch {
+                                    permissionsController.request(permission)
+                                }
+                            }.show()
+                    }
                 }
             }
 

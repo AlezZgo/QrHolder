@@ -28,10 +28,6 @@ class ScanFromGalleryBottomSheetViewModel @Inject constructor(
 
     fun changeSelectedState(oldImage: GalleryImageUi) = galleryImages.changeSelected(oldImage)
 
-    fun processImage(){
-
-    }
-
     override fun observeUiState(owner: LifecycleOwner, observer: Observer<List<GalleryImageUi>>) =
         galleryImages.observe(owner, observer)
 
