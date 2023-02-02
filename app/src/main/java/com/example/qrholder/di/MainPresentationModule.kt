@@ -1,5 +1,6 @@
 package com.example.qrholder.di
 
+import com.example.qrholder.presentation.core.ScanQrCodeFromImage
 import com.example.qrholder.presentation.main.MainFabStateCommunication
 import com.example.qrholder.presentation.main.QrCodeScannedCommunication
 import dagger.Binds
@@ -16,5 +17,8 @@ interface MainPresentationModule {
 
     @Binds
     fun bindQrCodeScannedCommunication(communication: QrCodeScannedCommunication.Base): QrCodeScannedCommunication
+
+    @Binds
+    fun bindQrCodeScanFromImage(scan : ScanQrCodeFromImage.Base) : ScanQrCodeFromImage
 
 }

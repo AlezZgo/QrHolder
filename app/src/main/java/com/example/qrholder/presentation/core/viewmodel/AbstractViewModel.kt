@@ -14,4 +14,5 @@ abstract class AbstractViewModel : ViewModel(), Init {
     protected abstract fun init()
 
     protected open fun initSecondTime() = Unit
+
 }

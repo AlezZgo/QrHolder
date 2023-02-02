@@ -5,7 +5,7 @@ import android.widget.LinearLayout
 import com.example.qrholder.R
 import com.example.qrholder.core.Match
 import com.example.qrholder.core.setDebounceClickListener
-import com.example.qrholder.presentation.core.ObserveUiState
+import com.example.qrholder.presentation.core.ScanQrCodeFromImage
 import com.example.qrholder.presentation.core.loadImage.load
 
 data class GalleryImageUi(
@@ -16,6 +16,15 @@ data class GalleryImageUi(
     override fun matches(model: GalleryImageUi) = model == this
 
     override fun matchesId(model: GalleryImageUi) = model.path == this.path
+
+    fun scanQrCode(
+        imageScanner: ScanQrCodeFromImage,
+        onSuccess: (resultRaw: String) -> Unit,
+        onFailure: (exception: String) -> Unit = {},
+        onCancelled: () -> Unit = {},
+        onComplete: () -> Unit = {},
+    ) = imageScanner.scanQrCode(path, onSuccess, onFailure, onCancelled, onComplete)
+
 
     fun show(
         ivGalleryImage: ImageView,
@@ -46,6 +55,7 @@ data class GalleryImageUi(
     fun isSelected() = selected
 }
 
-interface Opposite<T>{
-    fun opposite() : T
+interface Opposite<T> {
+    fun opposite(): T
+
 }

@@ -1,6 +1,7 @@
 package com.example.qrholder.di
 
 import com.example.qrholder.presentation.scanFromGallery.GalleryImagesCommunication
+import com.example.qrholder.presentation.scanFromGallery.ScanResultCommunication
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,4 +15,9 @@ interface GalleryImagesModule {
     fun bindGalleryImagesCommunication(
         communication: GalleryImagesCommunication.Base
     ): GalleryImagesCommunication
+
+    @Binds
+    fun bindScanGalleryImageResultCommunication(
+        communication: ScanResultCommunication.Base
+    ) : ScanResultCommunication
 }

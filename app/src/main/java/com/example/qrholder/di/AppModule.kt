@@ -8,6 +8,10 @@ import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 import com.example.qrholder.presentation.core.ManageBrightness
 import com.example.qrholder.presentation.core.ManageExternalStorageImages
 import com.example.qrholder.presentation.core.viewmodel.DispatchersList
+import com.google.mlkit.vision.barcode.BarcodeScanner
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions
+import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.barcode.common.Barcode
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,6 +53,13 @@ object AppModule {
         manageResources: ManageResources
     ): SaveInternalStorage<BitmapWrapper> = SaveInternalStorage.ImageSave(context, manageResources)
 
+    @Provides
+    fun provideQrCodeScanner(
+        manageResources: ManageResources
+    ): BarcodeScanner = BarcodeScanning.getClient(
+        BarcodeScannerOptions.Builder()
+            .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+            .build())
 
     @Provides
     fun bindHideKeyBoard(): HideKeyBoard = HideKeyBoard.Base()

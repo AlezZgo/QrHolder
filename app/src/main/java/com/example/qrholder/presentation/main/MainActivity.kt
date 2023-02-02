@@ -1,6 +1,5 @@
 package com.example.qrholder.presentation.main
 
-
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.content.Intent
@@ -114,7 +113,6 @@ class MainActivity : AppCompatActivity(), InitUI {
                             Uri.fromParts("package", packageName, null)
 
                         )
-
                         AlertDialog.Builder(this@MainActivity)
                             .setTitle(getString(R.string.permission_denied))
                             .setMessage(getString(R.string.permission_denied_forever_message))

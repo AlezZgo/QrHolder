@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
+        android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:name=".core.QrHolderApp"
         android:icon="@drawable/ic_app"
@@ -31,8 +32,14 @@
 
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="barcode" />
+
     </application>
+
 
 </manifest>
