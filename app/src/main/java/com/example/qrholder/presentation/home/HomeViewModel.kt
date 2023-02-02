@@ -38,7 +38,8 @@ class HomeViewModel @Inject constructor(
 
     override fun init() {
         viewModelScope.launch(dispatchers.io()) {
-            communications.showState(HomeUi.Loading)
+//            use it with internet loading
+//            communications.showState(HomeUi.Loading)
             val result = interactor.fetchAll()
             result.map(fetchAllResultMapper)
 

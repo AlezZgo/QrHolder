@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_mono_medium"
         android:gravity="center"
-        android:padding="8dp"
+        android:padding="@dimen/standard_padding"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +35,8 @@
         android:layout_height="0dp"
         android:layout_margin="8dp"
         android:fontFamily="@font/roboto_mono_medium"
-        android:gravity="center"
-        android:textSize="20sp"
+        android:padding="@dimen/standard_padding"
+        android:textSize="@dimen/medium_text_size"
         app:layout_constraintBottom_toTopOf="@+id/fabShare"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fabBrowse"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabDelete"
@@ -66,7 +67,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fabEdit"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fabBrowse" />
+        app:layout_constraintStart_toEndOf="@+id/fabBrowse"
+        android:focusable="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabEdit"
@@ -78,7 +80,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fabDelete" />
+        app:layout_constraintStart_toEndOf="@+id/fabDelete"
+        android:focusable="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabBrowse"
@@ -90,6 +93,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fabDelete"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fabShare" />
+        app:layout_constraintStart_toEndOf="@+id/fabShare"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

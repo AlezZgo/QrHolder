@@ -10,5 +10,5 @@ import javax.inject.Inject
 class ValidateBuildQrCodeTitleText @Inject constructor(
     manageResources: ManageResources
 ) : ValidateText(
-    listOf(LengthCondition(5, 50,manageResources))
+    listOf(LengthCondition(3, 50,manageResources))
 )

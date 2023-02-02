@@ -6,5 +6,7 @@
     <dimen name="cv_corner_radius">32dp</dimen>
     <dimen name="dialog_width">600dp</dimen>
     <dimen name="dialog_height">300dp</dimen>
+    <dimen name="standard_padding">8dp</dimen>
+    <dimen name="medium_text_size">20sp</dimen>
 
 </resources>
