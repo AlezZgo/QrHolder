@@ -1,22 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/list_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.qrholder.presentation.home.HomeFragment">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            android:focusableInTouchMode="true"
+            android:visibility="gone"
+            app:menu="@menu/toolbar_menu"
+            app:title="@string/qrList"
+            tools:visibility="visible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvQrList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/rv_item_home_qrcode"
+            tools:visibility="visible">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/ivNothingWasFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:srcCompat="@drawable/search_folder" />
+
+        <TextView
+            android:id="@+id/tvNothingWasFoundLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:fontFamily="@font/roboto_mono_medium"
+            android:text="@string/nothing_was_found_with_this_filter_clear_the_search_field_and_try_again" />
+
+        <ImageView
+            android:id="@+id/ivEmptyFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:foregroundGravity="center"
+            android:visibility="gone"
+            app:srcCompat="@drawable/empty_folder" />
+
+        <TextView
+            android:id="@+id/tvEmptyListLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:fontFamily="@font/roboto_mono_medium"
+            android:text="@string/the_storage_is_empty_create_your_first_qr_code" />
+
+        <ImageView
+            android:id="@+id/ivError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:srcCompat="@drawable/dangerous"
+            app:tint="@color/orange_light" />
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:fontFamily="@font/roboto_mono_medium"
+            tools:text="The error message. \n Something went wrong!" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmersLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone">
+
+        <include layout="@layout/fragment_home_shimmer" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</FrameLayout>

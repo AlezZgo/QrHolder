@@ -1,0 +1,43 @@
+HomeScreen consist of:
+    1 toolbar with a search icon at the left side of it
+    2 list of Qr Codes
+
+HomeScreen states:
+
+    2.1 empty list: at the place  where should be list of qr codes shows an animated image with the text: "The Qr storage is empty. *Spannable* Create your first!."
+
+    2.2 not empty: shows a list of qr codes with search field in tool bar to filter them by name
+        2.2.1 user clicks on the search field and fill some text there -> start getting filtered data
+            if empty -> go to 2.3 state
+            if not empty -> show filtered list
+
+    2.3 nothing was found using search field: at the place  where should be list of qr codes shows
+     an animated image and spannable text: "nothing was found using search field.
+      *spannable* Clear the search field and try again!"
+
+        2.3.1 user clicks on the search field and fill some text there
+            start getting filtered data:
+                if nothing was found -> nothing to do
+                if got some data -> go to 2.2 state
+        2.3.2 user clicks on the search field and clear the text
+            start getting:
+                if nothing was found -> nothing to do
+                if got some data -> go to 2.2 state
+
+    2.4 loading: shimmers
+
+    2.5 error: at the place  where should be list of qr codes shows an animated image with the text: "Something went wrong. Error message. Press refresh button to try again"
+
+HomeScreen QrCode Item consist of:
+    1 square image at the left
+    2 title text at the top right
+    3 subtitle text at the bottom right
+
+    user clicks on Qr Code(root) -> description screen opens
+    user clicks on image -> imageDialog opens with increasing screen brightness to max level
+    user long click on Qr Code(root) -> dialog fragment shows
+        if click on share item -> system intent to share
+        if click on browse item -> system intent to browse
+        if click on delete item -> item is removed from the list
+        if click on edit item -> open EditScreen
+        if click on the other place -> close popupmenu

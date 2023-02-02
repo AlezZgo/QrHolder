@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/ivQrCode"
+            android:layout_width="@dimen/qrCodeStandardSize"
+            android:layout_height="@dimen/qrCodeStandardSize"
+            android:contentDescription="@string/qrcodepreview"
+            app:srcCompat="@drawable/ic_baseline_qr_code_24"
+            app:tint="@color/shimmer_light" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="200dp"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_rectangle"
+                android:gravity="start|center_vertical"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="240dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:gravity="top|center_vertical"
+                android:padding="8dp"
+                android:background="@drawable/rounded_rectangle"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,11 @@
+DescriptionScreen consist of:
+    image of QrCode
+    title text field
+    subtitle text field
+    horizontal line of fab buttons
+        browse button -> system intent to browse link
+        share button -> system intent to share an image with link text
+        edit button -> opens EditScreen
+
+    long click on subTitle -> copy link
+    click on qrCode image -> open ImageDialog with increasing brightness to the maximum

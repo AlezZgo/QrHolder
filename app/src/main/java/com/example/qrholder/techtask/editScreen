@@ -1,0 +1,10 @@
+EditScreen consist of:
+    image of QrCode
+    title text field
+    subtitle text field
+    horizontal line of fab buttons
+        save button with check icon -> correct existing qrCode and get back to description
+        revert button -> just go back without saving
+
+    long click on subTitle -> copy link
+    click on qrCode image -> open ImageDialog with increasing brightness to the maximum

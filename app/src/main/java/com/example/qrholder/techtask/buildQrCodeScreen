@@ -1,0 +1,8 @@
+BuildScreen consist of:
+    image of QrCode
+    title text input field
+    content text input field
+    build button -> create qrCode, go to
+
+    //todo describe checking editText fields
+    //todo describe build button behaviour

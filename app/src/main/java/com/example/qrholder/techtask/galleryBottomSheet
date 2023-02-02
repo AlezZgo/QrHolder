@@ -1,0 +1,10 @@
+GalleryBottomSheet consist of:
+    grid layout gallery images (2 states)
+
+    1 no item selected
+        simple grid of gallery images
+    2 item selected
+        selected item get an accent color rim
+        fab button with check item at the bottom right side appears
+
+        user click on fab -> ProcessingResultScreen appears
