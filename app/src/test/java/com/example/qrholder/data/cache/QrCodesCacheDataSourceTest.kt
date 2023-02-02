@@ -1,6 +1,7 @@
 package com.example.qrholder.data.cache
 
 import com.example.qrholder.data.QrCodeData
+import com.example.qrholder.data.TestSharedPrefs
 import com.example.qrholder.data.cache.QrCodesCacheDataSource
 import com.example.qrholder.data.cache.db.QrCodeCache
 import com.example.qrholder.data.cache.db.QrCodesDao
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test
 class QrCodesCacheDataSourceTest {
 
     private lateinit var cacheDataSource: QrCodesCacheDataSource
+    private lateinit var sharedPrefs: TestSharedPrefs
     private lateinit var dao: TestQrCodesDao
     private lateinit var mapper : QrCodeDataToCacheMapper
 
@@ -20,7 +22,8 @@ class QrCodesCacheDataSourceTest {
     fun setUp() {
         dao = TestQrCodesDao()
         mapper = QrCodeDataToCacheMapper()
-        cacheDataSource = QrCodesCacheDataSource.Base(dao,mapper)
+        sharedPrefs = TestSharedPrefs()
+        cacheDataSource = QrCodesCacheDataSource.Base(dao,sharedPrefs,mapper)
     }
 
     @Test
@@ -99,12 +102,18 @@ class QrCodesCacheDataSourceTest {
 
         private var qrCodes = mutableListOf<QrCodeCache>()
 
+        var expectedQrCode = null
+
         fun changeExpectedResult(qrCodes: List<QrCodeCache>) {
             this.qrCodes.clear()
             this.qrCodes = qrCodes.toMutableList()
         }
 
         override suspend fun selectAll(): List<QrCodeCache> = qrCodes
+
+        override suspend fun select(qrCodeTitle: String): QrCodeCache? {
+            return expectedQrCode
+        }
 
         override suspend fun insert(qrCode: QrCodeCache) {
             qrCodes.add(qrCode)

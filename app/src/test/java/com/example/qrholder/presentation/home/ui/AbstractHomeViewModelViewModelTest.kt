@@ -19,6 +19,7 @@ abstract class AbstractHomeViewModelViewModelTest {
     protected lateinit var communications: TestHomeCommunications
     protected lateinit var interactor: TestQrCodesInteractor
     protected lateinit var mapper: QrCodesMapper
+    protected lateinit var toUiMapper: QrCodeToUiMapper
     protected lateinit var dispatchersList: TestDispatchersList
     protected lateinit var manageResources: TestManageResources
 
@@ -34,7 +35,8 @@ abstract class AbstractHomeViewModelViewModelTest {
 
         communications = TestHomeCommunications()
         interactor = TestQrCodesInteractor()
-        mapper = QrCodesMapper(communications, QrCodeToUiMapper())
+        toUiMapper = QrCodeToUiMapper()
+        mapper = QrCodesMapper(communications, toUiMapper)
         dispatchersList = TestDispatchersList()
         manageResources = TestManageResources()
 
@@ -43,7 +45,8 @@ abstract class AbstractHomeViewModelViewModelTest {
             communications = communications,
             interactor = interactor,
             fetchAllResultMapper = mapper,
-            manageResources = manageResources
+            manageResources = manageResources,
+            qrCodeToUiMapper = toUiMapper
         )
     }
 

@@ -11,6 +11,10 @@ import com.example.qrholder.presentation.buildQrCode.BitmapWrapper
 class TestQrCodesRepository : QrCodesRepository {
 
     var saveImageCalledList = mutableListOf<ImagePath>()
+    var systemSettingsNeverShow = false
+
+    var expectedQrCode = QrCode("","","")
+
     private var expectedQrCodeImageSaveResult : ImagePath = ImagePath("SomeThing went wrong")
 
     private var expectedQrCodesList = mutableListOf<QrCode>()
@@ -50,6 +54,20 @@ class TestQrCodesRepository : QrCodesRepository {
 
     override suspend fun save(qrCode: QrCodeData) {
         expectedQrCodesList.add(qrCode.map(mapper))
+    }
+
+    override fun deleteImage(path: String) = Unit
+
+    override fun fetchSystemSettingsNeverShow(): Boolean {
+        return systemSettingsNeverShow
+    }
+
+    override fun saveSystemSettingsNeverShow(neverShow: Boolean) {
+        systemSettingsNeverShow = neverShow
+    }
+
+    override suspend fun fetchQrCode(title: String): QrCode {
+        return expectedQrCode
     }
 
 

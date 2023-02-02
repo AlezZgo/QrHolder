@@ -15,6 +15,7 @@ abstract class BaseMainActivityViewModelTest {
     protected lateinit var viewModel: MainActivityViewModel
     protected lateinit var dispatchersList: TestDispatchersList
     protected lateinit var fabState: TestFabStateCommunication
+    protected lateinit var scanResult: TestScanResultCommunication
 
     @OptIn(DelicateCoroutinesApi::class)
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
@@ -27,10 +28,12 @@ abstract class BaseMainActivityViewModelTest {
 
         fabState = TestFabStateCommunication()
         dispatchersList = TestDispatchersList()
+        scanResult = TestScanResultCommunication()
 
         viewModel = MainActivityViewModel(
             fabState = fabState,
-            dispatchers = dispatchersList
+            dispatchers = dispatchersList,
+            qrCodeScannedCommunication = scanResult
         )
     }
 

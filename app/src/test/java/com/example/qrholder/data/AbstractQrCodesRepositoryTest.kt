@@ -11,6 +11,7 @@ abstract class AbstractQrCodesRepositoryTest {
     protected lateinit var cacheDataSource: QrCodesRepositoryTest.TestQrCodesCacheDataSource
     protected lateinit var manageResources: TestManageResources
     protected lateinit var saveInternalStorage: TestSaveInternalStorage
+    protected lateinit var deleteInternalStorage: DeleteInternalStorage
 
     @BeforeEach
     fun setUp() {
@@ -18,6 +19,7 @@ abstract class AbstractQrCodesRepositoryTest {
         manageResources = TestManageResources()
         mapper = QrCodeDataToDomainMapper()
         saveInternalStorage = TestSaveInternalStorage()
-        repository = QrCodesRepository.Base(cacheDataSource, mapper, manageResources,saveInternalStorage)
+        deleteInternalStorage = TestDeleteInternalStorage()
+        repository = QrCodesRepository.Base(cacheDataSource, mapper, manageResources,saveInternalStorage,deleteInternalStorage)
     }
 }
