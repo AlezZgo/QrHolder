@@ -6,7 +6,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.Nullable
@@ -66,6 +68,13 @@ class MainActivity : AppCompatActivity(), InitUI {
         navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
         viewModel.init(savedInstanceState == null)
+
+        Thread.setDefaultUncaughtExceptionHandler { t, e ->
+            Log.e(
+                "error",
+                "exception ${e.stackTraceToString()}"
+            )
+        }
 
         setupViews()
         setupListeners()
