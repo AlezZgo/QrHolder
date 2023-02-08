@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Qr Холдер</string>
+    <string name="title_home">Главная</string>
+    <string name="title_dashboard">Дэшборд</string>
+    <string name="qrcodepreview">Qr Превью</string>
+    <string name="title_notifications">Уведомления</string>
+    <string name="menu">Меню</string>
+    <string name="qrList">Список ваших Qr кодов</string>
+    <string name="copy_right_mark">©AlezZgo, 2023</string>
+    <string name="app_version">версия приложения:</string>
+    <string name="support">Поддержка</string>
+    <string name="rate_app">Оценить приложение</string>
+    <string name="build_qr_code">создать свой qr код</string>
+    <string name="choose_image_from_gallery">Выберите изображение из галереи, чтобы найти Qr код!</string>
+    <string name="open_camera_to_find_qr_code">Откройте вашу камеру, чтобы найти Qr код!</string>
+    <string name="click_to_add_qr_code">Нажмите сюда, чтобы выбрать опцию поиска Qr кода</string>
+    <string name="defaultErrorMessage">Упс.. что-то пошло не так</string>
+    <string name="empty" />
+    <string name="search_query_hint">Поиск</string>
+    <string name="tittle">Заголовок</string>
+    <string name="content">Контент</string>
+    <string name="build">Создать</string>
+    <string name="nothing_was_found_with_this_filter_clear_the_search_field_and_try_again">Поиск не дал результатов. \n Очистите поле ввода и попробуйте снова!</string>
+    <string name="the_storage_is_empty_create_your_first_qr_code">В хранилище пусто. \n создайте свой первый QR код!</string>
+    <string name="input_edit_text_error_this_field_cannot_be_empty">Это поле не может быть пустым</string>
+    <string name="input_edit_text_error_this_field_must_contain_at_least_d_characters">Это поле должно содержать как минимум %s символ(а/ов)</string>
+    <string name="input_edit_text_error_this_field_must_contain_no_more_then_d_characters">Это поле должно содержать не более чем %s символ(а/ов)</string>
+    <string name="field_MIN_cannot_be_less_then_0">поле MIN не может быть меньше чем 0</string>
+    <string name="field_MAX_cannot_be_less_or_equal_0">поле MAX не может быть меньше или равно 0</string>
+    <string name="error">Ошибка</string>
+    <string name="successful_creation">Успешное создание!</string>
+    <string name="ok">Ок</string>
+    <string name="unable_to_save_image_to_internal_storage">Невозможно сохранить Qr код во внутреннее хранилище вашего телефона</string>
+    <string name="share">Поделиться</string>
+    <string name="browse">Поиск в интернете</string>
+    <string name="delete">Удалить</string>
+    <string name="edit">Изменить</string>
+    <string name="support_link">https://t.me/AlezZGO</string>
+    <string name="cancel">Отмена</string>
+    <string name="sure_delete_qr_code">Вы увереныв том, что хотите удалить этот Qr код?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="enable_changing_system_settings_title">Разрешите изменение системных настроек для этого приложения, чтобы можно было управлять яркостью вашего экрана, когда вам это так нужно.</string>
+    <string name="enable_changing_system_settings_content">Автоматическое повышение яркости будет доступно только если вы дадите разрешение на изменение системных настроек.</string>
+    <string name="never_show_it_again">никогда больше не показывать</string>
+    <string name="enable_read_images_from_gallery_title">Приложению нужен доступ к вашей галерее</string>
+    <string name="enable_read_images_from_gallery_content">Для того, чтобы иметь возможность получить Qr код из изображений в галерее, вы должны дать соответствующее разрешение.</string>
+    <string name="no_thanks">нет, спасибо</string>
+    <string name="permission_denied">Отказано в доступе</string>
+    <string name="permission_denied_forever_message">"Вынавсегда запретили доступ этому приложению.Вы всегда можете изменить его в настройках. \nЖелаете ли вы открыть окно настроек?"</string>
+    <string name="qr_code_was_not_found">Qr код не был найден</string>
+
+</resources>

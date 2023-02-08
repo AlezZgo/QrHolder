@@ -1,14 +1,28 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.QrHolder" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">@color/black</item>
         <item name="colorPrimary">@color/aquamarine_200</item>
+        <item name="android:navigationBarColor">@color/gray</item>
 
+    </style>
+
+    <style name="Base.Widget.Material3.CardView.MyStyle"  parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.Toolbar.Surface.MyStyle" parent="ThemeOverlay.Material3.Toolbar.Surface">
+        <item name="background">@color/white </item>
     </style>
 
     <style name="Theme.QrHolder" parent="Base.Theme.QrHolder" />
 
     <style name="AlertDialog.Custom" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="Base.Widget.MaterialComponents.TextInputLayout.MyStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
     </style>
 
 </resources>
