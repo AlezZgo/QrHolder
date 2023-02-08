@@ -1,3 +1,1 @@
--keepclasseswithmembers class com.example.qrholder.data.cache.SharedPrefs {
- *;
-}
+-keep class com.example.qrholder.presentation.core.model.QrCodeUi

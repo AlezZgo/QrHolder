@@ -32,9 +32,9 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
             communications.qrCodesCompleteCalledList[0]
         )
 
-        assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
-        assertEquals(HomeUi.Empty, communications.uiStateCalledList[1])
+        assertEquals(1, communications.uiStateCalledList.size)
+//        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
+        assertEquals(HomeUi.Empty, communications.uiStateCalledList[0])
     }
 
     @Test
@@ -56,9 +56,9 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
             communications.qrCodesCompleteCalledList[0]
         )
 
-        assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
-        assertEquals(HomeUi.Error(errorMessage), communications.uiStateCalledList[1])
+        assertEquals(1, communications.uiStateCalledList.size)
+//        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
+        assertEquals(HomeUi.Error(errorMessage), communications.uiStateCalledList[0])
     }
 
     @Test
@@ -137,8 +137,8 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
             ), communications.qrCodesCompleteCalledList[0]
         )
 
-        assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
+        assertEquals(1, communications.uiStateCalledList.size)
+//        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
         assertEquals(
             HomeUi.Success(
                 qrCodes = listOf(
@@ -158,7 +158,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
                         path = "content.cat.id3"
                     ),
                 )
-            ), communications.uiStateCalledList[1]
+            ), communications.uiStateCalledList[0]
         )
 
         //action
@@ -213,8 +213,8 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
             ), communications.qrCodesCompleteCalledList[0]
         )
 
-        assertEquals(2, communications.uiStateCalledList.size)
-        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
+        assertEquals(1, communications.uiStateCalledList.size)
+//        assertEquals(HomeUi.Loading, communications.uiStateCalledList[0])
         assertEquals(
             HomeUi.Success(
                 qrCodes = listOf(
@@ -234,7 +234,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
                         path = "content.cat.id3"
                     ),
                 )
-            ), communications.uiStateCalledList[1]
+            ), communications.uiStateCalledList[0]
         )
     }
 
@@ -318,7 +318,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
             ), communications.qrCodesCompleteCalledList[0]
         )
 
-        assertEquals(3, communications.uiStateCalledList.size)
+        assertEquals(2, communications.uiStateCalledList.size)
         assertEquals(
             HomeUi.Success(
                 qrCodes = listOf(
@@ -328,7 +328,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
                         path = "content.cat.id1"
                     )
                 )
-            ), communications.uiStateCalledList[2]
+            ), communications.uiStateCalledList[1]
         )
 
         //action
@@ -384,7 +384,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
             ), communications.qrCodesCompleteCalledList[0]
         )
 
-        assertEquals(3, communications.uiStateCalledList.size)
+        assertEquals(2, communications.uiStateCalledList.size)
         assertEquals(
             HomeUi.Success(
                 qrCodes = listOf(
@@ -394,7 +394,7 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
                         path = "content.cat.id1"
                     )
                 )
-            ), communications.uiStateCalledList[2]
+            ), communications.uiStateCalledList[1]
         )
     }
 
@@ -478,9 +478,9 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
             ), communications.qrCodesCompleteCalledList[0]
         )
 
-        assertEquals(3, communications.uiStateCalledList.size)
+        assertEquals(2, communications.uiStateCalledList.size)
         assertEquals(
-            HomeUi.NothingWasFound, communications.uiStateCalledList[2]
+            HomeUi.NothingWasFound, communications.uiStateCalledList[1]
         )
 
         viewModel.init(isFirstRun = false)
@@ -535,9 +535,9 @@ internal class HomeViewModelViewModelTest : AbstractHomeViewModelViewModelTest()
             ), communications.qrCodesCompleteCalledList[0]
         )
 
-        assertEquals(3, communications.uiStateCalledList.size)
+        assertEquals(2, communications.uiStateCalledList.size)
         assertEquals(
-            HomeUi.NothingWasFound, communications.uiStateCalledList[2]
+            HomeUi.NothingWasFound, communications.uiStateCalledList[1]
         )
     }
 

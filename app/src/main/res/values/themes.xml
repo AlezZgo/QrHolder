@@ -1,11 +1,14 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.QrHolder" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.QrHolder" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/aquamarine_200</item>
 
     </style>
 
+    <style name="Theme.QrHolder" parent="Base.Theme.QrHolder" />
+
     <style name="AlertDialog.Custom" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
 </resources>
