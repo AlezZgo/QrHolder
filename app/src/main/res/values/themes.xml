@@ -8,6 +8,10 @@
 
     </style>
 
+    <style name="Widget.Material3.BottomNavigationView.MyStyle" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">@color/zxing_transparent</item>
+    </style>
+
     <style name="Base.Widget.Material3.CardView.MyStyle"  parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/white</item>
     </style>

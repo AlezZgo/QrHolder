@@ -10,6 +10,7 @@
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        style="@style/Widget.Material3.BottomNavigationView.MyStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -81,10 +82,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+
         android:contentDescription="@string/open_camera_to_find_qr_code"
         android:focusable="true"
         android:visibility="invisible"
         app:fabSize="mini"
+
         app:layout_constraintBottom_toBottomOf="@+id/fabGallery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fabGallery"

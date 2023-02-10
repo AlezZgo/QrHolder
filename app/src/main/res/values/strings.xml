@@ -10,7 +10,7 @@
     <string name="app_version">app version:</string>
     <string name="support">Support</string>
     <string name="rate_app">Rate application</string>
-    <string name="build_qr_code">create your own qr code</string>
+    <string name="build_qr_code">Create your own qr code</string>
     <string name="choose_image_from_gallery">Choose image from gallery to search Qr code!</string>
     <string name="open_camera_to_find_qr_code">Open your camera to find Qr code</string>
     <string name="click_to_add_qr_code">Click here to add new Qr code by different ways</string>
@@ -49,5 +49,6 @@
     <string name="permission_denied">Permission denied</string>
     <string name="permission_denied_forever_message">"You have denied permission forever. You can change your decision in app settings.\nWould you like to open app settings? "</string>
     <string name="qr_code_was_not_found">Qr code was not found</string>
+    <string name="app_link">https://apps.rustore.ru/app/com.example.qrholder</string>
 
 </resources>

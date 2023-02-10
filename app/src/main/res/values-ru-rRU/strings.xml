@@ -21,7 +21,7 @@
     <string name="content">Контент</string>
     <string name="build">Создать</string>
     <string name="nothing_was_found_with_this_filter_clear_the_search_field_and_try_again">Поиск не дал результатов. \n Очистите поле ввода и попробуйте снова!</string>
-    <string name="the_storage_is_empty_create_your_first_qr_code">В хранилище пусто. \n создайте свой первый QR код!</string>
+    <string name="the_storage_is_empty_create_your_first_qr_code">В хранилище пусто. \n Создайте свой первый QR код!</string>
     <string name="input_edit_text_error_this_field_cannot_be_empty">Это поле не может быть пустым</string>
     <string name="input_edit_text_error_this_field_must_contain_at_least_d_characters">Это поле должно содержать как минимум %s символ(а/ов)</string>
     <string name="input_edit_text_error_this_field_must_contain_no_more_then_d_characters">Это поле должно содержать не более чем %s символ(а/ов)</string>
