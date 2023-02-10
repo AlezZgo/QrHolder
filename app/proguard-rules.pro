@@ -1,1 +1,1 @@
--keep class com.example.qrholder.presentation.core.model.QrCodeUi
+-keep class com.alezzgo.qrholder.presentation.core.model.QrCodeUi

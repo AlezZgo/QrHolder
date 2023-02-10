@@ -2,14 +2,14 @@
 
     <style name="Theme.QrHolder" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/zxing_transparent</item>
-        
+
     </style>
 
     <style name="ThemeOverlay.Material3.Toolbar.Surface.MyStyle" parent="ThemeOverlay.Material3.Toolbar.Surface">
-        <item name="background">@color/dark_gray </item>
+        <item name="background">@color/dark_gray</item>
     </style>
 
-    <style name="Base.Widget.Material3.CardView.MyStyle"  parent="Widget.MaterialComponents.CardView">
+    <style name="Base.Widget.Material3.CardView.MyStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/dark_gray</item>
     </style>
 
