@@ -16,11 +16,18 @@ class MenuFragment : AbstractFragment<FragmentMenuBinding, MenuViewModel>(
 
     override fun setupViews() {
         super.setupViews()
-        binding.tvAppVersion.text = BuildConfig.VERSION_NAME
-        binding.cvSupport.setOnClickListener {
-            startActivity(
-                Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.support_link)))
-            )
+        binding.run{
+            tvAppVersion.text = BuildConfig.VERSION_NAME
+            cvSupport.setOnClickListener {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.support_link)))
+                )
+            }
+            cvRateApp.setOnClickListener {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.app_link                                                                                                              )))
+                )
+            }
         }
     }
 }

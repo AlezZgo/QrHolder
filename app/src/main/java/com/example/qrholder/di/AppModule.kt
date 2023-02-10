@@ -55,7 +55,6 @@ object AppModule {
 
     @Provides
     fun provideQrCodeScanner(
-        manageResources: ManageResources
     ): BarcodeScanner = BarcodeScanning.getClient(
         BarcodeScannerOptions.Builder()
             .setBarcodeFormats(Barcode.FORMAT_QR_CODE)

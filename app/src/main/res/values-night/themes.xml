@@ -1,7 +1,8 @@
 <resources>
 
     <style name="Theme.QrHolder" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/dark_gray</item>
+        <item name="android:statusBarColor">@color/zxing_transparent</item>
+        
     </style>
 
     <style name="ThemeOverlay.Material3.Toolbar.Surface.MyStyle" parent="ThemeOverlay.Material3.Toolbar.Surface">
