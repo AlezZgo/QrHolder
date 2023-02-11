@@ -48,6 +48,6 @@
     <string name="permission_denied">Permission denied</string>
     <string name="permission_denied_forever_message">"You have denied permission forever. You can change your decision in app settings.\nWould you like to open app settings? "</string>
     <string name="qr_code_was_not_found">Qr code was not found</string>
-    <string name="app_link" translatable="false">https://apps.rustore.ru/app/com.alezzgo.qrholder</string>
+    <string name="app_link" translatable="false">https://apps.rustore.ru/app/com.example.qrholder</string>
 
 </resources>
