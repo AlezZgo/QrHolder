@@ -1,7 +1,5 @@
 # QrHolder
-Application for holding Qr codes
 
-**View your Qr Codes:**
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=View+your+Qr+Codes)](https://git.io/typing-svg)
 
 ![1](https://user-images.githubusercontent.com/72276469/217655443-9d8e847e-8b3a-4a73-811e-acb922dd298e.jpg)
