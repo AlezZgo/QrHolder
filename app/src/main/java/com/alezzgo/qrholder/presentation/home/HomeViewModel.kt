@@ -41,10 +41,6 @@ class HomeViewModel @Inject constructor(
 //            communications.showState(HomeUi.Loading)
             val result = interactor.fetchAll()
             result.map(fetchAllResultMapper)
-
-            //todo switch dispatcher isn`t right there? is it?
-            //todo it works just because it takes some delay,
-            //todo during which complete list would finish initializing
             withContext(dispatchers.ui()) {
                 filter(manageResources.string(R.string.empty))
             }
@@ -64,8 +60,6 @@ class HomeViewModel @Inject constructor(
     override suspend fun fetchQrCode(title: String): QrCodeUi {
         return interactor.fetchQrCode(title = title).map(qrCodeToUiMapper)
     }
-
-
 }
 
 

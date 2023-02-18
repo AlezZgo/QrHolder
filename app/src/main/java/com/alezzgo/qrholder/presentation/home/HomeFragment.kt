@@ -67,20 +67,10 @@ class HomeFragment : AbstractFragment<FragmentHomeBinding, HomeViewModel>(
 
     override fun observe() {
         viewModel.observeUiState(viewLifecycleOwner) { uiState ->
-            with(binding) {
-                uiState.show(
-                    toolbar = toolbar,
-                    recyclerView = rvQrList,
-                    adapter = adapter,
-                    nothingWasFoundTextView = tvNothingWasFoundLayout,
-                    nothingWasFoundImageView = ivNothingWasFound,
-                    emptyListTextView = tvEmptyListLayout,
-                    emptyListImageView = ivEmptyFolder,
-                    tvError = tvError,
-                    ivError = ivError,
-                    shimmers = shimmersLayout
-                )
-            }
+            uiState.show(
+                adapter = adapter,
+                binding = binding
+            )
         }
     }
 

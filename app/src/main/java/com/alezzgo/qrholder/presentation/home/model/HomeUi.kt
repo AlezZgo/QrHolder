@@ -1,52 +1,35 @@
 package com.alezzgo.qrholder.presentation.home.model
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import com.alezzgo.qrholder.databinding.FragmentHomeBinding
 import com.alezzgo.qrholder.presentation.core.model.QrCodeUi
 import com.alezzgo.qrholder.presentation.home.adapter.QrCodesAdapter
-import com.facebook.shimmer.ShimmerFrameLayout
-import com.google.android.material.appbar.MaterialToolbar
 
 sealed class HomeUi {
 
     abstract fun show(
-        toolbar: MaterialToolbar,
-        recyclerView: RecyclerView,
         adapter: QrCodesAdapter,
-        nothingWasFoundTextView: TextView,
-        nothingWasFoundImageView: ImageView,
-        emptyListTextView: TextView,
-        emptyListImageView: ImageView,
-        tvError: TextView,
-        ivError: ImageView,
-        shimmers: ShimmerFrameLayout,
+        binding: FragmentHomeBinding
     )
 
     object Loading : HomeUi() {
         override fun show(
-            toolbar: MaterialToolbar,
-            recyclerView: RecyclerView,
             adapter: QrCodesAdapter,
-            nothingWasFoundTextView: TextView,
-            nothingWasFoundImageView: ImageView,
-            emptyListTextView: TextView,
-            emptyListImageView: ImageView,
-            tvError: TextView,
-            ivError: ImageView,
-            shimmers: ShimmerFrameLayout,
+            binding: FragmentHomeBinding
         ) {
-            toolbar.visibility = View.GONE
-            recyclerView.visibility = View.GONE
-            nothingWasFoundTextView.visibility = View.GONE
-            nothingWasFoundImageView.visibility = View.GONE
-            emptyListTextView.visibility = View.GONE
-            emptyListImageView.visibility = View.GONE
-            tvError.visibility = View.GONE
-            ivError.visibility = View.GONE
-            shimmers.visibility = View.VISIBLE
-            shimmers.startShimmer()
+            binding.run {
+                toolbar.visibility = View.GONE
+                rvQrList.visibility = View.GONE
+                tvNothingWasFoundLayout.visibility = View.GONE
+                ivNothingWasFound.visibility = View.GONE
+                tvEmptyListLayout.visibility = View.GONE
+                ivEmptyFolder.visibility = View.GONE
+                tvError.visibility = View.GONE
+                ivError.visibility = View.GONE
+                shimmersLayout.visibility = View.VISIBLE
+                shimmersLayout.startShimmer()
+            }
+
         }
 
     }
@@ -55,29 +38,22 @@ sealed class HomeUi {
         private val qrCodes: List<QrCodeUi> = emptyList()
     ) : HomeUi() {
         override fun show(
-            toolbar: MaterialToolbar,
-            recyclerView: RecyclerView,
             adapter: QrCodesAdapter,
-            nothingWasFoundTextView: TextView,
-            nothingWasFoundImageView: ImageView,
-            emptyListTextView: TextView,
-            emptyListImageView: ImageView,
-            tvError: TextView,
-            ivError: ImageView,
-            shimmers: ShimmerFrameLayout
+            binding: FragmentHomeBinding
         ) {
-            shimmers.stopShimmer()
-            shimmers.visibility = View.GONE
-            toolbar.visibility = View.VISIBLE
-            recyclerView.visibility = View.VISIBLE
-            adapter.submitList(qrCodes)
-            nothingWasFoundTextView.visibility = View.GONE
-            nothingWasFoundImageView.visibility = View.GONE
-            emptyListTextView.visibility = View.GONE
-            emptyListImageView.visibility = View.GONE
-            tvError.visibility = View.GONE
-            ivError.visibility = View.GONE
-
+            binding.run {
+                shimmersLayout.stopShimmer()
+                shimmersLayout.visibility = View.GONE
+                toolbar.visibility = View.VISIBLE
+                rvQrList.visibility = View.VISIBLE
+                adapter.submitList(qrCodes)
+                tvNothingWasFoundLayout.visibility = View.GONE
+                ivNothingWasFound.visibility = View.GONE
+                tvEmptyListLayout.visibility = View.GONE
+                ivEmptyFolder.visibility = View.GONE
+                tvError.visibility = View.GONE
+                ivError.visibility = View.GONE
+            }
 
         }
 
@@ -85,54 +61,42 @@ sealed class HomeUi {
 
     object Empty : HomeUi() {
         override fun show(
-            toolbar: MaterialToolbar,
-            recyclerView: RecyclerView,
             adapter: QrCodesAdapter,
-            nothingWasFoundTextView: TextView,
-            nothingWasFoundImageView: ImageView,
-            emptyListTextView: TextView,
-            emptyListImageView: ImageView,
-            tvError: TextView,
-            ivError: ImageView,
-            shimmers: ShimmerFrameLayout
+            binding: FragmentHomeBinding
         ) {
-            shimmers.stopShimmer()
-            shimmers.visibility = View.GONE
-            toolbar.visibility = View.GONE
-            recyclerView.visibility = View.GONE
-            nothingWasFoundTextView.visibility = View.GONE
-            nothingWasFoundImageView.visibility = View.GONE
-            tvError.visibility = View.GONE
-            ivError.visibility = View.GONE
-            emptyListTextView.visibility = View.VISIBLE
-            emptyListImageView.visibility = View.VISIBLE
+            binding.run {
+                shimmersLayout.stopShimmer()
+                shimmersLayout.visibility = View.GONE
+                toolbar.visibility = View.GONE
+                rvQrList.visibility = View.GONE
+                tvNothingWasFoundLayout.visibility = View.GONE
+                ivNothingWasFound.visibility = View.GONE
+                tvError.visibility = View.GONE
+                ivError.visibility = View.GONE
+                tvEmptyListLayout.visibility = View.VISIBLE
+                ivEmptyFolder.visibility = View.VISIBLE
+            }
         }
 
     }
 
     object NothingWasFound : HomeUi() {
         override fun show(
-            toolbar: MaterialToolbar,
-            recyclerView: RecyclerView,
             adapter: QrCodesAdapter,
-            nothingWasFoundTextView: TextView,
-            nothingWasFoundImageView: ImageView,
-            emptyListTextView: TextView,
-            emptyListImageView: ImageView,
-            tvError: TextView,
-            ivError: ImageView,
-            shimmers: ShimmerFrameLayout
+            binding: FragmentHomeBinding
         ) {
-            shimmers.stopShimmer()
-            shimmers.visibility = View.GONE
-            toolbar.visibility = View.VISIBLE
-            recyclerView.visibility = View.GONE
-            nothingWasFoundTextView.visibility = View.VISIBLE
-            nothingWasFoundImageView.visibility = View.VISIBLE
-            tvError.visibility = View.GONE
-            ivError.visibility = View.GONE
-            emptyListTextView.visibility = View.GONE
-            emptyListImageView.visibility = View.GONE
+            binding.run {
+                shimmersLayout.stopShimmer()
+                shimmersLayout.visibility = View.GONE
+                toolbar.visibility = View.VISIBLE
+                rvQrList.visibility = View.GONE
+                tvNothingWasFoundLayout.visibility = View.VISIBLE
+                ivNothingWasFound.visibility = View.VISIBLE
+                tvError.visibility = View.GONE
+                ivError.visibility = View.GONE
+                tvEmptyListLayout.visibility = View.GONE
+                ivEmptyFolder.visibility = View.GONE
+            }
         }
 
     }
@@ -141,28 +105,22 @@ sealed class HomeUi {
         private val errorMessage: String
     ) : HomeUi() {
         override fun show(
-            toolbar: MaterialToolbar,
-            recyclerView: RecyclerView,
             adapter: QrCodesAdapter,
-            nothingWasFoundTextView: TextView,
-            nothingWasFoundImageView: ImageView,
-            emptyListTextView: TextView,
-            emptyListImageView: ImageView,
-            tvError: TextView,
-            ivError: ImageView,
-            shimmers: ShimmerFrameLayout
+            binding: FragmentHomeBinding
         ) {
-            shimmers.stopShimmer()
-            shimmers.visibility = View.GONE
-            toolbar.visibility = View.GONE
-            recyclerView.visibility = View.GONE
-            nothingWasFoundTextView.visibility = View.GONE
-            nothingWasFoundImageView.visibility = View.GONE
-            tvError.visibility = View.VISIBLE
-            tvError.text = errorMessage
-            ivError.visibility = View.VISIBLE
-            emptyListTextView.visibility = View.GONE
-            emptyListImageView.visibility = View.GONE
+            binding.run {
+                shimmersLayout.stopShimmer()
+                shimmersLayout.visibility = View.GONE
+                toolbar.visibility = View.GONE
+                rvQrList.visibility = View.GONE
+                tvNothingWasFoundLayout.visibility = View.GONE
+                ivNothingWasFound.visibility = View.GONE
+                tvError.visibility = View.VISIBLE
+                tvError.text = errorMessage
+                ivError.visibility = View.VISIBLE
+                tvEmptyListLayout.visibility = View.GONE
+                ivEmptyFolder.visibility = View.GONE
+            }
         }
     }
 
